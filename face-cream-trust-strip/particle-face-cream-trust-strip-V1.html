@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Particle Face Cream - V1 Trust Strip Above Add To Cart</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#101c3d;
+    --navy2:#243350;
+    --blue:#0b41cd;
+    --green:#1f8a3b;
+    --grey:#6b7280;
+    --line:#e3e6ec;
+    --bg:#ffffff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:#eef0f4;font-family:Poppins,"Helvetica Neue",Arial,sans-serif;color:var(--navy);}
+  .wrap{max-width:1640px;margin:0 auto;padding:28px 24px 60px;}
+  .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#7b8393;margin:0 0 10px 2px;font-weight:600}
+  .cols{display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap}
+  .device{background:var(--bg);box-shadow:0 6px 26px rgba(16,28,61,.12);border-radius:4px;overflow:hidden}
+  .desktop{width:1080px}
+  .mobile{width:392px}
+
+  /* header */
+  .promo{background:#0d1730;color:#fff;text-align:center;font-size:11px;font-weight:600;letter-spacing:.04em;padding:9px 6px}
+  .mobile .promo{font-size:14px;padding:12px 6px}
+  .nav{background:#16213f;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:14px 26px}
+  .logo{font-size:19px;font-weight:600;letter-spacing:.22em}
+  .mobile .logo{font-size:22px}
+  .navlinks{display:flex;gap:34px;font-size:11px;letter-spacing:.09em;font-weight:500}
+  .navicons{display:flex;gap:14px;font-size:12px;opacity:.9}
+  .burger{font-size:20px;line-height:1}
+
+  /* product */
+  .pdp{display:flex;gap:34px;padding:22px 30px 34px}
+  .gallery{width:44%;background:#f1f2f4;border-radius:2px;min-height:400px;display:flex;align-items:center;justify-content:center;color:#98a0ae;font-size:12px}
+  .info{flex:1}
+  .h1{font-size:34px;line-height:1.1;font-weight:800;margin:0 0 10px}
+  .h1 span{color:var(--blue)}
+  .sub{font-size:13px;font-weight:600;margin:0 0 12px;line-height:1.45}
+  .stars{color:#1f7a4d;letter-spacing:1px;font-size:15px}
+  .rating{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:600;margin-bottom:14px}
+  .tabs{display:flex;gap:30px;border-bottom:1px solid var(--line);font-size:12px;font-weight:600;color:#4b5566}
+  .tabs .on{color:var(--blue);border-bottom:2px solid var(--blue);padding-bottom:8px}
+  .desc{font-size:11.5px;line-height:1.7;color:#3f4859;margin:14px 0 18px}
+
+  .options{display:flex;gap:12px}
+  .optcol{display:flex;flex-direction:column;gap:12px;flex:1}
+  .opt{border:1px solid var(--line);border-radius:3px;padding:12px;display:flex;align-items:center;gap:10px;position:relative;background:#fff}
+  .opt.sel{border:1px solid var(--blue);background:#f4f8ff}
+  .radio{width:14px;height:14px;border-radius:50%;border:2px solid var(--blue);flex:0 0 auto}
+  .radio.on{background:radial-gradient(circle,#0b41cd 0 4px,#fff 4px 6px,#0b41cd 6px)}
+  .bottle{width:52px;height:66px;background:#e7e9ee;border-radius:2px;flex:0 0 auto}
+  .optxt{font-size:11px;font-weight:600}
+  .optxt .u{color:var(--blue)}
+  .optxt .sv{color:var(--green)}
+  .price{font-size:22px;font-weight:800}
+  .per{font-size:10px;font-weight:500;color:#4b5566}
+  .tot{font-size:10px;color:#8b93a3}
+  .flag{position:absolute;top:0;right:0;background:#1f7a3f;color:#fff;font-size:9px;font-weight:600;padding:3px 22px;transform:rotate(38deg) translate(22px,6px)}
+
+  .stock{font-size:11px;font-weight:700;margin:16px 0 6px}
+  .stock b{color:#e01b3c}
+  .bar{height:4px;background:#e7e9ee;border-radius:3px;overflow:hidden}
+  .bar i{display:block;width:28%;height:100%;background:#e01b3c}
+  .atc{margin-top:14px;background:var(--blue);color:#fff;text-align:center;font-size:15px;font-weight:700;letter-spacing:.04em;padding:15px;border-radius:3px}
+
+  /* TRUST STRIP - V1 */
+  .trust{margin-top:16px;border:1px solid var(--line);border-top:3px solid var(--blue);background:#f8fafd;border-radius:3px;display:flex}
+  .trust .cell{flex:1;padding:12px 8px;text-align:center;border-right:1px solid var(--line)}
+  .trust .cell:last-child{border-right:0}
+  .trust .ic{font-size:16px;line-height:1;margin-bottom:6px;color:var(--blue)}
+  .trust .t1{font-size:11px;font-weight:700;line-height:1.25}
+  .trust .t2{font-size:9.5px;color:#6b7280;font-weight:500;margin-top:2px;line-height:1.3}
+  .mobile .trust{display:grid;grid-template-columns:1fr 1fr;border-right:0}
+  .mobile .trust .cell{border-bottom:1px solid var(--line)}
+  .mobile .trust .cell:nth-child(2n){border-right:0}
+  .mobile .trust .cell:nth-child(1),.mobile .trust .cell:nth-child(2){border-bottom:1px solid var(--line)}
+  .mobile .trust .cell:nth-child(3),.mobile .trust .cell:nth-child(4){border-bottom:0}
+  .mobile .trust .t1{font-size:13px}
+  .mobile .trust .t2{font-size:11px}
+  .mobile .trust .ic{font-size:20px}
+
+  /* mobile stacked pdp */
+  .mobile .pdp{display:block;padding:0 18px 26px}
+  .mobile .gallery{width:100%;min-height:330px;margin:14px 0 18px}
+  .mobile .h1{font-size:38px}
+  .mobile .sub{font-size:17px;margin-bottom:18px}
+  .mobile .rating{font-size:17px}
+  .mobile .stars{font-size:22px}
+  .mobile .tabs{font-size:14px;gap:16px}
+  .mobile .desc{font-size:15px;line-height:1.6}
+  .mobile .options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .mobile .optcol{display:contents}
+  .mobile .opt{flex-direction:column;align-items:flex-start;padding:14px}
+  .mobile .optxt{font-size:14px}
+  .mobile .price{font-size:28px}
+  .mobile .per{font-size:12px}
+  .mobile .tot{font-size:12px}
+  .mobile .stock{font-size:15px}
+  .mobile .atc{font-size:20px;padding:20px}
+  .note{max-width:1080px;font-size:12px;color:#5b6371;margin:0 0 18px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="note"><b>V1 mockup:</b> trust strip placed inside the buy box, directly above the ADD TO CART button, on desktop and mobile. Everything else on the page is unchanged.</p>
+  <div class="cols">
+
+    <div>
+      <p class="lbl">Desktop</p>
+      <div class="device desktop">
+        <div class="promo">FREE SHIPPING &bull; 30 DAY MONEY BACK GUARANTEE</div>
+        <div class="nav">
+          <div class="logo">PARTICLE</div>
+          <div class="navlinks"><span>PRODUCTS</span><span>MAGAZINE</span><span>REVIEWS</span><span>SUPPORT</span></div>
+          <div class="navicons"><span>&#9787;</span><span>&#128722;</span><span>EN</span></div>
+        </div>
+        <div class="pdp">
+          <div class="gallery">product gallery</div>
+          <div class="info">
+            <h1 class="h1"><span>Particle</span> Face Cream</h1>
+            <p class="sub">The 6-in-1 anti-aging cream for men that fixes eye bags, dark spots and wrinkles</p>
+            <div class="rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 12,146 Reviews</div>
+            <div class="tabs"><span class="on">Description</span><span>Actions</span><span>Benefits</span><span>How to use</span></div>
+            <p class="desc">Based on advanced dermatological research, this anti-aging cream is engineered to combat the signs of aging. Formulated for daily use, Particle Face Cream is the ultimate solution for men who want to look healthy and youthful.</p>
+
+            <div class="options">
+              <div class="optcol">
+                <div class="opt sel" style="min-height:120px">
+                  <div class="radio on"></div>
+                  <div class="bottle" style="width:78px;height:88px"></div>
+                  <div>
+                    <div class="optxt"><span class="u">3 Units</span></div>
+                    <div class="optxt sv">You Save: $60</div>
+                    <div class="price">$49 <span class="per">/Per Unit</span></div>
+                    <div class="tot">$147 Total</div>
+                  </div>
+                  <div class="flag">Most Popular</div>
+                </div>
+              </div>
+              <div class="optcol">
+                <div class="opt">
+                  <div class="radio"></div>
+                  <div class="bottle"></div>
+                  <div>
+                    <div class="optxt"><span class="u">2 Units</span></div>
+                    <div class="optxt sv">You Save: $28</div>
+                  </div>
+                  <div style="margin-left:auto;text-align:right">
+                    <div class="price">$55 <span class="per">/Per Unit</span></div>
+                    <div class="tot">$110 Total</div>
+                  </div>
+                </div>
+                <div class="opt">
+                  <div class="radio"></div>
+                  <div class="bottle"></div>
+                  <div><div class="optxt"><span class="u">1 Unit</span></div></div>
+                  <div style="margin-left:auto;text-align:right"><div class="price">$69 <span class="per">/Per Unit</span></div></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stock">&#9889; HURRY! Selling out fast! <b>38</b> left in stock.</div>
+            <div class="bar"><i></i></div>
+
+            <div class="trust">
+              <div class="cell">
+                <div class="ic">&#9733;</div>
+                <div class="t1">4.8 out of 5</div>
+                <div class="t2">12,146 verified reviews</div>
+              </div>
+              <div class="cell">
+                <div class="ic">&#8634;</div>
+                <div class="t1">30 day money back</div>
+                <div class="t2">Return it, no questions</div>
+              </div>
+              <div class="cell">
+                <div class="ic">&#128666;</div>
+                <div class="t1">Free shipping</div>
+                <div class="t2">On every order</div>
+              </div>
+              <div class="cell">
+                <div class="ic">&#10003;</div>
+                <div class="t1">Skin Cancer Foundation</div>
+                <div class="t2">Corporate council member</div>
+              </div>
+            </div>
+
+            <div class="atc">ADD TO CART</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="lbl">Mobile</p>
+      <div class="device mobile">
+        <div class="promo">FREE SHIPPING + 30 DAY MONEY BACK GUARANTEE</div>
+        <div class="nav">
+          <div class="burger">&#9776;</div>
+          <div class="logo">PARTICLE</div>
+          <div class="navicons" style="font-size:16px"><span>&#9787;</span><span>&#128722;</span></div>
+        </div>
+        <div class="pdp">
+          <div class="gallery">product gallery</div>
+          <h1 class="h1"><span>Particle</span> Face Cream</h1>
+          <p class="sub">The 6-in-1 anti-aging cream for men that fixes eye bags, dark spots and wrinkles</p>
+          <div class="rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 12,146 Reviews</div>
+          <div class="tabs"><span class="on">Description</span><span>Actions</span><span>Benefits</span></div>
+          <p class="desc">Based on advanced dermatological research, this anti-aging cream is engineered to combat the signs of aging. Formulated for daily use, Particle Face Cream is the ultimate solution for men who want to look healthy and youthful.</p>
+
+          <div class="options">
+            <div class="opt sel">
+              <div class="radio on"></div>
+              <div class="bottle" style="width:100%;height:90px;margin:8px 0"></div>
+              <div class="optxt"><span class="u">3 Units</span></div>
+              <div class="optxt sv">You Save: $60</div>
+              <div class="price">$49 <span class="per">/Per Unit</span></div>
+              <div class="tot">$147 Total</div>
+              <div class="flag">Most Popular</div>
+            </div>
+            <div class="opt">
+              <div class="radio"></div>
+              <div class="bottle" style="width:100%;height:90px;margin:8px 0"></div>
+              <div class="optxt"><span class="u">2 Units</span></div>
+              <div class="optxt sv">You Save: $28</div>
+              <div class="price">$55 <span class="per">/Per Unit</span></div>
+              <div class="tot">$110 Total</div>
+            </div>
+          </div>
+          <div class="opt" style="margin-top:10px">
+            <div class="radio"></div>
+            <div class="bottle"></div>
+            <div class="optxt" style="margin-left:8px"><span class="u">1 Unit</span></div>
+            <div style="margin-left:auto"><div class="price">$69 <span class="per">/Per Unit</span></div></div>
+          </div>
+
+          <div class="stock">&#9889; HURRY! Selling out fast! <b>38</b> left in stock.</div>
+          <div class="bar"><i></i></div>
+
+          <div class="trust">
+            <div class="cell">
+              <div class="ic">&#9733;</div>
+              <div class="t1">4.8 out of 5</div>
+              <div class="t2">12,146 verified reviews</div>
+            </div>
+            <div class="cell">
+              <div class="ic">&#8634;</div>
+              <div class="t1">30 day money back</div>
+              <div class="t2">Return it, no questions</div>
+            </div>
+            <div class="cell">
+              <div class="ic">&#128666;</div>
+              <div class="t1">Free shipping</div>
+              <div class="t2">On every order</div>
+            </div>
+            <div class="cell">
+              <div class="ic">&#10003;</div>
+              <div class="t1">Skin Cancer Foundation</div>
+              <div class="t2">Corporate council member</div>
+            </div>
+          </div>
+
+          <div class="atc">ADD TO CART</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
