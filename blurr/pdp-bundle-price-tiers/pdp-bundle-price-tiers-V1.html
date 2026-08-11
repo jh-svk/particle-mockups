@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BLURR Instant Eye Tightener, V1 Bundle Price Tiers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --magenta:#C42FA8;
+    --magenta-deep:#A8249A;
+    --magenta-bright:#D935BE;
+    --ink:#111111;
+    --grey-text:#6f6f6f;
+    --card-grey:#f4f4f4;
+    --border:#e3e3e3;
+    --border-purple:#c9a9d8;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:#ececed;
+    font-family:'Poppins',Helvetica,Arial,sans-serif;
+    color:var(--ink);
+  }
+  .page-head{
+    padding:28px 32px 8px;
+  }
+  .page-head h1{
+    font-family:'Anton',Impact,sans-serif;
+    font-size:26px;
+    letter-spacing:.5px;
+    margin:0 0 4px;
+    text-transform:uppercase;
+  }
+  .page-head p{margin:0;font-size:13px;color:var(--grey-text);}
+  .stage{
+    display:flex;
+    gap:32px;
+    align-items:flex-start;
+    padding:24px 32px 60px;
+  }
+  .panel{background:#fff;border:1px solid #d8d8d8;}
+  .panel-label{
+    background:#111;color:#fff;
+    font-size:11px;letter-spacing:2px;text-transform:uppercase;
+    padding:9px 14px;font-weight:600;
+  }
+  .desktop{width:1040px;flex:0 0 1040px;}
+  .mobile{width:412px;flex:0 0 412px;}
+
+  /* header bar */
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 26px;border-bottom:1px solid var(--border);
+  }
+  .nav-links{display:flex;gap:26px;font-size:12px;font-weight:500;letter-spacing:.6px;text-transform:uppercase;}
+  .logo{font-family:'Anton',Impact,sans-serif;font-size:28px;letter-spacing:-.5px;}
+  .nav-icons{display:flex;gap:16px;font-size:15px;color:#333;}
+
+  .pdp{display:flex;gap:34px;padding:26px 30px 40px;}
+  .gallery{flex:0 0 400px;}
+  .hero-img{
+    background:#f1f1f1;border-radius:10px;height:400px;
+    display:flex;align-items:center;justify-content:center;position:relative;
+  }
+  .free-gift{
+    position:absolute;top:18px;left:18px;width:78px;height:78px;border-radius:50%;
+    background:conic-gradient(from 210deg,#cfe9df,#f4dff0,#dfe4f6,#f6ead9,#cfe9df);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;line-height:1.05;
+  }
+  .free-gift b{font-family:'Anton',Impact,sans-serif;color:var(--magenta);font-size:15px;}
+  .free-gift span{font-size:6px;letter-spacing:.4px;font-weight:600;margin-top:2px;}
+  .bottle{
+    width:96px;height:275px;border-radius:9px;
+    background:linear-gradient(100deg,#d9d9dd 0%,#f4f4f6 22%,#c8c8cf 48%,#eeeef0 72%,#c3c3ca 100%);
+    position:relative;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 22px rgba(0,0,0,.10);
+  }
+  .bottle:before{
+    content:"";position:absolute;top:34px;left:0;right:0;height:9px;
+    background:linear-gradient(90deg,#8e1f86,#e13fc4);
+  }
+  .bottle-word{
+    font-family:'Anton',Impact,sans-serif;font-size:34px;letter-spacing:1px;
+    transform:rotate(-90deg);white-space:nowrap;margin-top:-16px;
+  }
+  .bottle small{
+    position:absolute;bottom:44px;left:0;right:0;text-align:center;
+    font-size:7px;letter-spacing:1px;line-height:1.5;font-weight:500;
+  }
+  .thumbs{display:flex;flex-direction:column;gap:10px;flex:0 0 74px;}
+  .thumb{width:74px;height:74px;border-radius:6px;background:#f1f1f1;border:1px solid var(--border);}
+  .thumb.active{border:1px solid #111;}
+
+  .buybox{flex:1;}
+  h2.title{
+    font-family:'Anton',Impact,sans-serif;color:var(--magenta);
+    font-size:31px;margin:0 0 8px;letter-spacing:.4px;text-transform:uppercase;
+  }
+  .sub{font-size:14px;font-weight:600;letter-spacing:.3px;margin:0 0 10px;text-transform:uppercase;}
+  .rating{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+  .stars{color:var(--magenta);font-size:14px;letter-spacing:1px;}
+  .rating a{font-size:12px;color:#333;text-decoration:underline;}
+  ul.benefits{list-style:none;margin:0 0 18px;padding:0;}
+  ul.benefits li{
+    font-size:13.5px;margin-bottom:7px;padding-left:24px;position:relative;color:#1a1a1a;
+  }
+  ul.benefits li:before{
+    content:"";position:absolute;left:0;top:3px;width:15px;height:15px;border-radius:50%;
+    background:var(--magenta);
+  }
+  ul.benefits li:after{
+    content:"";position:absolute;left:4.5px;top:7px;width:5px;height:2.5px;
+    border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg);
+  }
+
+  /* price cards */
+  .tiers{display:flex;gap:12px;margin-bottom:16px;}
+  .tier-main{
+    flex:0 0 52%;border:1.5px solid var(--magenta);border-radius:9px;background:var(--card-grey);
+    padding:14px;position:relative;
+  }
+  .tier-side{flex:1;display:flex;flex-direction:column;gap:12px;}
+  .tier{
+    border:1px solid var(--border-purple);border-radius:9px;background:#fff;padding:13px 14px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .radio{width:15px;height:15px;border-radius:50%;border:2px solid #111;flex:0 0 15px;}
+  .radio.on{border-color:#111;position:relative;}
+  .radio.on:after{content:"";position:absolute;inset:3px;border-radius:50%;background:#111;}
+  .badge-pop{
+    position:absolute;top:12px;right:12px;background:var(--magenta);color:#fff;
+    font-family:'Anton',Impact,sans-serif;font-size:11px;letter-spacing:.6px;padding:5px 10px;
+  }
+  .tier-main .radio{position:absolute;top:14px;left:14px;}
+  .pack{display:flex;justify-content:center;align-items:flex-end;gap:3px;height:96px;margin:26px 0 10px;}
+  .mini{
+    width:26px;height:74px;border-radius:4px;position:relative;
+    background:linear-gradient(100deg,#d5d5da,#f2f2f4,#cacad1);
+  }
+  .mini:before{content:"";position:absolute;top:12px;left:0;right:0;height:4px;background:linear-gradient(90deg,#8e1f86,#e13fc4);}
+  .mini.tall{height:88px;}
+  .mini span{
+    position:absolute;top:34px;left:0;right:0;text-align:center;
+    font-family:'Anton',Impact,sans-serif;font-size:9px;
+  }
+  .price-row{display:flex;align-items:baseline;gap:6px;}
+  .price{font-size:26px;font-weight:600;letter-spacing:-.5px;}
+  .per{font-size:13px;color:#333;}
+  .units{font-size:12px;color:var(--grey-text);margin:2px 0 9px;}
+  .save{
+    display:inline-block;border:1.5px solid var(--magenta);color:var(--magenta);
+    font-family:'Anton',Impact,sans-serif;font-size:13px;letter-spacing:.5px;padding:5px 11px;
+  }
+  .tier-side .price{font-size:22px;}
+  .tier-side .save{font-size:11px;padding:4px 8px;}
+  .tier-body{flex:1;}
+
+  .cta{
+    display:block;width:100%;border:none;border-radius:999px;color:#fff;
+    background:linear-gradient(90deg,var(--magenta-deep),var(--magenta-bright));
+    font-family:'Poppins',sans-serif;font-size:14px;font-weight:500;letter-spacing:.6px;
+    padding:16px;text-transform:uppercase;margin-bottom:10px;cursor:pointer;
+  }
+  .promise{text-align:center;font-size:11.5px;font-style:italic;color:#444;line-height:1.55;margin-bottom:14px;}
+  .promise b{font-weight:600;}
+  .trust{display:flex;justify-content:center;gap:34px;padding-bottom:18px;border-bottom:1px solid var(--border);}
+  .trust div{display:flex;align-items:center;gap:8px;font-size:12.5px;letter-spacing:.4px;text-transform:uppercase;}
+  .ring{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--magenta);}
+  .accord{border-bottom:1px solid var(--border);padding:16px 2px;display:flex;justify-content:space-between;font-size:12px;letter-spacing:.8px;text-transform:uppercase;font-weight:500;}
+  .accord span{color:var(--magenta);font-size:15px;}
+
+  /* mobile */
+  .m-wrap{padding:0 0 26px;}
+  .m-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border);}
+  .m-nav .logo{font-size:26px;}
+  .m-hero{background:#f1f1f1;border-radius:10px;margin:16px 16px 12px;height:300px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .m-body{padding:0 16px;}
+  .m-body h2.title{font-size:30px;}
+  .m-body .sub{font-size:15px;}
+  .m-body ul.benefits li{font-size:15px;margin-bottom:9px;}
+  .m-tiers{display:flex;gap:10px;}
+  .m-tiers .tier-main{flex:0 0 50%;}
+  .m-tiers .price{font-size:21px;}
+  .m-tiers .tier-side .price{font-size:19px;}
+  .m-tiers .pack{height:80px;margin:24px 0 8px;}
+  .m-tiers .mini{width:20px;height:60px;}
+  .m-tiers .mini.tall{height:72px;}
+  .m-trust{gap:18px;}
+  .note{
+    font-size:11px;color:#8a8a8a;padding:10px 16px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-head">
+  <h1>Blurr, Instant Eye Tightener, V1 bundle price tiers</h1>
+  <p>Mockup only. Price cards updated to 1 unit $59, 2 units $39 per bottle, 3 units $35 per bottle.</p>
+</div>
+
+<div class="stage">
+
+  <!-- DESKTOP -->
+  <div class="panel desktop">
+    <div class="panel-label">Desktop, V1</div>
+    <div class="nav">
+      <div class="nav-links"><span>Shop All</span><span>How To Blurr</span><span>Tips &amp; Trends</span></div>
+      <div class="logo">BLURR</div>
+      <div class="nav-icons"><span>&#9906;</span><span>&#9737;</span><span>&#128717;</span></div>
+    </div>
+
+    <div class="pdp">
+      <div class="thumbs">
+        <div class="thumb active"></div><div class="thumb"></div><div class="thumb"></div><div class="thumb"></div>
+      </div>
+      <div class="gallery">
+        <div class="hero-img">
+          <div class="free-gift"><b>FREE<br>GIFT</b><span>WITH EVERY ORDER</span></div>
+          <div class="bottle">
+            <div class="bottle-word">BLURR</div>
+            <small>INSTANT<br>EYE<br>TIGHTENER</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="buybox">
+        <h2 class="title">Instant Eye Tightener</h2>
+        <p class="sub">Lift. Smooth. Depuff - in 90 seconds</p>
+        <div class="rating">
+          <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <a href="#">4.1 | 315 reviews</a>
+        </div>
+        <ul class="benefits">
+          <li>No white residue, ever</li>
+          <li>Erase eye bags instantly</li>
+          <li>Temporarily smooth fine lines</li>
+          <li>Layers perfectly under makeup</li>
+          <li>Powered by PDRN &amp; Exosomes</li>
+        </ul>
+
+        <div class="tiers">
+          <div class="tier-main">
+            <div class="radio on"></div>
+            <div class="badge-pop">MOST POPULAR</div>
+            <div class="pack">
+              <div class="mini"><span>BLURR</span></div>
+              <div class="mini tall"><span>BLURR</span></div>
+              <div class="mini"><span>BLURR</span></div>
+            </div>
+            <div class="price-row"><span class="price">$35</span><span class="per">/ Per bottle</span></div>
+            <div class="units">3 Units / $105 Total</div>
+            <div class="save">SAVE $72</div>
+          </div>
+          <div class="tier-side">
+            <div class="tier">
+              <div class="radio"></div>
+              <div class="pack" style="height:auto;margin:0;flex:0 0 46px;">
+                <div class="mini" style="height:44px;width:17px;"><span style="font-size:6px;top:20px;">BLURR</span></div>
+                <div class="mini" style="height:44px;width:17px;"><span style="font-size:6px;top:20px;">BLURR</span></div>
+              </div>
+              <div class="tier-body">
+                <div class="price-row"><span class="price">$39</span><span class="per">/ Per bottle</span></div>
+                <div class="units">2 Units / $78 Total</div>
+              </div>
+              <div class="save">SAVE $40</div>
+            </div>
+            <div class="tier">
+              <div class="radio"></div>
+              <div class="pack" style="height:auto;margin:0;flex:0 0 46px;">
+                <div class="mini" style="height:44px;width:17px;"><span style="font-size:6px;top:20px;">BLURR</span></div>
+              </div>
+              <div class="tier-body">
+                <div class="price-row"><span class="price">$59</span><span class="per">/ Per bottle</span></div>
+                <div class="units">1 Unit</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="cta">Try Risk-Free Today &mdash; Guaranteed Results</button>
+        <div class="promise">
+          <b>Loved by thousands, backed by our satisfaction promise.</b><br>
+          Not sure? Most women keep it after the first use. No forms. No wait.
+        </div>
+        <div class="trust">
+          <div><span class="ring"></span>Free Shipping</div>
+          <div><span class="ring"></span>30-Day Money Back</div>
+        </div>
+        <div class="accord">The Details <span>+</span></div>
+        <div class="accord">Shipping Information &amp; Guarantee <span>+</span></div>
+        <div class="accord">How To Use <span>+</span></div>
+        <div class="accord">Proven Ingredients <span>+</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE -->
+  <div class="panel mobile">
+    <div class="panel-label">Mobile, V1</div>
+    <div class="m-wrap">
+      <div class="m-nav">
+        <span style="font-size:20px;">&#9776;</span>
+        <div class="logo">BLURR</div>
+        <div class="nav-icons"><span>&#9906;</span><span>&#9737;</span><span>&#128717;</span></div>
+      </div>
+
+      <div class="m-hero">
+        <div class="free-gift"><b>FREE<br>GIFT</b><span>WITH EVERY ORDER</span></div>
+        <div class="bottle" style="height:230px;width:82px;">
+          <div class="bottle-word" style="font-size:29px;">BLURR</div>
+          <small>INSTANT<br>EYE<br>TIGHTENER</small>
+        </div>
+      </div>
+
+      <div class="m-body">
+        <h2 class="title">Instant Eye Tightener</h2>
+        <p class="sub">Lift. Smooth. Depuff - in 90 seconds</p>
+        <div class="rating">
+          <span class="stars" style="font-size:17px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <a href="#">4.1 | 315 reviews</a>
+        </div>
+        <ul class="benefits">
+          <li>No white residue, ever</li>
+          <li>Erase eye bags instantly</li>
+          <li>Temporarily smooth fine lines</li>
+          <li>Layers perfectly under makeup</li>
+          <li>Powered by PDRN &amp; Exosomes</li>
+        </ul>
+
+        <div class="tiers m-tiers">
+          <div class="tier-main">
+            <div class="radio on"></div>
+            <div class="badge-pop" style="font-size:9px;padding:4px 7px;">MOST POPULAR</div>
+            <div class="pack">
+              <div class="mini"><span style="font-size:7px;top:26px;">BLURR</span></div>
+              <div class="mini tall"><span style="font-size:7px;top:30px;">BLURR</span></div>
+              <div class="mini"><span style="font-size:7px;top:26px;">BLURR</span></div>
+            </div>
+            <div class="price-row"><span class="price">$35</span><span class="per" style="font-size:11px;">/ Per bottle</span></div>
+            <div class="units" style="font-size:11px;">3 Units / $105 Total</div>
+            <div class="save" style="font-size:11px;padding:4px 8px;">SAVE $72</div>
+          </div>
+          <div class="tier-side">
+            <div class="tier" style="flex-direction:column;align-items:flex-start;gap:6px;">
+              <div class="radio"></div>
+              <div class="price-row"><span class="price">$39</span><span class="per" style="font-size:11px;">/ Per bottle</span></div>
+              <div class="units" style="font-size:11px;margin:0;">2 Units / $78 Total</div>
+              <div class="save" style="font-size:10px;padding:4px 7px;">SAVE $40</div>
+            </div>
+            <div class="tier" style="flex-direction:column;align-items:flex-start;gap:6px;">
+              <div class="radio"></div>
+              <div class="price-row"><span class="price">$59</span><span class="per" style="font-size:11px;">/ Per bottle</span></div>
+              <div class="units" style="font-size:11px;margin:0;">1 Unit</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="cta" style="margin-top:16px;">Try Risk-Free Today</button>
+        <div class="promise">
+          <b>Loved by thousands, backed by our satisfaction promise.</b><br>
+          Not sure? Most women keep it after the first use. No forms. No wait.
+        </div>
+        <div class="trust m-trust">
+          <div><span class="ring"></span>Free Shipping</div>
+          <div><span class="ring"></span>30-Day Money Back</div>
+        </div>
+        <div class="accord">The Details <span>+</span></div>
+        <div class="accord">Shipping Information &amp; Guarantee <span>+</span></div>
+        <div class="accord">How To Use <span>+</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
