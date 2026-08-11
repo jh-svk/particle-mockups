@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Particle Face Cream - V2 Sticky Trust Bar Under Header</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#101c3d;--blue:#0b41cd;--green:#1f8a3b;--line:#e3e6ec;}
+  *{box-sizing:border-box}
+  body{margin:0;background:#eef0f4;font-family:Poppins,"Helvetica Neue",Arial,sans-serif;color:var(--navy)}
+  .wrap{max-width:1700px;margin:0 auto;padding:28px 24px 60px}
+  .note{max-width:1080px;font-size:12px;color:#5b6371;margin:0 0 18px;line-height:1.6}
+  .lbl{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#7b8393;margin:0 0 10px 2px;font-weight:600}
+  .cols{display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap}
+  .device{background:#fff;box-shadow:0 6px 26px rgba(16,28,61,.12);border-radius:4px;overflow:hidden}
+  .desktop{width:1080px}
+  .mobile{width:392px}
+
+  .promo{background:#0d1730;color:#fff;text-align:center;font-size:11px;font-weight:600;letter-spacing:.04em;padding:9px 6px}
+  .mobile .promo{font-size:14px;padding:12px 6px}
+  .nav{background:#16213f;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:14px 26px}
+  .logo{font-size:19px;font-weight:600;letter-spacing:.22em}
+  .mobile .logo{font-size:22px}
+  .navlinks{display:flex;gap:34px;font-size:11px;letter-spacing:.09em;font-weight:500}
+  .navicons{display:flex;gap:14px;font-size:12px;opacity:.9}
+  .burger{font-size:20px;line-height:1}
+
+  /* STICKY TRUST BAR - V2 */
+  .tbar{background:#f4f7fc;border-bottom:1px solid #d8dfea;display:flex;align-items:center;justify-content:center;gap:44px;padding:11px 20px}
+  .tbar .item{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.01em}
+  .tbar .ic{color:var(--blue);font-size:14px;line-height:1}
+  .tbar .g{color:var(--green)}
+  .mobile .tbar{gap:0;padding:0;display:block;overflow:hidden;position:relative}
+  .mobile .track{display:flex;gap:26px;padding:11px 16px;font-size:13px;font-weight:600;white-space:nowrap}
+  .mobile .track .item{font-size:13px}
+  .fade{position:absolute;top:0;right:0;height:100%;width:34px;background:linear-gradient(to right,rgba(244,247,252,0),#f4f7fc)}
+
+  .pdp{display:flex;gap:34px;padding:22px 30px 34px}
+  .gallery{width:44%;background:#f1f2f4;border-radius:2px;min-height:380px;display:flex;align-items:center;justify-content:center;color:#98a0ae;font-size:12px}
+  .info{flex:1}
+  .h1{font-size:34px;line-height:1.1;font-weight:800;margin:0 0 10px}
+  .h1 span{color:var(--blue)}
+  .sub{font-size:13px;font-weight:600;margin:0 0 12px;line-height:1.45}
+  .stars{color:#1f7a4d;letter-spacing:1px;font-size:15px}
+  .rating{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:600;margin-bottom:14px}
+  .tabs{display:flex;gap:30px;border-bottom:1px solid var(--line);font-size:12px;font-weight:600;color:#4b5566}
+  .tabs .on{color:var(--blue);border-bottom:2px solid var(--blue);padding-bottom:8px}
+  .desc{font-size:11.5px;line-height:1.7;color:#3f4859;margin:14px 0 18px}
+  .options{display:flex;gap:12px}
+  .optcol{display:flex;flex-direction:column;gap:12px;flex:1}
+  .opt{border:1px solid var(--line);border-radius:3px;padding:12px;display:flex;align-items:center;gap:10px;position:relative;background:#fff}
+  .opt.sel{border:1px solid var(--blue);background:#f4f8ff}
+  .radio{width:14px;height:14px;border-radius:50%;border:2px solid var(--blue);flex:0 0 auto}
+  .radio.on{background:radial-gradient(circle,#0b41cd 0 4px,#fff 4px 6px,#0b41cd 6px)}
+  .bottle{width:52px;height:66px;background:#e7e9ee;border-radius:2px;flex:0 0 auto}
+  .optxt{font-size:11px;font-weight:600}
+  .optxt .u{color:var(--blue)}
+  .optxt.sv,.optxt .sv{color:var(--green)}
+  .price{font-size:22px;font-weight:800}
+  .per{font-size:10px;font-weight:500;color:#4b5566}
+  .tot{font-size:10px;color:#8b93a3}
+  .flag{position:absolute;top:0;right:0;background:#1f7a3f;color:#fff;font-size:9px;font-weight:600;padding:3px 22px;transform:rotate(38deg) translate(22px,6px)}
+  .stock{font-size:11px;font-weight:700;margin:16px 0 6px}
+  .stock b{color:#e01b3c}
+  .bar{height:4px;background:#e7e9ee;border-radius:3px;overflow:hidden}
+  .bar i{display:block;width:28%;height:100%;background:#e01b3c}
+  .atc{margin-top:14px;background:var(--blue);color:#fff;text-align:center;font-size:15px;font-weight:700;letter-spacing:.04em;padding:15px;border-radius:3px}
+
+  .mobile .pdp{display:block;padding:0 18px 26px}
+  .mobile .gallery{width:100%;min-height:320px;margin:14px 0 18px}
+  .mobile .h1{font-size:38px}
+  .mobile .sub{font-size:17px;margin-bottom:18px}
+  .mobile .rating{font-size:17px}
+  .mobile .stars{font-size:22px}
+  .mobile .tabs{font-size:14px;gap:16px}
+  .mobile .desc{font-size:15px;line-height:1.6}
+  .mobile .options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .mobile .opt{flex-direction:column;align-items:flex-start;padding:14px}
+  .mobile .optxt{font-size:14px}
+  .mobile .price{font-size:28px}
+  .mobile .atc{font-size:20px;padding:20px}
+
+  /* scrolled state */
+  .scrolled .navlinks,.scrolled .navicons{opacity:.9}
+  .midcontent{padding:24px 30px 34px}
+  .midh{font-size:26px;font-weight:800;text-align:center;margin:8px 0 20px}
+  .midh span{color:var(--blue)}
+  .revrow{display:flex;gap:16px}
+  .revcard{flex:1;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .revimg{height:130px;background:#e7e9ee}
+  .revtxt{padding:12px;font-size:11px;line-height:1.6;color:#3f4859}
+  .revname{font-size:11px;font-weight:700;color:var(--blue);margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="note"><b>V2 mockup:</b> full width trust bar directly under the site header, pinned so it stays visible while the page scrolls. Two frames per device: page top and scrolled state.</p>
+
+  <div class="cols">
+    <div>
+      <p class="lbl">Desktop, page top</p>
+      <div class="device desktop">
+        <div class="promo">FREE SHIPPING &bull; 30 DAY MONEY BACK GUARANTEE</div>
+        <div class="nav">
+          <div class="logo">PARTICLE</div>
+          <div class="navlinks"><span>PRODUCTS</span><span>MAGAZINE</span><span>REVIEWS</span><span>SUPPORT</span></div>
+          <div class="navicons"><span>&#9787;</span><span>&#128722;</span><span>EN</span></div>
+        </div>
+
+        <div class="tbar">
+          <div class="item"><span class="ic">&#9733;</span> 4.8 out of 5, <span class="g">12,146 verified reviews</span></div>
+          <div class="item"><span class="ic">&#8634;</span> 30 day money back guarantee</div>
+          <div class="item"><span class="ic">&#128666;</span> Free shipping on every order</div>
+          <div class="item"><span class="ic">&#10003;</span> Skin Cancer Foundation member</div>
+        </div>
+
+        <div class="pdp">
+          <div class="gallery">product gallery</div>
+          <div class="info">
+            <h1 class="h1"><span>Particle</span> Face Cream</h1>
+            <p class="sub">The 6-in-1 anti-aging cream for men that fixes eye bags, dark spots and wrinkles</p>
+            <div class="rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 12,146 Reviews</div>
+            <div class="tabs"><span class="on">Description</span><span>Actions</span><span>Benefits</span><span>How to use</span></div>
+            <p class="desc">Based on advanced dermatological research, this anti-aging cream is engineered to combat the signs of aging. Formulated for daily use, Particle Face Cream is the ultimate solution for men who want to look healthy and youthful.</p>
+            <div class="options">
+              <div class="optcol">
+                <div class="opt sel" style="min-height:120px">
+                  <div class="radio on"></div>
+                  <div class="bottle" style="width:78px;height:88px"></div>
+                  <div>
+                    <div class="optxt"><span class="u">3 Units</span></div>
+                    <div class="optxt sv">You Save: $60</div>
+                    <div class="price">$49 <span class="per">/Per Unit</span></div>
+                    <div class="tot">$147 Total</div>
+                  </div>
+                  <div class="flag">Most Popular</div>
+                </div>
+              </div>
+              <div class="optcol">
+                <div class="opt">
+                  <div class="radio"></div><div class="bottle"></div>
+                  <div><div class="optxt"><span class="u">2 Units</span></div><div class="optxt sv">You Save: $28</div></div>
+                  <div style="margin-left:auto;text-align:right"><div class="price">$55 <span class="per">/Per Unit</span></div><div class="tot">$110 Total</div></div>
+                </div>
+                <div class="opt">
+                  <div class="radio"></div><div class="bottle"></div>
+                  <div><div class="optxt"><span class="u">1 Unit</span></div></div>
+                  <div style="margin-left:auto;text-align:right"><div class="price">$69 <span class="per">/Per Unit</span></div></div>
+                </div>
+              </div>
+            </div>
+            <div class="stock">&#9889; HURRY! Selling out fast! <b>38</b> left in stock.</div>
+            <div class="bar"><i></i></div>
+            <div class="atc">ADD TO CART</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="lbl" style="margin-top:26px">Desktop, scrolled state</p>
+      <div class="device desktop scrolled">
+        <div class="nav">
+          <div class="logo">PARTICLE</div>
+          <div class="navlinks"><span>PRODUCTS</span><span>MAGAZINE</span><span>REVIEWS</span><span>SUPPORT</span></div>
+          <div class="navicons"><span>&#9787;</span><span>&#128722;</span><span>EN</span></div>
+        </div>
+        <div class="tbar">
+          <div class="item"><span class="ic">&#9733;</span> 4.8 out of 5, <span class="g">12,146 verified reviews</span></div>
+          <div class="item"><span class="ic">&#8634;</span> 30 day money back guarantee</div>
+          <div class="item"><span class="ic">&#128666;</span> Free shipping on every order</div>
+          <div class="item"><span class="ic">&#10003;</span> Skin Cancer Foundation member</div>
+        </div>
+        <div class="midcontent" style="background:#f6f6f6">
+          <div class="midh">Reviews Of <span>Particle Men</span></div>
+          <div class="revrow">
+            <div class="revcard" style="background:#fff"><div class="revimg"></div><div class="revtxt">"Incredible face moisturizer. I have been using the face cream and have seen a noticeable improvement in my facial skin."<div class="revname">Lee Nelson</div></div></div>
+            <div class="revcard" style="background:#fff"><div class="revimg"></div><div class="revtxt">"Amazing. This is the first product of its kind that I have used and it really works."<div class="revname">Glenn Mainwaring</div></div></div>
+            <div class="revcard" style="background:#fff"><div class="revimg"></div><div class="revtxt">"I was pleasantly surprised when I started using the face cream. People have commented on how good I'm looking."<div class="revname">Clayton Paterson</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="lbl">Mobile, page top</p>
+      <div class="device mobile">
+        <div class="promo">FREE SHIPPING + 30 DAY MONEY BACK GUARANTEE</div>
+        <div class="nav">
+          <div class="burger">&#9776;</div>
+          <div class="logo">PARTICLE</div>
+          <div class="navicons" style="font-size:16px"><span>&#9787;</span><span>&#128722;</span></div>
+        </div>
+        <div class="tbar">
+          <div class="track">
+            <div class="item"><span class="ic">&#9733;</span> 4.8 out of 5, 12,146 reviews</div>
+            <div class="item"><span class="ic">&#8634;</span> 30 day money back</div>
+            <div class="item"><span class="ic">&#128666;</span> Free shipping</div>
+          </div>
+          <div class="fade"></div>
+        </div>
+        <div class="pdp">
+          <div class="gallery">product gallery</div>
+          <h1 class="h1"><span>Particle</span> Face Cream</h1>
+          <p class="sub">The 6-in-1 anti-aging cream for men that fixes eye bags, dark spots and wrinkles</p>
+          <div class="rating"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 12,146 Reviews</div>
+          <div class="tabs"><span class="on">Description</span><span>Actions</span><span>Benefits</span></div>
+          <p class="desc">Based on advanced dermatological research, this anti-aging cream is engineered to combat the signs of aging. Formulated for daily use, Particle Face Cream is the ultimate solution for men who want to look healthy and youthful.</p>
+          <div class="options">
+            <div class="opt sel">
+              <div class="radio on"></div>
+              <div class="bottle" style="width:100%;height:90px;margin:8px 0"></div>
+              <div class="optxt"><span class="u">3 Units</span></div>
+              <div class="optxt sv">You Save: $60</div>
+              <div class="price">$49 <span class="per">/Per Unit</span></div>
+              <div class="tot">$147 Total</div>
+              <div class="flag">Most Popular</div>
+            </div>
+            <div class="opt">
+              <div class="radio"></div>
+              <div class="bottle" style="width:100%;height:90px;margin:8px 0"></div>
+              <div class="optxt"><span class="u">2 Units</span></div>
+              <div class="optxt sv">You Save: $28</div>
+              <div class="price">$55 <span class="per">/Per Unit</span></div>
+              <div class="tot">$110 Total</div>
+            </div>
+          </div>
+          <div class="stock">&#9889; HURRY! Selling out fast! <b>38</b> left in stock.</div>
+          <div class="bar"><i></i></div>
+          <div class="atc">ADD TO CART</div>
+        </div>
+      </div>
+
+      <p class="lbl" style="margin-top:26px">Mobile, scrolled state</p>
+      <div class="device mobile">
+        <div class="nav">
+          <div class="burger">&#9776;</div>
+          <div class="logo">PARTICLE</div>
+          <div class="navicons" style="font-size:16px"><span>&#9787;</span><span>&#128722;</span></div>
+        </div>
+        <div class="tbar">
+          <div class="track">
+            <div class="item"><span class="ic">&#8634;</span> 30 day money back</div>
+            <div class="item"><span class="ic">&#128666;</span> Free shipping</div>
+            <div class="item"><span class="ic">&#10003;</span> Skin Cancer</div>
+          </div>
+          <div class="fade"></div>
+        </div>
+        <div style="padding:20px 18px 30px">
+          <div style="font-size:15px;font-weight:800;color:var(--blue);margin-bottom:16px">Premium Ingredients</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:14px">
+            <div>&#10003; Hyaluronic Acid</div><div>&#10003; Niacinamide</div>
+            <div>&#10003; Acetyl Hexapeptide-8</div><div>&#10003; Squalane</div>
+            <div>&#10003; Caffeine</div><div>&#10003; Urea</div>
+            <div>&#10003; Lactic Acid</div><div>&#10003; Allantoin</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
