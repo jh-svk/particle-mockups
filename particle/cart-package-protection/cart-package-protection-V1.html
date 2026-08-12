@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Particle Cart – Package Protection Upsell (V1 Mockup)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #f5f5f5;
+    color: #1a1a1a;
+    font-size: 14px;
+  }
+
+  /* ── LAYOUT WRAPPER ── */
+  .layout {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 24px;
+    flex-wrap: wrap;
+  }
+
+  .device-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .device-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #777;
+  }
+
+  /* ── DESKTOP FRAME ── */
+  .desktop-frame {
+    width: 760px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  /* ── MOBILE FRAME ── */
+  .mobile-frame {
+    width: 390px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+
+  /* ── TOP BAR ── */
+  .top-bar {
+    background: #1a2936;
+    color: #fff;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 8px 16px;
+  }
+
+  /* ── NAV ── */
+  .nav {
+    background: #1a2936;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-logo {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-logo svg { width: 20px; height: 20px; }
+
+  /* ── PROGRESS ── */
+  .progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 16px 24px 8px;
+    background: #fff;
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .step-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    border: 2px solid #ccc;
+    color: #ccc;
+    background: #fff;
+  }
+
+  .step.active .step-circle {
+    background: #4a9b6f;
+    border-color: #4a9b6f;
+    color: #fff;
+  }
+
+  .step-label {
+    font-size: 10px;
+    color: #aaa;
+    white-space: nowrap;
+  }
+
+  .step.active .step-label { color: #1a2936; font-weight: 600; }
+
+  .step-line {
+    width: 80px;
+    height: 1px;
+    background: #ddd;
+    margin-bottom: 14px;
+  }
+
+  .mobile-frame .step-line { width: 40px; }
+
+  /* ── TIMER ── */
+  .timer-bar {
+    background: #fff;
+    text-align: center;
+    padding: 6px 24px 12px;
+  }
+
+  .timer-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    color: #555;
+  }
+
+  /* ── BODY ── */
+  .page-body {
+    background: #fff;
+    padding: 0 24px 32px;
+  }
+
+  /* ── CART HEADER ── */
+  .cart-header {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a2936;
+    padding: 16px 0 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .cart-header span { color: #4a9b6f; }
+
+  /* ── DESKTOP TWO COL ── */
+  .desktop-cols {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .cart-items-col { flex: 1; }
+  .order-summary-col { width: 260px; flex-shrink: 0; }
+
+  /* ── CART ITEM ── */
+  .cart-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .item-img {
+    width: 56px;
+    height: 72px;
+    background: #e8edf2;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: #aaa;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .item-details { flex: 1; }
+
+  .item-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a2936;
+    margin-bottom: 2px;
+  }
+
+  .item-name span { color: #4a9b6f; }
+
+  .item-qty { font-size: 11px; color: #888; }
+
+  .item-price {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a2936;
+  }
+
+  .item-price-sub { font-size: 10px; color: #888; }
+
+  .free-badge {
+    display: inline-block;
+    background: #4a9b6f;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+  .free-guarantee {
+    font-size: 9px;
+    color: #4a9b6f;
+    margin-top: 2px;
+  }
+
+  /* ── ORDER SUMMARY ── */
+  .order-summary {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 16px;
+  }
+
+  .os-title {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #1a2936;
+    margin-bottom: 12px;
+  }
+
+  .os-title span { color: #4a9b6f; }
+
+  .os-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #555;
+    padding: 3px 0;
+  }
+
+  .os-row.total {
+    font-weight: 700;
+    color: #1a2936;
+    font-size: 13px;
+    border-top: 1px solid #eee;
+    margin-top: 6px;
+    padding-top: 8px;
+  }
+
+  .os-free { color: #4a9b6f; font-weight: 600; }
+
+  /* ────────────────────────────────────────────
+     VARIANT CHANGE: Package Protection widget
+  ──────────────────────────────────────────── */
+  .pkg-protection {
+    margin: 12px 0 14px;
+    background: #f0f6f2;
+    border: 1.5px solid #4a9b6f;
+    border-radius: 6px;
+    padding: 11px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pkg-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    opacity: 0.75;
+  }
+
+  .pkg-text { flex: 1; }
+
+  .pkg-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a2936;
+  }
+
+  .pkg-desc {
+    font-size: 10px;
+    color: #555;
+    margin-top: 1px;
+    line-height: 1.4;
+  }
+
+  .pkg-price {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a2936;
+    white-space: nowrap;
+  }
+
+  /* ── CHECKOUT+ BUTTON (primary) ── */
+  .btn-checkout-plus {
+    display: block;
+    width: 100%;
+    background: #2e5f41;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .btn-checkout-plus .btn-sub {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    opacity: 0.85;
+    margin-top: 2px;
+  }
+
+  /* ── CHECKOUT WITHOUT (secondary) ── */
+  .btn-checkout-plain {
+    display: block;
+    width: 100%;
+    background: #fff;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    letter-spacing: 0.01em;
+    margin-bottom: 10px;
+  }
+
+  .social-proof {
+    text-align: center;
+    font-size: 10px;
+    color: #888;
+    margin-top: 4px;
+  }
+
+  /* ── BUNDLE SECTION ── */
+  .bundle-header {
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #1a2936;
+    letter-spacing: 0.02em;
+    margin: 24px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .bundle-header span { color: #4a9b6f; }
+
+  .bundle-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .bundle-img {
+    width: 56px;
+    height: 72px;
+    background: #e8edf2;
+    border-radius: 4px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    color: #aaa;
+  }
+
+  .bundle-details { flex: 1; }
+
+  .bundle-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a2936;
+    margin-bottom: 3px;
+  }
+
+  .bundle-name span { color: #4a9b6f; }
+
+  .bundle-desc {
+    font-size: 10px;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+
+  .bundle-quick-view {
+    font-size: 10px;
+    color: #4a9b6f;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .bundle-pricing { text-align: right; min-width: 100px; }
+
+  .bundle-old {
+    font-size: 11px;
+    color: #aaa;
+    text-decoration: line-through;
+  }
+
+  .bundle-new {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a2936;
+  }
+
+  .bundle-save {
+    font-size: 10px;
+    color: #4a9b6f;
+    margin-bottom: 6px;
+  }
+
+  .btn-add {
+    background: #1a2936;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 7px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ── TRUST STRIP ── */
+  .trust-strip {
+    display: flex;
+    justify-content: space-around;
+    padding: 24px 16px;
+    border-top: 1px solid #eee;
+    margin-top: 16px;
+  }
+
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #555;
+    text-align: center;
+    max-width: 90px;
+  }
+
+  .trust-icon {
+    width: 36px;
+    height: 36px;
+    background: #e8edf2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── MOBILE ADJUSTMENTS ── */
+  .mobile-frame .desktop-cols {
+    flex-direction: column;
+  }
+
+  .mobile-frame .order-summary-col {
+    width: 100%;
+  }
+
+  .mobile-frame .cart-header {
+    font-size: 18px;
+  }
+
+  .mobile-frame .bundle-header {
+    font-size: 15px;
+  }
+
+  .mobile-frame .btn-checkout-plus {
+    font-size: 13px;
+  }
+
+  .mobile-frame .trust-strip {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px;
+  }
+
+  .mobile-frame .trust-item {
+    flex-direction: row;
+    max-width: 100%;
+    gap: 12px;
+    font-size: 11px;
+    text-align: left;
+  }
+
+  .mobile-frame .trust-icon {
+    flex-shrink: 0;
+  }
+
+  /* ── ANNOTATION BADGE ── */
+  .annotation {
+    display: inline-block;
+    background: #ff6b35;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── PAGE META ── */
+  .page-meta {
+    text-align: center;
+    padding: 20px;
+    background: #f0f0f0;
+    font-size: 11px;
+    color: #999;
+    letter-spacing: 0.04em;
+  }
+
+  .variant-badge {
+    display: inline-block;
+    background: #1a2936;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-meta">
+  <div class="variant-badge">V1 Mockup</div><br>
+  Particle for Men · Cart Page · Package Protection Upsell
+</div>
+
+<div class="layout">
+
+  <!-- ═══════════════ DESKTOP ═══════════════ -->
+  <div class="device-wrap">
+    <div class="device-label">Desktop</div>
+    <div class="desktop-frame">
+
+      <div class="top-bar">FREE SHIPPING + 30 DAY MONEY BACK GUARANTEE</div>
+
+      <div class="nav">
+        <div class="nav-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          PARTICLE
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="progress">
+        <div class="step active">
+          <div class="step-circle">1</div>
+          <div class="step-label">Order Details</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-circle">2</div>
+          <div class="step-label">Delivery &amp; Payment</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="step">
+          <div class="step-circle">3</div>
+          <div class="step-label">Confirmation</div>
+        </div>
+      </div>
+
+      <div class="timer-bar">
+        <div class="timer-pill">⏱ Hurry up! Your cart is reserved for <strong>&nbsp;09:04 mins</strong></div>
+      </div>
+
+      <div class="page-body">
+        <div class="cart-header"><span>MY</span> CART</div>
+
+        <div class="desktop-cols">
+          <!-- Cart items -->
+          <div class="cart-items-col">
+            <div class="cart-item">
+              <div class="item-img">IMG</div>
+              <div class="item-details">
+                <div class="item-name"><span>Particle</span> Face Cream</div>
+                <div class="item-qty">2 ∨</div>
+              </div>
+              <div>
+                <div class="item-price">$55.00</div>
+                <div class="item-price-sub">Per Unit</div>
+              </div>
+            </div>
+            <div class="cart-item">
+              <div class="item-img" style="background:#d8e6dc;">IMG</div>
+              <div class="item-details">
+                <div class="item-name">Free Gravité Cologne Vial</div>
+                <div class="item-qty">1 unit</div>
+                <div class="free-guarantee">Scent Guarantee – Love it or it's Free</div>
+              </div>
+              <div>
+                <div class="free-badge">FREE</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Summary -->
+          <div class="order-summary-col">
+            <div class="order-summary">
+              <div class="os-title"><span>ORDER</span> SUMMARY</div>
+              <div class="os-row"><span>Subtotal</span><span>$110.00</span></div>
+              <div class="os-row"><span>Shipping</span><span class="os-free">FREE</span></div>
+              <div class="os-row"><span>Package Protection</span><span style="color:#aaa;font-size:11px;">+$1.99</span></div>
+              <div class="os-row"><span>Tax</span><span>$0.00</span></div>
+              <div class="os-row total"><span>Total</span><span>$111.99</span></div>
+
+              <!-- NEW: Package Protection widget -->
+              <div class="pkg-protection">
+                <svg class="pkg-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="4" y="8" width="32" height="26" rx="3" fill="#cde3d6" stroke="#4a9b6f" stroke-width="1.5"/>
+                  <path d="M4 14h32" stroke="#4a9b6f" stroke-width="1.5"/>
+                  <path d="M16 8v6" stroke="#4a9b6f" stroke-width="1.5"/>
+                  <path d="M24 8v6" stroke="#4a9b6f" stroke-width="1.5"/>
+                  <circle cx="20" cy="25" r="5" fill="#4a9b6f" opacity="0.3"/>
+                  <path d="M17 25l2 2 4-4" stroke="#4a9b6f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="pkg-text">
+                  <div class="pkg-name">Package Protection <span class="annotation">NEW</span></div>
+                  <div class="pkg-desc">Covers lost, damaged, or stolen packages</div>
+                </div>
+                <div class="pkg-price">$1.99</div>
+              </div>
+
+              <!-- NEW: Primary CTA -->
+              <button class="btn-checkout-plus">
+                🔒 Checkout+ | $111.99
+                <span class="btn-sub">Includes package protection</span>
+              </button>
+
+              <!-- NEW: Secondary opt-out CTA -->
+              <button class="btn-checkout-plain">Checkout without Package Protection</button>
+
+              <div class="social-proof">50,000+ Orders Last Month!</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bundle Section -->
+        <div class="bundle-header">
+          <span>BUNDLE</span> AND SAVE
+        </div>
+
+        <!-- Bundle items (abbreviated for mockup) -->
+        <div class="bundle-item">
+          <div class="bundle-img">IMG</div>
+          <div class="bundle-details">
+            <div class="bundle-name"><span>Particle</span> Face Wash</div>
+            <div class="bundle-desc">Particle's Face Wash Cleanser washes away dirt, oil and grime leaving your skin fresh, clean and revitalized.</div>
+            <div class="bundle-quick-view">Quick View</div>
+          </div>
+          <div class="bundle-pricing">
+            <div class="bundle-old">$29.00</div>
+            <div class="bundle-new">$19.00</div>
+            <div class="bundle-save">You save $10.00</div>
+            <button class="btn-add">ADD TO CART</button>
+          </div>
+        </div>
+
+        <div class="bundle-item">
+          <div class="bundle-img">IMG</div>
+          <div class="bundle-details">
+            <div class="bundle-name"><span>Particle</span> Face Shield</div>
+            <div class="bundle-desc">A lightweight, transparent SPF 40 sunscreen for men that protects without white residue or grease.</div>
+            <div class="bundle-quick-view">Quick View</div>
+          </div>
+          <div class="bundle-pricing">
+            <div class="bundle-old">$29.00</div>
+            <div class="bundle-new">$19.00</div>
+            <div class="bundle-save">You save $10.00</div>
+            <button class="btn-add">ADD TO CART</button>
+          </div>
+        </div>
+
+        <div class="bundle-item">
+          <div class="bundle-img">IMG</div>
+          <div class="bundle-details">
+            <div class="bundle-name"><span>Particle</span> Neck Cream</div>
+            <div class="bundle-desc">Try Particle's Neck Cream with collagen, hyaluronic acid, and retinol for a tight and firm neck.</div>
+            <div class="bundle-quick-view">Quick View</div>
+          </div>
+          <div class="bundle-pricing">
+            <div class="bundle-old">$59.00</div>
+            <div class="bundle-new">$49.00</div>
+            <div class="bundle-save">You save $10.00</div>
+            <button class="btn-add">ADD TO CART</button>
+          </div>
+        </div>
+
+        <div class="trust-strip">
+          <div class="trust-item">
+            <div class="trust-icon">🚚</div>
+            Free Shipping
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">↩</div>
+            30 Days Money Back
+          </div>
+          <div class="trust-item">
+            <div class="trust-icon">🔒</div>
+            100% Secure Payment
+          </div>
+        </div>
+
+      </div><!-- /page-body -->
+    </div><!-- /desktop-frame -->
+  </div><!-- /device-wrap -->
+
+
+  <!-- ═══════════════ MOBILE ═══════════════ -->
+  <div class="device-wrap">
+    <div class="device-label">Mobile</div>
+    <div class="mobile-frame">
+
+      <div class="top-bar" style="font-size:9px;">FREE SHIPPING + 30 DAY MONEY BACK GUARANTEE</div>
+
+      <div class="nav" style="padding:10px 16px;">
+        <div class="nav-logo" style="font-size:15px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          PARTICLE
+        </div>
+      </div>
+
+      <!-- Progress mobile -->
+      <div class="progress" style="padding:12px 8px 6px;gap:0;">
+        <div class="step active">
+          <div class="step-circle" style="width:22px;height:22px;font-size:11px;">1</div>
+          <div class="step-label" style="font-size:8px;">Order Details</div>
+        </div>
+        <div class="step-line" style="width:30px;margin-bottom:12px;"></div>
+        <div class="step">
+          <div class="step-circle" style="width:22px;height:22px;font-size:11px;">2</div>
+          <div class="step-label" style="font-size:8px;">Delivery &amp; Payment</div>
+        </div>
+        <div class="step-line" style="width:30px;margin-bottom:12px;"></div>
+        <div class="step">
+          <div class="step-circle" style="width:22px;height:22px;font-size:11px;">3</div>
+          <div class="step-label" style="font-size:8px;">Confirmation</div>
+        </div>
+      </div>
+
+      <div class="timer-bar" style="padding:4px 16px 10px;">
+        <div class="timer-pill" style="font-size:10px;">⏱ Cart reserved for <strong>&nbsp;09:04</strong></div>
+      </div>
+
+      <div class="page-body" style="padding:0 16px 24px;">
+        <div class="cart-header" style="font-size:18px;"><span>MY</span> CART</div>
+
+        <div class="desktop-cols">
+          <!-- Cart items mobile -->
+          <div class="cart-items-col">
+            <div class="cart-item">
+              <div class="item-img" style="width:44px;height:58px;">IMG</div>
+              <div class="item-details">
+                <div class="item-name" style="font-size:12px;"><span>Particle</span> Face Cream</div>
+                <div class="item-qty">2 ∨</div>
+              </div>
+              <div>
+                <div class="item-price" style="font-size:12px;">$55.00</div>
+                <div class="item-price-sub">Per Unit</div>
+              </div>
+            </div>
+            <div class="cart-item">
+              <div class="item-img" style="width:44px;height:58px;background:#d8e6dc;">IMG</div>
+              <div class="item-details">
+                <div class="item-name" style="font-size:12px;">Free Gravité Cologne Vial</div>
+                <div class="free-guarantee">Scent Guarantee – Love it or it's Free</div>
+              </div>
+              <div><div class="free-badge">FREE</div></div>
+            </div>
+          </div>
+
+          <!-- Order Summary mobile -->
+          <div class="order-summary-col">
+            <div class="order-summary">
+              <div class="os-title"><span>ORDER</span> SUMMARY</div>
+              <div class="os-row"><span>Subtotal</span><span>$110.00</span></div>
+              <div class="os-row"><span>Shipping</span><span class="os-free">FREE</span></div>
+              <div class="os-row"><span>Package Protection</span><span style="color:#aaa;font-size:11px;">+$1.99</span></div>
+              <div class="os-row"><span>Tax</span><span>$0.00</span></div>
+              <div class="os-row total"><span>Total</span><span>$111.99</span></div>
+
+              <!-- NEW: Package Protection widget mobile -->
+              <div class="pkg-protection" style="margin:10px 0 12px;">
+                <svg class="pkg-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:28px;height:28px;">
+                  <rect x="4" y="8" width="32" height="26" rx="3" fill="#cde3d6" stroke="#4a9b6f" stroke-width="1.5"/>
+                  <path d="M4 14h32" stroke="#4a9b6f" stroke-width="1.5"/>
+                  <path d="M16 8v6" stroke="#4a9b6f" stroke-width="1.5"/>
+                  <path d="M24 8v6" stroke="#4a9b6f" stroke-width="1.5"/>
+                  <circle cx="20" cy="25" r="5" fill="#4a9b6f" opacity="0.3"/>
+                  <path d="M17 25l2 2 4-4" stroke="#4a9b6f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div class="pkg-text">
+                  <div class="pkg-name" style="font-size:11px;">Package Protection <span class="annotation">NEW</span></div>
+                  <div class="pkg-desc">Covers lost, damaged, or stolen packages</div>
+                </div>
+                <div class="pkg-price" style="font-size:11px;">$1.99</div>
+              </div>
+
+              <!-- NEW: Primary CTA mobile -->
+              <button class="btn-checkout-plus" style="font-size:12px;padding:12px 12px;">
+                🔒 Checkout+ | $111.99
+                <span class="btn-sub">Includes package protection</span>
+              </button>
+
+              <!-- NEW: Secondary opt-out CTA mobile -->
+              <button class="btn-checkout-plain" style="font-size:11px;">Checkout without Package Protection</button>
+
+              <div class="social-proof">50,000+ Orders Last Month!</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bundle mobile -->
+        <div class="bundle-header" style="font-size:15px;margin:20px 0 10px;">
+          <span>BUNDLE</span> AND SAVE
+        </div>
+
+        <div class="bundle-item">
+          <div class="bundle-img" style="width:44px;height:58px;">IMG</div>
+          <div class="bundle-details">
+            <div class="bundle-name" style="font-size:11px;"><span>Particle</span> Face Wash</div>
+            <div class="bundle-save" style="font-size:10px;color:#4a9b6f;">You save $10.00</div>
+            <div class="bundle-old" style="font-size:10px;">$29.00</div>
+            <div class="bundle-new" style="font-size:14px;">$19.00</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+            <button class="btn-add" style="font-size:10px;padding:6px 10px;">ADD TO CART</button>
+          </div>
+        </div>
+
+        <div class="bundle-item">
+          <div class="bundle-img" style="width:44px;height:58px;">IMG</div>
+          <div class="bundle-details">
+            <div class="bundle-name" style="font-size:11px;"><span>Particle</span> Face Shield</div>
+            <div class="bundle-save" style="font-size:10px;color:#4a9b6f;">You save $10.00</div>
+            <div class="bundle-old" style="font-size:10px;">$29.00</div>
+            <div class="bundle-new" style="font-size:14px;">$19.00</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+            <button class="btn-add" style="font-size:10px;padding:6px 10px;">ADD TO CART</button>
+          </div>
+        </div>
+
+        <div class="trust-strip" style="flex-direction:column;gap:14px;align-items:flex-start;padding:16px 0;">
+          <div class="trust-item" style="flex-direction:row;gap:12px;max-width:100%;font-size:11px;">
+            <div class="trust-icon" style="width:32px;height:32px;flex-shrink:0;">🚚</div>
+            <span>Free Shipping</span>
+          </div>
+          <div class="trust-item" style="flex-direction:row;gap:12px;max-width:100%;font-size:11px;">
+            <div class="trust-icon" style="width:32px;height:32px;flex-shrink:0;">↩</div>
+            <span>30 Days Money Back</span>
+          </div>
+          <div class="trust-item" style="flex-direction:row;gap:12px;max-width:100%;font-size:11px;">
+            <div class="trust-icon" style="width:32px;height:32px;flex-shrink:0;">🔒</div>
+            <span>100% Secure Payment</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div><!-- /layout -->
+
+</body>
+</html>
