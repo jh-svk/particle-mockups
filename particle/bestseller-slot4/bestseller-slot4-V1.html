@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Particle Best Sellers Slot 4 - V1: Instant Eye Firming Cream</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #f4f4f0;
+    color: #1a1a2e;
+    padding: 20px;
+  }
+
+  .page-label {
+    text-align: center;
+    font-size: 13px;
+    color: #888;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+
+  .frames-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .frame-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .device-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #999;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  /* DESKTOP FRAME */
+  .desktop-frame {
+    width: 860px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  /* MOBILE FRAME */
+  .mobile-frame {
+    width: 375px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  /* =====================
+     SHARED STYLES
+     ===================== */
+
+  .site-nav {
+    background: #0a0a1a;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+  }
+  .site-nav .logo {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .site-nav .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  .site-nav .nav-links span {
+    color: rgba(255,255,255,0.75);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .site-nav .nav-icons {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+  .site-nav .nav-icons span {
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #0d1b3e 0%, #1a2a5e 50%, #0d1b3e 100%);
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-mobile {
+    height: 160px;
+    padding: 0 20px;
+  }
+  .hero-text {
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    color: #4a9eff;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .hero-headline {
+    color: #fff;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+  .hero-mobile .hero-headline { font-size: 20px; }
+  .hero-cta {
+    margin-top: 14px;
+    background: #4a9eff;
+    color: #fff;
+    border: none;
+    padding: 9px 18px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .hero-img-placeholder {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 160px;
+    height: 180px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.2);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+
+  /* Press bar */
+  .press-bar {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .press-bar span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #bbb;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-style: italic;
+  }
+  .press-bar-mobile { gap: 16px; padding: 10px 16px; }
+  .press-bar-mobile span { font-size: 10px; }
+
+  /* Best Sellers */
+  .section {
+    background: #fff;
+    padding: 36px 24px;
+  }
+  .section-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1a1a2e;
+    margin-bottom: 28px;
+  }
+  .section-title-mobile { font-size: 16px; margin-bottom: 20px; }
+
+  .cards-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  .cards-row-mobile {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .product-card {
+    flex: 1;
+    max-width: 190px;
+    min-width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 14px 10px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    background: #fff;
+  }
+  .product-card-mobile {
+    width: 100%;
+    max-width: 280px;
+    flex-direction: row;
+    text-align: left;
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .card-img {
+    width: 80px;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 2px;
+  }
+  .card-img-mobile {
+    width: 64px;
+    height: 80px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  /* Color-coded placeholder images to represent each product */
+  .img-face-cream {
+    background: linear-gradient(160deg, #1a2a5e 0%, #243b6e 100%);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 2px; color: rgba(255,255,255,0.5); font-size: 9px;
+    letter-spacing: 0.05em; text-align: center; padding: 4px;
+  }
+  .img-cologne {
+    background: linear-gradient(160deg, #2a1a3e 0%, #3e2a5e 100%);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 2px; color: rgba(255,255,255,0.5); font-size: 9px;
+    letter-spacing: 0.05em; text-align: center; padding: 4px;
+  }
+  .img-shampoo {
+    background: linear-gradient(160deg, #1a3a3e 0%, #2a5060 100%);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 2px; color: rgba(255,255,255,0.5); font-size: 9px;
+    letter-spacing: 0.05em; text-align: center; padding: 4px;
+  }
+  /* V1: Eye Firming Cream */
+  .img-eye-cream {
+    background: linear-gradient(160deg, #1e3a5e 0%, #2e5080 100%);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 2px; color: rgba(255,255,255,0.6); font-size: 9px;
+    letter-spacing: 0.05em; text-align: center; padding: 4px;
+    border: 2px solid #4a9eff;
+  }
+
+  .card-info { flex: 1; }
+  .card-product-name {
+    font-size: 9px;
+    font-weight: 600;
+    color: #888;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a2e;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .card-desc {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  .card-desc-mobile { display: none; }
+  .card-cta {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1a1a2e;
+    border-bottom: 1px solid #1a1a2e;
+    padding-bottom: 1px;
+    cursor: pointer;
+  }
+
+  /* Variant highlight badge */
+  .variant-badge {
+    position: relative;
+  }
+  .variant-badge::before {
+    content: "VARIANT";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4a9eff;
+    color: #fff;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    padding: 2px 7px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .product-card-mobile.variant-badge::before {
+    top: -8px;
+    left: 12px;
+    transform: none;
+  }
+
+  /* Annotation */
+  .annotation {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: #fff8e1;
+    border: 1px dashed #f0b429;
+    border-radius: 3px;
+    padding: 10px 14px;
+    margin: 12px 24px 0;
+  }
+  .annotation-dot {
+    width: 8px;
+    height: 8px;
+    background: #f0b429;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .annotation-text {
+    font-size: 11px;
+    color: #7a5c00;
+    line-height: 1.5;
+  }
+
+  /* Section divider */
+  .section-divider {
+    height: 1px;
+    background: #eee;
+    margin: 0 24px;
+  }
+
+  /* Scroll note for mobile */
+  .scroll-note {
+    text-align: center;
+    font-size: 10px;
+    color: #bbb;
+    padding: 8px;
+    letter-spacing: 0.08em;
+  }
+
+  /* Footer */
+  .site-footer {
+    background: #0a0a1a;
+    padding: 20px 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-col-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .footer-col-link {
+    display: block;
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 3px;
+  }
+
+  /* Test change highlight ring on changed card */
+  .changed-card {
+    outline: 2px dashed #4a9eff;
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 500px) {
+    .cards-row { flex-direction: column; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-label">Particle for Men &mdash; Best Sellers Slot 4 Test &mdash; V1: Instant Eye Firming Cream &mdash; MOCKUP ONLY</div>
+
+<div class="frames-wrapper">
+
+  <!-- ========================
+       DESKTOP
+       ======================== -->
+  <div class="frame-block">
+    <div class="device-label">Desktop</div>
+    <div class="desktop-frame">
+
+      <!-- Nav -->
+      <div class="site-nav">
+        <div class="logo">&#9650; Particle</div>
+        <div class="nav-links">
+          <span>Products</span>
+          <span>Magazine</span>
+          <span>Reviews</span>
+          <span>Support</span>
+        </div>
+        <div class="nav-icons">
+          <span>&#128269;</span>
+          <span>&#9825;</span>
+          <span>&#128722;</span>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-text">
+          <div class="hero-eyebrow">Aesthetic Science</div>
+          <div class="hero-headline">For Men</div>
+          <button class="hero-cta">Our Products</button>
+        </div>
+        <div class="hero-img-placeholder">Product Image</div>
+      </div>
+
+      <!-- Press bar -->
+      <div class="press-bar">
+        <span>Men's Health</span>
+        <span>Men's Journal</span>
+        <span>Swagger</span>
+        <span>Esquire</span>
+        <span>GearHungry</span>
+      </div>
+
+      <!-- Best Sellers -->
+      <div class="section" style="padding-bottom: 28px;">
+        <div class="section-title">Best Sellers</div>
+
+        <div class="cards-row">
+
+          <!-- Card 1: Face Cream (control, unchanged) -->
+          <div class="product-card">
+            <div class="card-img img-face-cream">Face<br>Cream</div>
+            <div class="card-info">
+              <div class="card-product-name">Particle</div>
+              <div class="card-title">Face Cream</div>
+              <div class="card-desc">Our signature anti-aging cream that has made skin look better and feel stronger.</div>
+              <div class="card-cta">Discover &rarr;</div>
+            </div>
+          </div>
+
+          <!-- Card 2: Gravite Cologne (control, unchanged) -->
+          <div class="product-card">
+            <div class="card-img img-cologne">Gravite<br>Cologne</div>
+            <div class="card-info">
+              <div class="card-product-name">Particle</div>
+              <div class="card-title">Gravite Cologne</div>
+              <div class="card-desc">The new cologne for men who believe their scent should be as distinctive as they are.</div>
+              <div class="card-cta">Discover &rarr;</div>
+            </div>
+          </div>
+
+          <!-- Card 3: Hair Shampoo (control, unchanged) -->
+          <div class="product-card">
+            <div class="card-img img-shampoo">Hair<br>Shampoo</div>
+            <div class="card-info">
+              <div class="card-product-name">Particle</div>
+              <div class="card-title">Hair Shampoo</div>
+              <div class="card-desc">Pharmaceutical-grade anti-thinning formula.</div>
+              <div class="card-cta">Discover &rarr;</div>
+            </div>
+          </div>
+
+          <!-- Card 4: V1 CHANGE - Instant Eye Firming Cream replaces Anti-Gray Serum -->
+          <div class="product-card changed-card variant-badge" style="margin-top:10px;">
+            <div class="card-img img-eye-cream">Instant Eye<br>Firming</div>
+            <div class="card-info">
+              <div class="card-product-name">Particle</div>
+              <div class="card-title">Instant Eye Firming Cream</div>
+              <div class="card-desc">Visibly tightens and de-puffs under eyes in as little as one day.</div>
+              <div class="card-cta">Discover &rarr;</div>
+            </div>
+          </div>
+
+        </div><!-- /cards-row -->
+      </div><!-- /section -->
+
+      <!-- Annotation -->
+      <div class="annotation">
+        <div class="annotation-dot"></div>
+        <div class="annotation-text"><strong>V1 Change:</strong> Slot 4 in Best Sellers carousel swapped from Anti-Gray Serum to Instant Eye Firming Cream. Slots 1-3 unchanged. Card links to /product/particle-instant-eye-firming-cream/.</div>
+      </div>
+
+      <!-- Footer stub -->
+      <div class="section-divider" style="margin-top:24px;"></div>
+      <div class="site-footer">
+        <div>
+          <div class="footer-col-title">Particle</div>
+          <span class="footer-col-link">About Us</span>
+          <span class="footer-col-link">Blog</span>
+        </div>
+        <div>
+          <div class="footer-col-title">Products</div>
+          <span class="footer-col-link">Face</span>
+          <span class="footer-col-link">Hair</span>
+        </div>
+        <div>
+          <div class="footer-col-title">Support</div>
+          <span class="footer-col-link">FAQ</span>
+          <span class="footer-col-link">Contact</span>
+        </div>
+      </div>
+
+    </div><!-- /desktop-frame -->
+  </div><!-- /frame-block desktop -->
+
+
+  <!-- ========================
+       MOBILE
+       ======================== -->
+  <div class="frame-block">
+    <div class="device-label">Mobile</div>
+    <div class="mobile-frame">
+
+      <!-- Nav -->
+      <div class="site-nav" style="padding: 0 14px; height: 46px;">
+        <div class="logo" style="font-size:13px;">&#9650; Particle</div>
+        <div class="nav-icons">
+          <span style="font-size:12px;">&#8801;</span>
+          <span style="font-size:12px;">&#128722;</span>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <div class="hero hero-mobile">
+        <div class="hero-text">
+          <div class="hero-eyebrow" style="font-size:9px;">Aesthetic Science</div>
+          <div class="hero-headline" style="font-size:18px;">For Men</div>
+          <button class="hero-cta" style="font-size:9px; padding:7px 14px; margin-top:10px;">Our Products</button>
+        </div>
+      </div>
+
+      <!-- Press bar -->
+      <div class="press-bar press-bar-mobile">
+        <span>Men's Health</span>
+        <span>Swagger</span>
+        <span>Esquire</span>
+      </div>
+
+      <!-- Best Sellers -->
+      <div class="section" style="padding: 20px 14px;">
+        <div class="section-title section-title-mobile">Best Sellers</div>
+        <div class="scroll-note">Scroll horizontally &rarr;</div>
+
+        <!-- Mobile: stacked cards -->
+        <div class="cards-row cards-row-mobile">
+
+          <div class="product-card product-card-mobile">
+            <div class="card-img card-img-mobile img-face-cream">Face<br>Cream</div>
+            <div class="card-info">
+              <div class="card-product-name">Particle</div>
+              <div class="card-title">Face Cream</div>
+              <div class="card-cta">Discover &rarr;</div>
+            </div>
+          </div>
+
+          <div class="product-card product-card-mobile">
+            <div class="card-img card-img-mobile img-cologne">Gravite<br>Cologne</div>
+            <div class="card-info">
+              <div class="card-product-name">Particle</div>
+              <div class="card-title">Gravite Cologne</div>
+              <div class="card-cta">Discover &rarr;</div>
+            </div>
+          </div>
+
+          <div class="product-card product-card-mobile">
+            <div class="card-img card-img-mobile img-shampoo">Hair<br>Shampoo</div>
+            <div class="card-info">
+              <div class="card-product-name">Particle</div>
+              <div class="card-title">Hair Shampoo</div>
+              <div class="card-cta">Discover &rarr;</div>
+            </div>
+          </div>
+
+          <!-- V1 CHANGE on mobile -->
+          <div class="product-card product-card-mobile changed-card variant-badge" style="margin-top:10px;">
+            <div class="card-img card-img-mobile img-eye-cream">Eye<br>Cream</div>
+            <div class="card-info">
+              <div class="card-product-name">Particle</div>
+              <div class="card-title">Instant Eye Firming Cream</div>
+              <div class="card-cta">Discover &rarr;</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Annotation -->
+      <div class="annotation" style="margin: 8px 14px 0;">
+        <div class="annotation-dot"></div>
+        <div class="annotation-text"><strong>V1:</strong> Slot 4 swapped to Instant Eye Firming Cream. Links to /product/particle-instant-eye-firming-cream/.</div>
+      </div>
+
+      <!-- Footer stub -->
+      <div class="site-footer" style="padding:14px; flex-direction: column; gap:8px;">
+        <div class="footer-col-title">Particle</div>
+        <span class="footer-col-link">About &bull; Products &bull; Support</span>
+      </div>
+
+    </div><!-- /mobile-frame -->
+  </div><!-- /frame-block mobile -->
+
+</div><!-- /frames-wrapper -->
+
+</body>
+</html>
