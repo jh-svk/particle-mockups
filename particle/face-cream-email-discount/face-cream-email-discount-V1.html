@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V1 Mockup: Email-to-Instant-Discount | Particle Face Cream PDP</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+    background: #f0f0f0;
+    padding: 30px 20px;
+    color: #04112c;
+  }
+
+  h1.page-title {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  p.subtitle {
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 28px;
+  }
+
+  .label-row {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .label {
+    width: 580px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .label.mobile-label {
+    width: 375px;
+  }
+
+  .views-row {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  /* ========== SHARED POPUP + PAGE COMPONENTS ========== */
+
+  .mock-wrapper {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.13);
+    position: relative;
+  }
+
+  /* NAV */
+  .site-nav {
+    background: #04112c;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .site-nav .logo {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+  .site-nav .nav-right {
+    color: #fff;
+    font-size: 12px;
+    opacity: 0.8;
+  }
+  .top-bar {
+    background: #04112c;
+    color: #fff;
+    font-size: 10px;
+    text-align: center;
+    padding: 5px;
+    letter-spacing: 0.08em;
+  }
+
+  /* PAGE BEHIND POPUP */
+  .page-behind {
+    padding: 20px 24px;
+    background: #fff;
+    filter: blur(1px);
+    opacity: 0.45;
+  }
+
+  /* BUY BOX (used in post-submit state) */
+  .buy-box {
+    padding: 20px 24px 24px;
+    background: #fff;
+  }
+
+  .product-title-lg {
+    font-size: 28px;
+    font-weight: 800;
+    color: #04112c;
+    margin-bottom: 4px;
+  }
+  .product-title-lg span { color: #2040a0; }
+  .product-subtitle {
+    font-size: 13px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  .stars-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 14px;
+    font-size: 12px;
+    color: #2a8a2a;
+  }
+  .stars { color: #2a8a2a; font-size: 14px; }
+
+  .savings-banner {
+    border: 1px solid #c8e6c9;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: #2a8a2a;
+    margin-bottom: 14px;
+  }
+
+  .section-header {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 10px 14px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #04112c;
+    margin-bottom: 12px;
+  }
+
+  .tiers-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .tier {
+    flex: 1;
+    border: 1.5px solid #ddd;
+    border-radius: 6px;
+    padding: 10px 8px;
+    position: relative;
+    cursor: pointer;
+    background: #fff;
+  }
+  .tier.selected {
+    border-color: #2040a0;
+    background: #faf8f0;
+  }
+  .tier .radio {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 2px solid #aaa;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+  .tier.selected .radio {
+    border-color: #2040a0;
+    background: #2040a0;
+    box-shadow: inset 0 0 0 3px #faf8f0;
+  }
+  .best-value-badge {
+    position: absolute;
+    top: -10px;
+    left: 8px;
+    background: #b82541;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+  .tier-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #04112c;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .tier-price-new {
+    font-size: 14px;
+    font-weight: 700;
+    color: #b71c1c;
+  }
+  .tier-price-old {
+    font-size: 11px;
+    color: #888;
+    text-decoration: line-through;
+    margin-left: 4px;
+  }
+  .tier-unit {
+    font-size: 10px;
+    color: #555;
+  }
+  .discount-tag {
+    font-size: 9px;
+    background: #b71c1c;
+    color: #fff;
+    border-radius: 3px;
+    padding: 1px 5px;
+    margin-top: 3px;
+    display: inline-block;
+    font-weight: 700;
+  }
+
+  /* Control (original) tier pricing - no discount */
+  .tier-price-control {
+    font-size: 14px;
+    font-weight: 700;
+    color: #04112c;
+  }
+
+  /* Gifts row */
+  .gifts-section {
+    margin-bottom: 12px;
+  }
+  .gifts-label {
+    font-size: 11px;
+    color: #b71c1c;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .gifts-row {
+    display: flex;
+    gap: 6px;
+  }
+  .gift-item {
+    flex: 1;
+    text-align: center;
+    font-size: 10px;
+    color: #333;
+  }
+  .gift-badge {
+    background: #2040a0;
+    color: #fff;
+    font-size: 9px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-bottom: 4px;
+    display: inline-block;
+  }
+  .gift-box {
+    width: 40px; height: 40px;
+    background: #e8e8e8;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0 auto 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .savings-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .you-saving {
+    font-size: 15px;
+    font-weight: 800;
+    color: #2a8a2a;
+  }
+  .gifts-unlocked {
+    font-size: 11px;
+    background: #e8f5e9;
+    color: #2a8a2a;
+    border-radius: 20px;
+    padding: 4px 12px;
+    font-weight: 600;
+    border: 1px solid #c8e6c9;
+  }
+
+  .atc-btn {
+    display: block;
+    width: 100%;
+    background: #1a35b0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding: 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+
+  /* ========== POPUP OVERLAY ========== */
+  .popup-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(60,60,60,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .popup {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.22);
+    width: 90%;
+    max-width: 440px;
+    position: relative;
+  }
+
+  .popup-img {
+    background: linear-gradient(135deg, #8a8e96, #b0b4bb);
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .popup-img-logo {
+    position: absolute;
+    top: 12px; left: 14px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .popup-img-logo .dot {
+    width: 14px; height: 14px;
+    background: #2040a0;
+    border-radius: 50%;
+  }
+  .popup-close {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: #222;
+    color: #fff;
+    border-radius: 50%;
+    width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 700;
+  }
+  .popup-bottle {
+    width: 60px;
+    height: 100px;
+    background: linear-gradient(180deg, #7a8090 0%, #4a5060 100%);
+    border-radius: 8px 8px 4px 4px;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 8px;
+  }
+  .popup-bottle::before {
+    content: '';
+    width: 14px; height: 16px;
+    background: #555;
+    border-radius: 3px 3px 0 0;
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .popup-body {
+    padding: 24px 28px 20px;
+    text-align: center;
+  }
+
+  .popup-heading {
+    font-size: 28px;
+    font-weight: 900;
+    color: #04112c;
+    line-height: 1.1;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+  }
+  .popup-heading-red {
+    font-size: 32px;
+    font-weight: 900;
+    color: #b71c1c;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .popup-subtext {
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  .popup-subtext strong { font-weight: 700; }
+
+  .popup-input {
+    width: 100%;
+    border: 2px solid #b71c1c;
+    border-radius: 5px;
+    padding: 12px 14px;
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 10px;
+    outline: none;
+  }
+
+  .popup-btn {
+    width: 100%;
+    background: #b71c1c;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 14px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .popup-dismiss {
+    font-size: 13px;
+    color: #333;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* ========== POST-SUBMIT POPUP (SUCCESS STATE) ========== */
+  .popup-success-body {
+    padding: 24px 28px 20px;
+    text-align: center;
+  }
+  .checkmark-circle {
+    width: 52px; height: 52px;
+    background: #2a8a2a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 900;
+  }
+  .success-heading {
+    font-size: 22px;
+    font-weight: 900;
+    color: #04112c;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .success-subheading {
+    font-size: 28px;
+    font-weight: 900;
+    color: #b71c1c;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .success-body {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 16px;
+    line-height: 1.45;
+  }
+  .success-prices-mini {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .spm-item {
+    flex: 1;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 8px 4px;
+    text-align: center;
+    font-size: 11px;
+    color: #333;
+  }
+  .spm-item.selected { border-color: #b71c1c; background: #fff8f8; }
+  .spm-label { font-weight: 700; display: block; margin-bottom: 2px; color: #04112c; font-size: 10px; }
+  .spm-new { font-size: 13px; font-weight: 800; color: #b71c1c; }
+  .spm-old { font-size: 10px; color: #999; text-decoration: line-through; }
+  .success-cta {
+    width: 100%;
+    background: #1a35b0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 13px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .success-note {
+    font-size: 11px;
+    color: #888;
+  }
+
+  /* ========== CHANGE ANNOTATION ========== */
+  .change-note {
+    display: inline-block;
+    background: #ff6b00;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+    letter-spacing: 0.04em;
+  }
+  .change-box {
+    border: 2px dashed #ff6b00;
+    border-radius: 4px;
+    position: relative;
+  }
+  .change-box::before {
+    content: 'CHANGED';
+    position: absolute;
+    top: -9px;
+    right: 8px;
+    background: #ff6b00;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+  .annotation-bar {
+    background: #fff3e0;
+    border: 1px solid #ff6b00;
+    border-radius: 4px;
+    padding: 10px 14px;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #333;
+    line-height: 1.5;
+  }
+  .annotation-bar strong { color: #e65c00; }
+
+  /* ========== DESKTOP LAYOUT ========== */
+  .desktop-wrapper {
+    width: 580px;
+  }
+
+  .desktop-page {
+    position: relative;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .desktop-pdp-layout {
+    display: flex;
+    gap: 0;
+  }
+  .desktop-pdp-left {
+    width: 45%;
+    background: #e8e8e8;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 12px;
+  }
+  .desktop-pdp-right {
+    width: 55%;
+    padding: 16px 18px;
+  }
+
+  /* ========== MOBILE LAYOUT ========== */
+  .mobile-wrapper {
+    width: 375px;
+  }
+  .mobile-page {
+    position: relative;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  }
+
+  /* ========== SECTION DIVIDERS ========== */
+  .section-divider {
+    border: none;
+    border-top: 2px dashed #ff6b00;
+    margin: 24px 0 8px;
+  }
+  .section-state-label {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #ff6b00;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+  }
+
+  .inline-tag {
+    background: #ff6b00;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 2px;
+    letter-spacing: 0.04em;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  .view-label-header {
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.07em;
+    color: #ff6b00;
+    text-transform: uppercase;
+    background: #fff3e0;
+    border: 1px solid #ff6b00;
+    border-radius: 4px;
+    padding: 5px 0;
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">V1 Mockup: Email to Instant Discount</h1>
+<p class="subtitle">Particle Face Cream PDP | Control: particleformen.com/product/particle-face-cream/ | V1: Popup delivers price drop on-page instead of emailing a code</p>
+
+<div class="views-row" style="margin-bottom: 10px;">
+  <div class="label" style="width:580px;">DESKTOP</div>
+  <div class="label" style="width:375px;">MOBILE</div>
+</div>
+
+<!-- ===== STATE 1: BEFORE EMAIL SUBMIT ===== -->
+<div class="section-state-label" style="margin-bottom: 12px; font-size: 13px;">STATE 1: POPUP BEFORE EMAIL SUBMIT (unchanged from control)</div>
+
+<div class="views-row" style="align-items: flex-start; margin-bottom: 0;">
+
+  <!-- DESKTOP STATE 1 -->
+  <div class="desktop-wrapper">
+    <div class="desktop-page">
+      <div class="top-bar">FREE SHIPPING + 30 DAY MONEY BACK GUARANTEE</div>
+      <div class="site-nav">
+        <div class="logo">&#9711; PARTICLE</div>
+        <div class="nav-right">MAGAZINE &nbsp;&nbsp; REVIEWS &nbsp;&nbsp; SUPPORT</div>
+      </div>
+      <!-- Page blurred behind popup -->
+      <div style="position: relative;">
+        <div class="desktop-pdp-layout" style="filter: blur(1.5px); opacity: 0.4; min-height: 280px;">
+          <div class="desktop-pdp-left">[ Product Image ]</div>
+          <div class="desktop-pdp-right">
+            <div class="product-title-lg"><span>Particle</span> Face Cream</div>
+            <div class="product-subtitle">The 6-in-1 anti-aging cream for men that fixes eye bags, dark spots and wrinkles</div>
+            <div class="stars-row"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 12,230 Reviews</div>
+            <div class="section-header">BUY MORE AND SAVE MORE</div>
+            <div class="tiers-row">
+              <div class="tier selected" style="position:relative;">
+                <div class="best-value-badge">BEST VALUE</div>
+                <div class="radio" style="border-color:#2040a0;background:#2040a0;box-shadow:inset 0 0 0 3px #faf8f0;"></div>
+                <span class="tier-label">3 Units</span>
+                <span class="tier-price-control">$49 <span style="font-size:10px;font-weight:400;color:#555;">/each</span></span>
+              </div>
+              <div class="tier">
+                <div class="radio"></div>
+                <span class="tier-label">2 Units</span>
+                <span class="tier-price-control">$55 <span style="font-size:10px;font-weight:400;color:#555;">/each</span></span>
+              </div>
+              <div class="tier">
+                <div class="radio"></div>
+                <span class="tier-label">1 Unit</span>
+                <span class="tier-price-control">$69 <span style="font-size:10px;font-weight:400;color:#555;">/each</span></span>
+              </div>
+            </div>
+            <div class="savings-row">
+              <div class="you-saving">YOU'RE SAVING $60</div>
+              <div class="gifts-unlocked">GIFTS UNLOCKED: 3/3</div>
+            </div>
+            <div class="atc-btn">ADD TO CART</div>
+          </div>
+        </div>
+        <!-- POPUP overlaid -->
+        <div class="popup-overlay">
+          <div class="popup">
+            <div class="popup-img">
+              <div class="popup-img-logo"><div class="dot"></div> PARTICLE</div>
+              <div class="popup-close">&#x2715;</div>
+              <div class="popup-bottle"></div>
+            </div>
+            <div class="popup-body">
+              <div class="popup-heading">YOU'VE GOT</div>
+              <div class="popup-heading-red">20% OFF</div>
+              <div class="popup-subtext">Sign up with your email<br>to claim <strong>20% off</strong> sitewide!</div>
+              <input class="popup-input" type="email" placeholder="your@email.com" value="">
+              <button class="popup-btn">GET COUPON</button>
+              <div class="popup-dismiss">I don't want a discount</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation-bar">State 1 is identical to the control popup. No change to headline, copy, button label, or dismiss link.</div>
+  </div>
+
+  <!-- MOBILE STATE 1 -->
+  <div class="mobile-wrapper">
+    <div class="mobile-page">
+      <div class="top-bar" style="font-size:9px;">FREE SHIPPING + 30 DAY MONEY BACK GUARANTEE</div>
+      <div class="site-nav" style="padding:8px 14px;">
+        <div class="logo" style="font-size:13px;">&#9711; PARTICLE</div>
+        <div class="nav-right" style="font-size:10px;">&#9776;</div>
+      </div>
+      <!-- Product image placeholder -->
+      <div style="background:#ccc;height:180px;display:flex;align-items:center;justify-content:center;color:#888;font-size:12px;filter:blur(1px);opacity:0.5;">[ Hero Image ]</div>
+      <!-- Popup -->
+      <div style="position:relative;">
+        <div style="padding:10px 12px; filter:blur(1px); opacity:0.4; background:#fff;">
+          <div style="font-size:18px;font-weight:800;color:#04112c;margin-bottom:4px;"><span style="color:#2040a0;">Particle</span> Face Cream</div>
+          <div style="font-size:10px;color:#333;margin-bottom:6px;">The 6-in-1 anti-aging cream for men</div>
+          <div style="font-size:10px;color:#2a8a2a;">&#9733;&#9733;&#9733;&#9733;&#9733; 12,230 Reviews</div>
+        </div>
+        <div class="popup-overlay" style="position:absolute;top:0;left:0;right:0;bottom:0;min-height:300px;">
+          <div class="popup" style="max-width:320px; width:95%;">
+            <div class="popup-img" style="height:120px;">
+              <div class="popup-img-logo" style="font-size:11px;"><div class="dot" style="width:11px;height:11px;"></div> PARTICLE</div>
+              <div class="popup-close" style="width:22px;height:22px;font-size:12px;">&#x2715;</div>
+              <div class="popup-bottle" style="width:45px;height:75px;"></div>
+            </div>
+            <div class="popup-body" style="padding:18px 20px 16px;">
+              <div class="popup-heading" style="font-size:22px;">YOU'VE GOT</div>
+              <div class="popup-heading-red" style="font-size:26px;">20% OFF</div>
+              <div class="popup-subtext" style="font-size:13px;">Sign up with your email<br>to claim <strong>20% off</strong> sitewide!</div>
+              <input class="popup-input" style="font-size:13px;padding:10px 12px;" type="email" placeholder="your@email.com">
+              <button class="popup-btn" style="font-size:14px;padding:12px;">GET COUPON</button>
+              <div class="popup-dismiss" style="font-size:12px;">I don't want a discount</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation-bar" style="width:375px;">State 1 is identical to the control popup on mobile.</div>
+  </div>
+
+</div>
+
+<hr class="section-divider">
+<div class="section-state-label" style="font-size:13px;">STATE 2: AFTER EMAIL SUBMIT <span style="color:#04112c; font-weight:700; font-size:11px;">(V1 CHANGE: popup confirms discount applied + page prices update instantly)</span></div>
+
+<div class="views-row" style="align-items: flex-start;">
+
+  <!-- DESKTOP STATE 2 -->
+  <div class="desktop-wrapper">
+    <div class="view-label-header">DESKTOP: Post-Submit State</div>
+    <div class="desktop-page">
+      <div class="top-bar">FREE SHIPPING + 30 DAY MONEY BACK GUARANTEE</div>
+      <div class="site-nav">
+        <div class="logo">&#9711; PARTICLE</div>
+        <div class="nav-right">MAGAZINE &nbsp;&nbsp; REVIEWS &nbsp;&nbsp; SUPPORT</div>
+      </div>
+      <!-- Page blurred behind popup -->
+      <div style="position: relative;">
+        <div class="desktop-pdp-layout" style="filter: blur(1.5px); opacity: 0.35; min-height: 320px;">
+          <div class="desktop-pdp-left">[ Product Image ]</div>
+          <div class="desktop-pdp-right">
+            <div class="product-title-lg"><span>Particle</span> Face Cream</div>
+            <div class="product-subtitle">The 6-in-1 anti-aging cream for men that fixes eye bags, dark spots and wrinkles</div>
+          </div>
+        </div>
+        <!-- SUCCESS POPUP -->
+        <div class="popup-overlay">
+          <div class="popup">
+            <div class="popup-img" style="background: linear-gradient(135deg, #1a3590, #2040a0); height: 100px; position: relative;">
+              <div class="popup-img-logo"><div class="dot" style="background:#fff;"></div> PARTICLE</div>
+              <div class="popup-close">&#x2715;</div>
+              <div style="color:#fff; font-size: 11px; text-align:center; width:100%; padding-top:12px;">
+                <div style="font-size:24px; margin-bottom:4px;">&#9989;</div>
+                <div style="font-weight:700; letter-spacing:0.06em;">YOUR DISCOUNT IS ACTIVE</div>
+              </div>
+            </div>
+            <div class="popup-success-body">
+              <div class="success-heading">20% OFF</div>
+              <div class="success-subheading" style="font-size:16px; color:#04112c; font-weight:700; text-transform:none; margin-bottom:8px;">Applied to your prices below.</div>
+              <div class="success-body">No code needed. Your discounted prices are live on this page right now. Just pick your bundle and add to cart.</div>
+              <div class="success-prices-mini change-box" style="padding:10px 8px; border-color:#b71c1c;">
+                <div class="spm-item selected" style="border-color:#b71c1c;">
+                  <span class="spm-label">3 Units</span>
+                  <span class="spm-new">$39.20</span>
+                  <span class="spm-old">$49</span>
+                  <span style="font-size:9px;color:#555;">/each</span>
+                </div>
+                <div class="spm-item">
+                  <span class="spm-label">2 Units</span>
+                  <span class="spm-new">$44.00</span>
+                  <span class="spm-old">$55</span>
+                  <span style="font-size:9px;color:#555;">/each</span>
+                </div>
+                <div class="spm-item">
+                  <span class="spm-label">1 Unit</span>
+                  <span class="spm-new">$55.20</span>
+                  <span class="spm-old">$69</span>
+                  <span style="font-size:9px;color:#555;">/each</span>
+                </div>
+              </div>
+              <button class="success-cta">SHOP MY DISCOUNT</button>
+              <div class="success-note">Prices shown include your 20% off. No code needed at checkout.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation-bar"><strong>CHANGED:</strong> Popup transforms on submit. Headline changes to "20% OFF / Applied to your prices below." Mini price preview inside popup shows all 3 tiers with new vs. old prices. CTA changes from "GET COUPON" to "SHOP MY DISCOUNT." No coupon code is shown at any point.</div>
+  </div>
+
+  <!-- MOBILE STATE 2 -->
+  <div class="mobile-wrapper">
+    <div class="view-label-header">MOBILE: Post-Submit State</div>
+    <div class="mobile-page">
+      <div class="top-bar" style="font-size:9px;">FREE SHIPPING + 30 DAY MONEY BACK GUARANTEE</div>
+      <div class="site-nav" style="padding:8px 14px;">
+        <div class="logo" style="font-size:13px;">&#9711; PARTICLE</div>
+        <div class="nav-right" style="font-size:10px;">&#9776;</div>
+      </div>
+      <div style="background:#ccc;height:120px;display:flex;align-items:center;justify-content:center;color:#888;font-size:12px;filter:blur(1px);opacity:0.35;">[ Hero Image ]</div>
+      <div style="position:relative;">
+        <div style="padding:10px 12px; filter:blur(1px); opacity:0.3; background:#fff; height:80px; overflow:hidden;">
+          <div style="font-size:14px;font-weight:800;color:#04112c;">Particle Face Cream</div>
+        </div>
+        <div class="popup-overlay" style="position:absolute;top:0;left:0;right:0;bottom:0;min-height:280px;">
+          <div class="popup" style="max-width:320px; width:95%;">
+            <div class="popup-img" style="background: linear-gradient(135deg, #1a3590, #2040a0); height: 80px; position:relative;">
+              <div class="popup-img-logo" style="font-size:11px;"><div class="dot" style="background:#fff;width:11px;height:11px;"></div> PARTICLE</div>
+              <div class="popup-close" style="width:22px;height:22px;font-size:12px;">&#x2715;</div>
+              <div style="color:#fff; font-size:10px; text-align:center; width:100%; padding-top:10px; font-weight:700; letter-spacing:0.06em;">&#9989; YOUR DISCOUNT IS ACTIVE</div>
+            </div>
+            <div class="popup-success-body" style="padding:16px 18px 14px;">
+              <div class="success-heading" style="font-size:20px;">20% OFF</div>
+              <div style="font-size:14px;color:#04112c;font-weight:700;margin-bottom:6px;">Applied to your prices below.</div>
+              <div class="success-body" style="font-size:12px; margin-bottom:12px;">No code needed. Your discounted prices are live on this page. Pick your bundle and add to cart.</div>
+              <div class="success-prices-mini change-box" style="padding:8px 6px; border-color:#b71c1c; gap:5px; margin-bottom:12px;">
+                <div class="spm-item selected" style="border-color:#b71c1c; padding:6px 3px;">
+                  <span class="spm-label" style="font-size:9px;">3 Units</span>
+                  <span class="spm-new" style="font-size:11px;">$39.20</span>
+                  <span class="spm-old" style="font-size:9px;">$49</span>
+                  <span style="font-size:8px;color:#555;">/each</span>
+                </div>
+                <div class="spm-item" style="padding:6px 3px;">
+                  <span class="spm-label" style="font-size:9px;">2 Units</span>
+                  <span class="spm-new" style="font-size:11px;">$44.00</span>
+                  <span class="spm-old" style="font-size:9px;">$55</span>
+                  <span style="font-size:8px;color:#555;">/each</span>
+                </div>
+                <div class="spm-item" style="padding:6px 3px;">
+                  <span class="spm-label" style="font-size:9px;">1 Unit</span>
+                  <span class="spm-new" style="font-size:11px;">$55.20</span>
+                  <span class="spm-old" style="font-size:9px;">$69</span>
+                  <span style="font-size:8px;color:#555;">/each</span>
+                </div>
+              </div>
+              <button class="success-cta" style="font-size:12px; padding:11px;">SHOP MY DISCOUNT</button>
+              <div class="success-note" style="font-size:10px;">Prices shown include your 20% off. No code needed at checkout.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="annotation-bar" style="width:375px;"><strong>CHANGED:</strong> Same popup transformation on mobile. Mini price preview with new vs. old pricing for all 3 tiers. CTA: "SHOP MY DISCOUNT."</div>
+  </div>
+
+</div>
+
+<hr class="section-divider">
+<div class="section-state-label" style="font-size:13px;">STATE 3: POPUP DISMISSED, PAGE WITH DISCOUNTED PRICES <span style="color:#04112c;font-size:11px;">(V1 CHANGE: buy box prices updated to 20% off)</span></div>
+
+<div class="views-row" style="align-items: flex-start;">
+
+  <!-- DESKTOP STATE 3 -->
+  <div class="desktop-wrapper">
+    <div class="view-label-header">DESKTOP: Price Tiers After Discount Applied</div>
+    <div class="desktop-page">
+      <div class="top-bar">FREE SHIPPING + 30 DAY MONEY BACK GUARANTEE</div>
+      <div class="site-nav">
+        <div class="logo">&#9711; PARTICLE</div>
+        <div class="nav-right">MAGAZINE &nbsp;&nbsp; REVIEWS &nbsp;&nbsp; SUPPORT</div>
+      </div>
+      <div class="desktop-pdp-layout">
+        <div class="desktop-pdp-left">[ Product Image ]</div>
+        <div class="desktop-pdp-right">
+          <div class="product-title-lg"><span>Particle</span> Face Cream</div>
+          <div class="product-subtitle">The 6-in-1 anti-aging cream for men that fixes eye bags, dark spots and wrinkles</div>
+          <div class="stars-row"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 12,230 Reviews</div>
+          <div class="savings-banner">&#10003; Order by August 27, 2026 for guaranteed FREE Gifts</div>
+          <div class="section-header">BUY MORE AND SAVE MORE</div>
+
+          <!-- CHANGED: tiers show discounted prices with strikethrough originals -->
+          <div class="tiers-row change-box" style="padding:10px 8px;">
+            <div class="tier selected" style="position:relative;">
+              <div class="best-value-badge">BEST VALUE</div>
+              <div class="radio" style="border-color:#2040a0;background:#2040a0;box-shadow:inset 0 0 0 3px #faf8f0;"></div>
+              <span class="tier-label">3 Units</span>
+              <div>
+                <span class="tier-price-new">$39.20</span>
+                <span class="tier-price-old">$49</span>
+              </div>
+              <div class="tier-unit">/each</div>
+              <div class="discount-tag">20% OFF</div>
+            </div>
+            <div class="tier">
+              <div class="radio"></div>
+              <span class="tier-label">2 Units</span>
+              <div>
+                <span class="tier-price-new">$44.00</span>
+                <span class="tier-price-old">$55</span>
+              </div>
+              <div class="tier-unit">/each</div>
+              <div class="discount-tag">20% OFF</div>
+            </div>
+            <div class="tier">
+              <div class="radio"></div>
+              <span class="tier-label">1 Unit</span>
+              <div>
+                <span class="tier-price-new">$55.20</span>
+                <span class="tier-price-old">$69</span>
+              </div>
+              <div class="tier-unit">/each</div>
+              <div class="discount-tag">20% OFF</div>
+            </div>
+          </div>
+
+          <div class="gifts-section">
+            <div class="gifts-label">AUGUST SALE! FREE Gifts with your first order</div>
+            <div class="gifts-row">
+              <div class="gift-item">
+                <span class="gift-badge">FREE $5.00</span>
+                <div class="gift-box">&#128230;</div>
+                Free Shipping Included
+              </div>
+              <div class="gift-item">
+                <span class="gift-badge">FREE $9.00</span>
+                <div class="gift-box" style="font-size:12px;">Vial</div>
+                Free Gravite Cologne Vial
+              </div>
+              <div class="gift-item">
+                <span class="gift-badge">FREE $29.00</span>
+                <div class="gift-box">&#129510;</div>
+                Free Particle Face Wash
+              </div>
+            </div>
+          </div>
+
+          <div class="savings-row">
+            <div class="you-saving change-box" style="padding:4px 8px; border-width:1.5px;">YOU'RE SAVING $84 <span class="inline-tag">UPDATED</span></div>
+            <div class="gifts-unlocked">GIFTS UNLOCKED: 3/3</div>
+          </div>
+
+          <button class="atc-btn">ADD TO CART</button>
+        </div>
+      </div>
+    </div>
+    <div class="annotation-bar">
+      <strong>CHANGED (price tier block):</strong> Each tier displays discounted price in red with strikethrough original alongside. "20% OFF" badge added below each tier price. 3 Units: $39.20 (was $49). 2 Units: $44.00 (was $55). 1 Unit: $55.20 (was $69).<br>
+      <strong>CHANGED (savings line):</strong> "YOU'RE SAVING" figure updates to reflect the additional 20% saving on top of existing ladder savings. 3-unit total goes from $147 to $117.60, total saving vs. 1-unit retail = $84.<br>
+      <strong>UNCHANGED:</strong> Layout, number of tiers, badges, gift block, button, all other copy.
+    </div>
+  </div>
+
+  <!-- MOBILE STATE 3 -->
+  <div class="mobile-wrapper">
+    <div class="view-label-header">MOBILE: Price Tiers After Discount Applied</div>
+    <div class="mobile-page">
+      <div class="top-bar" style="font-size:9px;">FREE SHIPPING + 30 DAY MONEY BACK GUARANTEE</div>
+      <div class="site-nav" style="padding:8px 14px;">
+        <div class="logo" style="font-size:13px;">&#9711; PARTICLE</div>
+        <div class="nav-right" style="font-size:10px;">&#9776;</div>
+      </div>
+      <div style="background:#d0d0d0;height:160px;display:flex;align-items:center;justify-content:center;color:#888;font-size:11px;">[Product Image]</div>
+      <div style="padding:14px 14px 20px;">
+        <div style="font-size:20px;font-weight:800;color:#04112c;margin-bottom:3px;"><span style="color:#2040a0;">Particle</span> Face Cream</div>
+        <div style="font-size:11px;color:#333;margin-bottom:8px;">The 6-in-1 anti-aging cream for men that fixes eye bags, dark spots and wrinkles</div>
+        <div style="font-size:11px;color:#2a8a2a;margin-bottom:10px;">&#9733;&#9733;&#9733;&#9733;&#9733; 12,230 Reviews</div>
+        <div style="border:1px solid #c8e6c9;border-radius:4px;padding:6px 10px;font-size:10px;color:#2a8a2a;margin-bottom:10px;">&#10003; Order by August 27, 2026 for guaranteed FREE Gifts</div>
+        <div class="section-header" style="font-size:10px;padding:8px;">BUY MORE AND SAVE MORE</div>
+
+        <!-- CHANGED: tiers on mobile with discount -->
+        <div class="tiers-row change-box" style="gap:5px; padding:8px 6px; margin-bottom:10px;">
+          <div class="tier selected" style="position:relative; padding:8px 5px;">
+            <div class="best-value-badge" style="font-size:7px; padding:1px 5px; top:-8px; left:5px;">BEST VALUE</div>
+            <div class="radio" style="width:11px;height:11px;border-color:#2040a0;background:#2040a0;box-shadow:inset 0 0 0 2px #faf8f0; margin-bottom:4px;"></div>
+            <span class="tier-label" style="font-size:11px;">3 Units</span>
+            <div>
+              <span class="tier-price-new" style="font-size:12px;">$39.20</span>
+              <span class="tier-price-old" style="font-size:10px;">$49</span>
+            </div>
+            <div class="tier-unit" style="font-size:9px;">/each</div>
+            <div class="discount-tag" style="font-size:8px; padding:1px 4px;">20% OFF</div>
+          </div>
+          <div class="tier" style="padding:8px 5px;">
+            <div class="radio" style="width:11px;height:11px; margin-bottom:4px;"></div>
+            <span class="tier-label" style="font-size:11px;">2 Units</span>
+            <div>
+              <span class="tier-price-new" style="font-size:12px;">$44.00</span>
+              <span class="tier-price-old" style="font-size:10px;">$55</span>
+            </div>
+            <div class="tier-unit" style="font-size:9px;">/each</div>
+            <div class="discount-tag" style="font-size:8px; padding:1px 4px;">20% OFF</div>
+          </div>
+          <div class="tier" style="padding:8px 5px;">
+            <div class="radio" style="width:11px;height:11px; margin-bottom:4px;"></div>
+            <span class="tier-label" style="font-size:11px;">1 Unit</span>
+            <div>
+              <span class="tier-price-new" style="font-size:12px;">$55.20</span>
+              <span class="tier-price-old" style="font-size:10px;">$69</span>
+            </div>
+            <div class="tier-unit" style="font-size:9px;">/each</div>
+            <div class="discount-tag" style="font-size:8px; padding:1px 4px;">20% OFF</div>
+          </div>
+        </div>
+
+        <div class="gifts-section">
+          <div class="gifts-label" style="font-size:10px;">AUGUST SALE! FREE Gifts with your first order</div>
+          <div class="gifts-row" style="gap:4px;">
+            <div class="gift-item" style="font-size:9px;">
+              <span class="gift-badge" style="font-size:8px; padding:1px 4px;">FREE $5.00</span>
+              <div class="gift-box" style="width:32px;height:32px;font-size:14px;">&#128230;</div>
+              Free Shipping
+            </div>
+            <div class="gift-item" style="font-size:9px;">
+              <span class="gift-badge" style="font-size:8px; padding:1px 4px;">FREE $9.00</span>
+              <div class="gift-box" style="width:32px;height:32px;font-size:9px;">Vial</div>
+              Free Cologne Vial
+            </div>
+            <div class="gift-item" style="font-size:9px;">
+              <span class="gift-badge" style="font-size:8px; padding:1px 4px;">FREE $29.00</span>
+              <div class="gift-box" style="width:32px;height:32px;">&#129510;</div>
+              Free Face Wash
+            </div>
+          </div>
+        </div>
+
+        <div class="savings-row" style="margin-top:8px;">
+          <div class="you-saving change-box" style="font-size:12px; padding:3px 6px; border-width:1.5px;">YOU'RE SAVING $84 <span class="inline-tag">UPDATED</span></div>
+          <div class="gifts-unlocked" style="font-size:9px; padding:3px 8px;">GIFTS UNLOCKED: 3/3</div>
+        </div>
+        <button class="atc-btn" style="font-size:12px; padding:13px; margin-top:10px;">ADD TO CART</button>
+      </div>
+    </div>
+    <div class="annotation-bar" style="width:375px;"><strong>CHANGED (mobile):</strong> Same price updates applied to mobile tier block. New discounted prices in red with strikethrough originals. "20% OFF" badge per tier. Savings line updated to $84.</div>
+  </div>
+
+</div>
+
+</body>
+</html>
