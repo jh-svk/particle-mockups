@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Particle Hair Thickening Shampoo, price ladder test, V3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#101C4E;--blue:#0039B1;--link:#0B57D0;--green:#12643C;
+--gray:#8A8FA0;--tile:#EBF0F4;--line:#E3E7ED;}
+*{box-sizing:border-box}
+body{margin:0;background:#F5F6F8;font-family:'Poppins','Helvetica Neue',Arial,sans-serif;color:var(--ink)}
+.top{background:#091528;color:#fff;padding:18px 24px}
+.top h2{margin:0;font-size:18px;font-weight:600}
+.top p{margin:6px 0 0;font-size:13px;color:#B9C3D6;max-width:900px}
+.legend{margin-top:10px;font-size:12px;color:#B9C3D6}
+.legend i{display:inline-block;width:11px;height:11px;background:#FFF3BF;border:1px solid #E0B700;margin-right:6px;vertical-align:-1px}
+.wrap{display:flex;align-items:flex-start;padding:24px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:6px;margin-right:24px}
+.panel.desk{width:940px}
+.panel.mob{width:430px}
+.plabel{background:#0039B1;color:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;padding:8px 14px;border-radius:5px 5px 0 0}
+.page{padding:22px 24px 26px}
+.ptitle{font-size:26px;line-height:1.2;margin:0 0 8px;font-weight:700}
+.mob .ptitle{font-size:22px}
+.bl{color:#1668E3}
+.stars{color:#1B7F4B;font-size:14px;letter-spacing:2px}
+.stars span{color:var(--ink);font-weight:600;letter-spacing:0}
+.sub{font-weight:600;font-size:14px;margin:8px 0 12px}
+.trust{display:flex;font-size:12px;color:#3B4468;margin-bottom:14px}
+.trust span{margin-right:26px}
+.stock{color:#9BB6A4;font-weight:600;font-size:15px;margin-bottom:16px}
+.stock b{color:#5E7A69}
+.selector{display:flex;align-items:stretch}
+.stack{display:flex;flex-direction:column;flex:1}
+.tile{position:relative;border:1px solid var(--line);border-radius:4px;background:#fff;padding:14px 16px;overflow:hidden}
+.selector.wide .tile.sel{width:300px;margin-right:16px}
+.selector.narrow .tile.sel{width:170px;margin-right:10px;padding:12px 10px}
+.tile.sel{background:var(--tile);border:1px solid var(--blue);display:flex;flex-direction:column;justify-content:flex-end}
+.tile.row{display:flex;align-items:center;margin-bottom:12px}
+.tile.row:last-child{margin-bottom:0}
+.radio{width:16px;height:16px;border:2px solid var(--blue);border-radius:50%;display:inline-block;flex:none;margin-right:12px}
+.radio.on{position:absolute;top:12px;left:12px;background:radial-gradient(var(--blue) 45%,#fff 50%);margin:0}
+.tile.sel .meta{margin-top:12px}
+.tile.row .meta{margin-left:auto;text-align:right}
+.tile.row .units{margin:0 0 0 10px}
+.mob .tile.row .units{font-size:12px;margin-left:4px}
+.units{color:var(--link);font-weight:700;font-size:14px;margin-bottom:2px}
+.price{font-size:30px;font-weight:700;line-height:1.15}
+.mob .price{font-size:24px}
+.cur{font-size:18px;vertical-align:6px;margin-right:1px}
+.per{font-size:12px;font-weight:500;margin-left:3px}
+.total{color:var(--gray);font-size:14px;margin-top:3px}
+.save{color:var(--green);font-weight:700;font-size:14px;margin-top:3px}
+.ribbon{position:absolute;top:16px;right:-32px;transform:rotate(38deg);background:#12643C;color:#fff;font-size:11px;font-weight:600;padding:4px 34px}
+.bots{display:flex;align-items:flex-end;justify-content:center}
+.tile.row .bots{margin-right:6px}
+.bot{position:relative;display:block;background:linear-gradient(90deg,#4A3222,#6B4A32 45%,#3B2617);border-radius:5px}
+.bot .cap{position:absolute;top:-9px;left:12%;width:76%;height:10px;background:#1A1411;border-radius:2px}
+.bot .lab{position:absolute;top:20%;left:12%;width:76%;height:58%;background:#5B6D93;border-radius:3px}
+.bots.slg .bot{width:42px;height:112px;margin-right:-10px}
+.mob .bots.slg .bot{width:32px;height:88px}
+.bots.ssm .bot{width:26px;height:70px;margin-right:-8px}
+.mob .bots.ssm .bot{width:22px;height:58px}
+.mob .was{font-size:9px;margin-left:3px}
+.atc{display:block;margin-top:18px;background:var(--blue);color:#fff;border:0;border-radius:3px;font-size:18px;font-weight:700;padding:14px 34px}
+.mob .atc{width:100%;font-size:16px;padding:13px 0}
+.cart{margin-top:22px;border-top:1px dashed var(--line);padding-top:14px}
+.ct{font-size:11px;letter-spacing:.06em;color:var(--gray);text-transform:uppercase;margin-bottom:6px}
+.cl{display:flex;justify-content:space-between;font-size:14px;font-weight:600}
+.mob .cl{font-size:13px}
+.chg{position:relative;display:inline-block;background:#FFF3BF;border-radius:2px;padding:0 1px}
+.was .cur{font-size:inherit;vertical-align:baseline;margin:0}
+.was{display:inline-block;white-space:nowrap;font-size:10px;font-weight:600;color:#8A6D00;text-transform:uppercase;margin-left:5px;vertical-align:middle}
+</style></head><body>
+<div class="top">
+  <h2>Particle Hair Thickening Shampoo, price ladder test, V3</h2>
+  <p>All three tiers raised by roughly 8 percent. Shape of the ladder held.</p>
+  <div class="legend"><i></i>Highlighted figures changed from control. Control value shown underneath.</div>
+</div>
+<div class="wrap">
+
+<div class="panel desk">
+  <div class="plabel">DESKTOP</div>
+  <div class="page">
+    <h1 class="ptitle"><span class="bl">Particle</span> Hair Thickening Shampoo</h1>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span>2,096</span></div>
+    <p class="sub">Promotes hair growth and strengthens hair</p>
+    <div class="trust"><span>30 Day Money Back Guarantee</span><span>Free Shipping</span></div>
+    <div class="stock">Only <b>21</b> left in stock</div>
+    
+  <div class="selector wide">
+    
+    <div class="tile sel">
+      <span class="ribbon">Most Popular</span>
+      <span class="radio on"></span>
+      <span class="bots slg"><span class="bot"><span class="cap"></span><span class="lab"></span></span><span class="bot"><span class="cap"></span><span class="lab"></span></span><span class="bot"><span class="cap"></span><span class="lab"></span></span></span>
+      <div class="meta">
+        <div class="units">3 Units</div>
+        <div class="price"><span class="chg"><span class="cur">$</span>20</span><span class="was">was <span class="cur">$</span>19</span><span class="per">/Per Unit</span></div>
+        <div class="total"><span class="chg">$60</span><span class="was">was $57</span> Total</div>
+        <div class="save">You Save: <span class="chg">$21</span><span class="was">was $18</span></div>
+      </div>
+    </div>
+    <div class="stack">
+    <div class="tile row">
+      <span class="radio"></span>
+      <span class="bots ssm"><span class="bot"><span class="cap"></span><span class="lab"></span></span><span class="bot"><span class="cap"></span><span class="lab"></span></span></span>
+      <div class="units">2 Units</div>
+      <div class="meta">
+        
+        <div class="price"><span class="chg"><span class="cur">$</span>23</span><span class="was">was <span class="cur">$</span>21</span><span class="per">/Per Unit</span></div>
+        <div class="total"><span class="chg">$46</span><span class="was">was $42</span> Total</div>
+        <div class="save">You Save: $8</div>
+      </div>
+    </div>
+    <div class="tile row">
+      <span class="radio"></span>
+      <span class="bots ssm"><span class="bot"><span class="cap"></span><span class="lab"></span></span></span>
+      <div class="units">1 Unit</div>
+      <div class="meta">
+        
+        <div class="price"><span class="chg"><span class="cur">$</span>27</span><span class="was">was <span class="cur">$</span>25</span><span class="per">/Per Unit</span></div>
+      </div>
+    </div></div>
+  </div>
+    <button class="atc">ADD TO CART</button>
+    <div class="cart">
+      <div class="ct">Cart, checkout and mobile sticky bar, default selection</div>
+      <div class="cl"><span>Particle Hair Thickening Shampoo, 3 Units</span><span><span class="chg">$60</span><span class="was">was $57</span></span></div>
+    </div>
+  </div>
+</div>
+<div class="panel mob">
+  <div class="plabel">MOBILE</div>
+  <div class="page">
+    <h1 class="ptitle"><span class="bl">Particle</span> Hair Thickening Shampoo</h1>
+    <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span>2,096</span></div>
+    <p class="sub">Promotes hair growth and strengthens hair</p>
+    <div class="trust"><span>30 Day Money Back Guarantee</span><span>Free Shipping</span></div>
+    <div class="stock">Only <b>21</b> left in stock</div>
+    
+  <div class="selector narrow">
+    
+    <div class="tile sel">
+      <span class="ribbon">Most Popular</span>
+      <span class="radio on"></span>
+      <span class="bots slg"><span class="bot"><span class="cap"></span><span class="lab"></span></span><span class="bot"><span class="cap"></span><span class="lab"></span></span><span class="bot"><span class="cap"></span><span class="lab"></span></span></span>
+      <div class="meta">
+        <div class="units">3 Units</div>
+        <div class="price"><span class="chg"><span class="cur">$</span>20</span><span class="was">was <span class="cur">$</span>19</span><span class="per">/Per Unit</span></div>
+        <div class="total"><span class="chg">$60</span><span class="was">was $57</span> Total</div>
+        <div class="save">You Save: <span class="chg">$21</span><span class="was">was $18</span></div>
+      </div>
+    </div>
+    <div class="stack">
+    <div class="tile row">
+      <span class="radio"></span>
+      <span class="bots ssm"><span class="bot"><span class="cap"></span><span class="lab"></span></span><span class="bot"><span class="cap"></span><span class="lab"></span></span></span>
+      
+      <div class="meta">
+        <div class="units">2 Units</div>
+        <div class="price"><span class="chg"><span class="cur">$</span>23</span><span class="was">was <span class="cur">$</span>21</span><span class="per">/Per Unit</span></div>
+        <div class="total"><span class="chg">$46</span><span class="was">was $42</span> Total</div>
+        <div class="save">You Save: $8</div>
+      </div>
+    </div>
+    <div class="tile row">
+      <span class="radio"></span>
+      <span class="bots ssm"><span class="bot"><span class="cap"></span><span class="lab"></span></span></span>
+      
+      <div class="meta">
+        <div class="units">1 Unit</div>
+        <div class="price"><span class="chg"><span class="cur">$</span>27</span><span class="was">was <span class="cur">$</span>25</span><span class="per">/Per Unit</span></div>
+      </div>
+    </div></div>
+  </div>
+    <button class="atc">ADD TO CART</button>
+    <div class="cart">
+      <div class="ct">Cart, checkout and mobile sticky bar, default selection</div>
+      <div class="cl"><span>Particle Hair Thickening Shampoo, 3 Units</span><span><span class="chg">$60</span><span class="was">was $57</span></span></div>
+    </div>
+  </div>
+</div>
+</div>
+</body></html>
