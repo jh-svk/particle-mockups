@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kim'C Market | PDP Template Revamp | V1</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f6f6;--ink:#121212;--muted:#5c5c5c;--line:#d9d9d9;--green:#016853;--mint:#a8d6cf;--shop:#5433eb;--amber:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Montserrat,Arial,sans-serif;background:#e7e7e7;color:var(--ink);padding:28px 20px 60px}
+.legend{max-width:1560px;margin:0 auto 22px;font-size:14px;line-height:1.5;color:#333}
+.legend b{font-weight:600}
+.chip{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:3px;background:var(--amber);color:#111;vertical-align:middle}
+.chip.mv{background:#111;color:#fff}
+.frames{display:flex;align-items:flex-start;justify-content:center;flex-wrap:wrap;max-width:1560px;margin:0 auto}
+.frame{margin:0 14px 30px}
+.flabel{font-size:13px;font-weight:600;margin-bottom:8px;color:#333}
+.screen{background:var(--bg);border:1px solid #cfcfcf;overflow:hidden}
+.desk .screen{width:1080px}
+.mob .screen{width:390px;border-radius:26px}
+.bar{background:#e4f6fb;text-align:center;font-size:13px;padding:9px}
+.hdr{display:flex;align-items:center;justify-content:center;padding:12px;border-bottom:1px solid #e3e3e3;font-size:12px;color:#444}
+.logo{width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;font-size:11px;display:flex;align-items:center;justify-content:center}
+.desk .wrap{display:flex;padding:34px 40px 40px}
+.gal{width:470px;margin-right:40px}
+.gal>img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:#e9eaee}
+.thumbs img{aspect-ratio:1/1;object-fit:cover;background:#e9eaee}
+.thumbs{display:flex;margin-top:12px}
+.thumbs img{width:48%;margin-right:4%}
+.thumbs img:last-child{margin-right:0}
+.box{flex:1;min-width:0}
+.mob .wrap{padding:0 0 30px}
+.mob .gal{width:100%;margin:0}
+.mob .box{padding:18px 14px 0}
+.vendor{font-size:12px;color:var(--muted);letter-spacing:.03em}
+h1{font-weight:400;font-size:30px;line-height:1.25;margin:8px 0 6px}
+.mob h1{font-size:24px}
+.kr{color:var(--muted);font-size:15px}
+.stars{margin:10px 0 0;font-size:14px;color:var(--muted)}
+.stars span{color:#f5b301;letter-spacing:1px}
+.flag{position:relative;outline:2px dashed var(--amber);outline-offset:5px;border-radius:2px;margin-top:22px}
+.flag>.chip{position:absolute;top:-17px;right:-4px;z-index:2}
+.flag.mvd{outline-color:#111}
+.price{display:flex;align-items:baseline;flex-wrap:wrap}
+.price .now{font-size:24px;font-weight:500;margin-right:10px}
+.price .unit{font-size:13px;color:var(--muted)}
+.ship{margin-top:8px;font-size:13px;color:#333}
+.meter{height:5px;background:#dfe7e5;border-radius:3px;margin-top:6px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--green)}
+.olabel{font-size:14px;font-weight:600;margin-bottom:9px}
+.olabel em{font-style:normal;font-weight:400;color:var(--muted)}
+.sizes{display:flex}
+.sz{flex:1;border:1px solid #bdbdbd;border-radius:8px;background:#fff;padding:10px 6px;text-align:center;cursor:pointer;margin-right:8px}
+.sz:last-child{margin-right:0}
+.sz b{display:block;font-size:15px;font-weight:600}
+.sz s{text-decoration:none;display:block;font-size:13px;margin-top:3px}
+.sz small{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.sel{border:2px solid var(--green)!important;box-shadow:0 0 0 2px rgba(1,104,83,.12);background:#f2faf8!important}
+.mills{display:flex;flex-wrap:wrap}
+.ml{width:calc(50% - 4px);margin:0 8px 8px 0;border:1px solid #bdbdbd;border-radius:8px;background:#fff;padding:9px 10px;cursor:pointer}
+.ml:nth-child(2n){margin-right:0}
+.ml:last-child{width:100%}
+.ml b{font-size:13px;font-weight:600}
+.ml b span{font-weight:400;color:var(--muted);margin-left:4px}
+.ml small{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+.po{border:1px solid #bdbdbd;border-radius:8px;background:#fff;padding:12px 14px;cursor:pointer;margin-bottom:8px;display:flex}
+.rad{width:18px;height:18px;border:2px solid #222;border-radius:50%;margin:2px 10px 0 0;flex:none;position:relative}
+.po.sel .rad:after{content:"";position:absolute;inset:3px;background:var(--green);border-radius:50%}
+.po.sel .rad{border-color:var(--green)}
+.po .t{flex:1}
+.po .t b{font-size:14px;font-weight:600}
+.po .t small{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
+.po .p{text-align:right;font-size:14px;font-weight:600}
+.po .p s{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.save{display:inline-block;background:var(--mint);color:#0d3f35;font-size:11px;font-weight:600;padding:2px 7px;border-radius:10px;margin-left:6px}
+.row{display:flex}
+.qty{display:flex;align-items:center;border:1px solid #7a7a7a;height:50px;margin-right:10px;background:#fff}
+.qty button{width:34px;height:100%;border:0;background:none;font-size:18px;cursor:pointer}
+.qty span{width:26px;text-align:center}
+.atc{flex:1;height:50px;border:0;background:var(--green);color:#fff;font:500 15px Montserrat,Arial,sans-serif;letter-spacing:.03em;cursor:pointer}
+.shopb{display:block;width:100%;height:46px;margin-top:10px;border:0;background:var(--shop);color:#fff;font:600 15px Montserrat,Arial,sans-serif}
+.more{text-align:center;font-size:12px;text-decoration:underline;margin-top:9px}
+.dlv{margin-top:14px;border-left:3px solid #9a9a9a;padding:2px 10px;font-size:13px;line-height:1.6}
+.taste h3{font-weight:400;font-size:17px;margin-bottom:6px}
+.tr{display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid var(--line)}
+.dots{color:var(--green);letter-spacing:2px;margin-left:8px;font-size:11px}
+.best{margin-top:10px;font-size:13px}
+.best span{display:inline-block;border:1px solid var(--line);background:#fff;padding:6px 10px;margin:6px 6px 0 0}
+.quote{margin-top:10px;border-left:2px solid var(--green);padding-left:10px;font-size:13px;line-height:1.5}
+.upsell{margin-top:22px;border:1px solid #e0e0e0;border-radius:6px;padding:12px;font-size:13px;color:var(--muted)}
+.upsell b{display:block;color:var(--ink);font-size:14px;margin-bottom:3px}
+.sticky{position:relative;margin-top:26px;background:#fff;border-top:1px solid #ddd;padding:10px 12px;display:flex;align-items:center;box-shadow:0 -4px 12px rgba(0,0,0,.06)}
+.sticky .s1{flex:1;font-size:12px;line-height:1.35}
+.sticky .s1 b{display:block;font-size:13px}
+.sticky button{height:42px;padding:0 16px;border:0;background:var(--green);color:#fff;font:500 13px Montserrat,Arial,sans-serif}
+.chip.as{background:#cfd8d6;color:#1d3a34}
+.checks{margin-top:12px;font-size:13.5px;line-height:1.9}
+.checks i{display:inline-block;width:16px;height:16px;border-radius:50%;background:var(--green);color:#fff;font-style:normal;font-size:10px;text-align:center;line-height:16px;margin-right:8px;vertical-align:-2px}
+.card{background:#fff;border-radius:10px;padding:16px}
+.below{padding:10px 40px 40px}
+.mob .below{padding:6px 14px 24px}
+.sec{position:relative;outline:2px dashed #9fb3ae;outline-offset:4px;margin-top:34px}
+.sec>.chip{position:absolute;top:-16px;right:-4px}
+.sec h2{font-weight:600;font-size:22px;text-align:center;margin-bottom:14px}
+.mob .sec h2{font-size:19px}
+.ggw{display:flex;justify-content:center}
+.ggw div{width:200px;background:#fff;border-radius:10px;padding:10px;margin:0 6px;font-size:12px}
+.mob .ggw div{width:31%;margin:0 1%;font-size:10.5px;padding:6px}
+.ph{background:#dcdcdc;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#777;font-size:11px;text-align:center;padding:6px}
+.ggw .ph{height:110px;margin-bottom:8px}
+.mob .ggw .ph{height:70px}
+.ggw button{width:100%;margin-top:8px;height:30px;border:0;background:var(--green);color:#fff;font:600 11px Montserrat,Arial}
+.marq{background:var(--green);color:#fff;font-size:12.5px;font-weight:500;padding:11px 0;white-space:nowrap;overflow:hidden}
+.marq span{margin:0 18px}
+.feat{text-align:center;font-weight:600;font-size:15px}
+.feat div{margin-top:8px;font-size:24px;font-weight:700}
+.feat .e{color:#e01b22;margin-right:26px}
+.split{display:flex;align-items:center;max-width:760px;margin:0 auto 22px}
+.split .ph{width:48%;height:230px;flex:none}
+.split .tx{padding:0 0 0 26px}
+.split.r{flex-direction:row-reverse}.split.r .tx{padding:0 26px 0 0}
+.mob .split,.mob .split.r{flex-direction:column}
+.mob .split .ph{width:100%;height:200px}
+.mob .split .tx,.mob .split.r .tx{padding:14px 0 0}
+.tx small{color:var(--green);font-size:11px;font-weight:600}
+.tx h3{font-size:21px;font-weight:600;margin:6px 0 8px}
+.tx p{font-size:13px;line-height:1.6;color:#444}
+.rev{max-width:760px;margin:0 auto;font-size:13px}
+.rev .big{font-size:30px;font-weight:500}
+.faq{max-width:760px;margin:0 auto}
+.faq div{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:12px 0;font-size:13.5px;font-weight:500}
+.note{font-size:11px;color:#777;margin-top:6px;text-align:center}
+</style></head><body>
+<div class="legend"><b>Kim'C Market, PDP template revamp, V1.</b> Example product: Saechungmu Rice. Built on the previously tested revamp template. <span class="chip">NEW</span> new or rebuilt vs the tested template. <span class="chip mv">MOVED</span> existing element in a new position. <span class="chip as">AS TESTED</span> section carried over unchanged from the tested template. Tiles, purchase options, and quantity are clickable so price, unit price, free shipping line, and button total update.</div>
+<div class="frames">
+ <div class="frame desk"><div class="flabel">Desktop</div><div class="screen" id="d"></div></div>
+ <div class="frame mob"><div class="flabel">Mobile</div><div class="screen" id="m"></div></div>
+</div>
+<script>
+const IMG="https://kimcmarket.com/cdn/shop/files/Saechungmucopy.png?v=1752767963&width=900";
+const T1="https://kimcmarket.com/cdn/shop/files/saechungmu-rice-100percent-korean-rice-freshly-milled-in-new-york-kim-c-market-2_4eaf892a-3eeb-4ca2-bef3-1a2fcc29b11d.jpg?v=1752767963&width=500";
+const T2="https://kimcmarket.com/cdn/shop/files/Untitleddesign_3_d04eeab0-4f87-4392-b5a2-cd572889ba90.png?v=1752767963&width=500";
+const SIZES=[{l:"5 lb",lb:5,p:26.95},{l:"10 lb",lb:10,p:52.95},{l:"15 lb",lb:15,p:78.95}];
+const MILLS=[["White Rice","백미","All bran removed, softest and most classic"],["70% Off Bran","칠분도","Mostly white, a little more bite"],["50% Off Bran","오분도","Half the bran, balanced chew and flavor"],["30% Off Bran","삼분도","Most of the bran kept, hearty and nutty"],["Brown Rice","현미","Whole grain, all the bran kept"]];
+const FREE=79, SUBR=24.95/26.95;
+const st={s:0,m:3,sub:false,q:1};
+const f=n=>"$"+n.toFixed(2);
+function subP(p){return Math.round(p*SUBR*100)/100}
+function render(id,mob){
+ const S=SIZES[st.s],one=S.p,sp=subP(S.p),each=st.sub?sp:one,tot=each*st.q,left=Math.max(0,FREE-tot);
+ const shipTxt=left>0?`You're <b>${f(left)}</b> away from free shipping`:`<b>Your order ships free</b>`;
+ const pct=Math.min(100,tot/FREE*100);
+ const gal=`<div class="gal"><img src="${IMG}" alt="Saechungmu rice bag">${mob?"":`<div class="thumbs"><img src="${T1}" alt=""><img src="${T2}" alt=""></div>`}</div>`;
+ const taste=`<div class="flag mvd taste card"><span class="chip mv">MOVED</span><h3>Texture &amp; Taste Profile</h3>
+  ${[["Firm",3,"Soft"],["Distinctive",4,"Subtle"],["Sticky",3,"Fluffy"],["Thick",1,"Thin"],["Nutty",2,"Mild"]].map(r=>`<div class="tr"><span>${r[0]}<span class="dots">${"●".repeat(r[1])}${"○".repeat(5-r[1])}</span></span><span>${r[2]}</span></div>`).join("")}
+  <div class="best">Best for<br><span>Kimbap</span><span>Rice Bowls</span><span>Mixed Rice Dishes</span></div>
+  <div class="quote">A chewy, satisfying grain that holds its texture beautifully when paired with other ingredients.</div></div>`;
+ document.getElementById(id).innerHTML=`
+ <div class="bar">Free shipping on orders over $79</div>
+ <div class="hdr"><div class="logo">Kim'C</div></div>
+ <div class="wrap">${gal}<div class="box">
+  <div class="vendor">Farmers in Gurye</div>
+  <h1>Saechungmu Rice [100% Korean Rice; Freshly Milled in New York]</h1>
+  <div class="kr">새청무</div>
+  <div class="stars"><span>★★★★★</span> 3 Reviews</div>
+  <div class="checks"><div><i>✓</i>100% Korean ingredients</div><div><i>✓</i>100% natural, no preservatives added</div><div><i>✓</i>Certified, chef and media approved</div><div><i>✓</i>Versatile staple for everyday cooking</div></div>
+  <div class="flag mvd"><span class="chip mv">MOVED</span>
+   <div class="price"><span class="now">${f(each)} USD</span><span class="unit">${f(each/S.lb)} / lb</span></div>
+   <div class="ship"><span class="chip" style="margin-right:6px">NEW</span>${shipTxt}</div>
+   <div class="meter"><i style="width:${pct}%"></i></div>
+  </div>
+  <div class="flag"><span class="chip">NEW</span>
+   <div class="olabel">Size</div>
+   <div class="sizes">${SIZES.map((z,i)=>`<div class="sz ${i==st.s?"sel":""}" data-a="s" data-v="${i}"><b>${z.l}</b><s>${f(st.sub?subP(z.p):z.p)}</s><small>${f((st.sub?subP(z.p):z.p)/z.lb)} / lb</small></div>`).join("")}</div>
+  </div>
+  <div class="flag"><span class="chip">NEW</span>
+   <div class="olabel">Milling <em>: ${MILLS[st.m][0]}</em></div>
+   <div class="mills">${MILLS.map((x,i)=>`<div class="ml ${i==st.m?"sel":""}" data-a="m" data-v="${i}"><b>${x[0]}<span>${x[1]}</span></b><small>${x[2]}</small></div>`).join("")}</div>
+  </div>
+  <div class="flag"><span class="chip">NEW</span>
+   <div class="olabel">How do you want it?</div>
+   <div class="po ${st.sub?"sel":""}" data-a="sub" data-v="1"><div class="rad"></div><div class="t"><b>Subscribe and save</b><span class="save">Save ${f(one-sp)}</span><small>Fresh rice on your schedule. Skip, edit, or cancel anytime.</small></div><div class="p">${f(sp)}<s>${f(one)}</s></div></div>
+   <div class="po ${st.sub?"":"sel"}" data-a="sub" data-v="0"><div class="rad"></div><div class="t"><b>One time purchase</b></div><div class="p">${f(one)}</div></div>
+  </div>
+  <div class="flag"><span class="chip">NEW</span>
+   <div class="row"><div class="qty"><button data-a="q" data-v="-1">−</button><span>${st.q}</span><button data-a="q" data-v="1">+</button></div><button class="atc">Add to cart, ${f(tot)}</button></div>
+  </div>
+  <button class="shopb">Buy with shop</button>
+  <div class="more">More payment options</div>
+  <div class="flag mvd dlv"><span class="chip mv">MOVED</span>🚚 Ships from New York within 1 business day<br>Delivery in 0-5 business days</div>
+  <div style="height:8px"></div>
+  ${taste}
+  <div class="upsell"><b>Complete Your Korean Rice Meal</b>Add authentic Korean sides in one click (unchanged)</div>
+  ${mob?`<div class="flag sticky"><span class="chip">NEW</span><div class="s1"><b>${S.l}, ${MILLS[st.m][0]}</b>${st.sub?"Subscribe and save":"One time purchase"}</div><button>Add to cart, ${f(tot)}</button></div><div class="note">Mobile only: sticky bar shows once the main Add to cart button scrolls out of view.</div>`:""}
+ </div></div>
+ <div class="below">
+  <div class="sec"><span class="chip as">AS TESTED</span><h2>Goes Great With:</h2><div class="ggw">${["Premium Doenjang (500g)|$38.50","Premium Gochujang (500g)|$43.00","Kisoondo Soy Sauce (250ml)|$23.00"].map(x=>`<div><div class="ph">Product image</div>${x.split("|")[0]}<br><b>${x.split("|")[1]} USD</b><button>ADD TO CART</button></div>`).join("")}</div></div>
+  <div class="sec marq"><span class="chip as">AS TESTED</span><span>✕ No Additives Or Preservatives</span><span>🚚 Ships From New York, 1 Business Day</span><span>$ Free Shipping On Orders Over $79</span><span>🌾 Handcrafted In Small, Limited Batches</span></div>
+  <div class="sec feat"><span class="chip as">AS TESTED</span>Featured In:<div><span class="e">EATER</span><span>4 NEW YORK</span></div></div>
+  <div class="sec"><span class="chip as">AS TESTED</span>
+   <div class="split"><div class="ph">Producers group photo (as tested)</div><div class="tx"><small>01 OUR CRAFT</small><h3>Made By Hand, Not By Machine</h3><p>Every jar and bottle comes from master artisans and small family producers across Korea, not a factory line.</p></div></div>
+   <div class="split r"><div class="ph">Palace and cherry blossom photo (as tested)</div><div class="tx"><small>02 OUR PROOF</small><h3>Recognized By Chefs, Not Just Labels</h3><p>Our producers hold official heritage titles and food safety certifications that aren't handed out easily.</p></div></div>
+  </div>
+  <div class="sec rev"><span class="chip as">AS TESTED</span><span class="big">5.0</span> <span style="color:#f5b301">★★★★★</span> Based on 3 Reviews<br><span style="color:#777">Review list unchanged</span></div>
+  <div class="sec"><span class="chip as">AS TESTED</span><div class="split"><div class="ph">Kim'C Market intro video</div><div class="tx"><h3>About Us:</h3><p>At Kim'C Market, our mission is to introduce a better, more authentic culinary experience.</p></div></div></div>
+  <div class="sec faq"><span class="chip as">AS TESTED</span><h2 style="text-align:left">Frequently Asked Questions</h2><div>How soon will I receive my package?<span>+</span></div><div>How do you source?<span>+</span></div><div>Sell by date<span>+</span></div></div>
+ </div>`;
+}
+function all(){render("d",false);render("m",true)}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-a]");if(!t)return;const a=t.dataset.a,v=+t.dataset.v;
+ if(a=="s")st.s=v;if(a=="m")st.m=v;if(a=="sub")st.sub=!!v;if(a=="q")st.q=Math.max(1,st.q+v);all()});
+all();
+</script></body></html>
