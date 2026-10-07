@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Particle Checkout Trust Bar V1</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#050545;--nav:#030b2f;--blue:#0137b1;--green:#2f7a43;--line:#cfd3dc;--muted:#6b6f82;--grey:#eceff4;--amber:#f5a623}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Raleway',Arial,sans-serif;background:#dfe2e8;color:var(--navy);font-size:13px}
+.legend{max-width:1500px;margin:24px auto 0;padding:0 24px;display:flex;flex-wrap:wrap;align-items:center}
+.legend h1{font-size:18px;font-weight:800;margin-right:16px}
+.legend span{font-size:12px;color:#444;margin-right:16px}
+.chip{display:inline-block;background:var(--amber);color:#1a1a1a;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 7px;border-radius:3px}
+.layout{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;padding:24px}
+.dev{margin:0 16px 32px;display:flex;flex-direction:column;align-items:center}
+.lbl{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#555;margin-bottom:10px}
+.frame{background:#fff;border:1px solid #c9cdd6;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.08)}
+.desk{width:1008px}
+.mob{width:390px;border-radius:18px}
+.topbar{background:var(--nav);color:#fff;text-align:center;font-size:9px;font-weight:700;letter-spacing:.06em;padding:5px;border-bottom:1px solid #1d2550}
+.nav{background:var(--nav);padding:9px 16px;color:#fff;font-weight:800;font-size:17px;letter-spacing:.18em}
+.progress{display:flex;justify-content:center;align-items:flex-start;padding:14px 0 6px}
+.st{display:flex;flex-direction:column;align-items:center;width:110px}
+.st b{width:26px;height:26px;border:1px solid var(--line);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;color:#555;background:#fff}
+.st.on b{background:#e6e8f2;font-weight:800;color:var(--navy)}
+.st small{font-size:7.5px;margin-top:6px;color:#4b3f8c}
+.st.on small{font-weight:800;color:var(--navy)}
+.bar{flex:1;max-width:60px;height:1px;background:var(--line);margin-top:13px}
+.timer{display:flex;justify-content:center}
+.timer span{border:1px solid var(--blue);border-radius:5px;font-size:7.5px;padding:4px 8px;color:var(--navy)}
+.wrap{display:flex;justify-content:center;padding:30px 0 30px}
+.left{width:276px;margin-right:40px}
+.right{width:242px}
+.badges{display:flex;align-items:center;font-size:7px;font-weight:800;color:var(--green);margin-bottom:28px}
+.badges i{display:inline-block;width:1px;height:10px;background:#333;margin:0 12px}
+h2{font-size:15px;font-weight:800;margin-bottom:12px}
+h2 em{font-style:normal;color:var(--blue)}
+.in{border:1px solid var(--line);border-radius:3px;height:22px;font-size:8px;display:flex;align-items:center;padding:0 5px;margin-bottom:9px;color:#222}
+.row{display:flex}.row .in{flex:1}.row .in+.in{margin-left:10px}
+.chk{font-size:6.5px;font-weight:700;margin:-2px 0 18px}
+.pkg{background:#f9fafc;border:1px solid #eceef3;border-radius:16px;padding:14px 18px 14px 30px;display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.pkg b{font-size:8px;display:block;margin-bottom:3px}.pkg p{font-size:6.5px;line-height:1.35;max-width:130px}
+.tog{text-align:center;font-size:7px;font-weight:700}.tog div{width:24px;height:13px;background:var(--blue);border-radius:8px;margin:0 auto 3px;position:relative}.tog div:after{content:'';position:absolute;right:2px;top:2px;width:9px;height:9px;border-radius:50%;background:#fff}
+/* NEW trust bar */
+.new{position:relative;outline:2px dashed var(--amber);outline-offset:4px;border-radius:6px}
+.new>.chip{position:absolute;top:-17px;right:-6px}
+.trust{background:#f4f7fd;border:1px solid #d6def0;border-radius:8px;padding:9px 10px;margin-bottom:12px}
+.trust .t{display:flex;align-items:flex-start;font-size:7.5px;line-height:1.35;color:var(--navy);font-weight:600}
+.trust .t+.t{margin-top:6px}
+.trust svg{flex:0 0 auto;width:11px;height:11px;margin-right:6px;margin-top:0}
+.trust .t strong{font-weight:800}
+.pm{display:flex;margin-bottom:22px}
+.pm div{width:52px;height:29px;border:1px solid var(--line);border-radius:3px;font-size:5.5px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:4px;margin-right:4px}
+.pm div:first-child{border-color:#555}
+.card{border-bottom:1px solid #888;width:157px;font-size:6px;padding-bottom:3px;margin-bottom:14px}
+.row2{display:flex;margin-bottom:24px}.row2 span{width:72px;border-bottom:1px solid #888;font-size:6px;padding-bottom:3px;margin-right:12px}
+.btn{background:var(--blue);color:#fff;font-weight:800;font-size:7.5px;width:117px;height:23px;border-radius:2px;display:flex;align-items:center;justify-content:center}
+.terms{font-size:5.5px;margin-top:8px}.terms b{color:var(--blue)}
+.sum{border:1px solid #eceef3;border-radius:16px;padding:12px 22px 22px;box-shadow:0 8px 22px rgba(1,55,177,.08)}
+.sum h3{font-size:12px;font-weight:800;padding-bottom:10px;border-bottom:1px solid #ddd}.sum h3 em{font-style:normal;color:var(--blue)}
+.l{display:flex;justify-content:space-between;font-size:7px;color:#555;margin-top:7px}.l b{color:var(--navy)}
+.sum .tot{display:flex;justify-content:space-between;font-weight:800;font-size:9px;border-top:1px solid #ddd;margin-top:16px;padding-top:14px}
+.rev{display:flex;justify-content:center;margin-top:20px}.rev div{width:80px;height:62px;border:1px solid #e5e7ec;border-radius:4px;margin:0 4px;font-size:5.5px;text-align:center;padding-top:8px;color:#333}.rev .stars{color:#0f653c;font-size:9px;letter-spacing:-1px}
+.grey{background:var(--grey);padding:12px 0 30px;text-align:center}.grey h4{font-size:13px;font-weight:800}
+.foot{display:flex;justify-content:center;padding:30px 0}.foot div{width:183px;height:118px;border:1px solid #d9dce3;border-radius:16px;margin:0 4px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:30px;font-size:9px;font-weight:800}
+/* mobile */
+.mob .wrap{display:block;padding:14px 18px 24px}
+.mob .left,.mob .right{width:auto;margin:0}
+.mob .badges{flex-direction:column;margin-bottom:10px}.mob .badges i{display:none}
+.mob h2{font-size:17px}
+.mob .in{height:34px;font-size:10px;margin-bottom:10px}
+.mob .chk{font-size:9px;margin:0 0 18px}
+.mob .pkg{padding:14px 12px}.mob .pkg b{font-size:10px}.mob .pkg p{font-size:8.5px;max-width:200px}
+.mob .sum{margin:0 0 26px}.mob .sum h3{font-size:16px}.mob .l{font-size:8.5px}
+.mob .trust .t{font-size:10px}.mob .trust svg{width:13px;height:13px}
+.mob .trust{padding:11px 12px}
+.mob .pm div{font-size:7px;height:36px;width:56px}
+.mob .card,.mob .row2 span{width:auto;flex:1;font-size:7px}.mob .card{width:100%}
+.mob .btn{width:100%;height:30px;font-size:9px}.mob .terms{font-size:8px}
+.mob .grey h4{font-size:12px}
+</style>
+</head>
+<body>
+<div class="legend"><h1>Particle Checkout: Trust Bar, V1</h1><span><span class="chip">NEW</span> = added in variant, everything else matches control</span></div>
+<div class="layout">
+
+<!-- DESKTOP -->
+<div class="dev"><div class="lbl">Desktop</div><div class="frame desk">
+<div class="topbar">FREE SHIPPING + 30 DAY MONEY BACK GUARANTEE</div>
+<div class="nav">PARTICLE</div>
+<div class="progress"><div class="st"><b>1</b><small>Order Details</small></div><div class="bar"></div><div class="st on"><b>2</b><small>Delivery &amp; Payment</small></div><div class="bar"></div><div class="st"><b>3</b><small>Confirmation</small></div></div>
+<div class="timer"><span>Hurry up! Your cart is reserved for <b>09:48</b> mins</span></div>
+<div class="wrap">
+ <div class="left">
+  <div class="badges"><span>30 Day Money Back Guarantee</span><i></i><span>Free Shipping</span></div>
+  <h2><em>BILLING</em> DETAILS</h2>
+  <div class="in">Email address</div>
+  <div class="row"><div class="in">First name</div><div class="in">Last name</div></div>
+  <div class="in">Street address *</div>
+  <div class="in">Apartment, suite, unit, etc. (optional)</div>
+  <div class="row"><div class="in">Cyprus</div><div class="in">Town / City *</div></div>
+  <div class="row"><div class="in">Postcode / ZIP *</div><div style="flex:1;margin-left:10px"></div></div>
+  <div class="in">Phone *</div>
+  <div class="chk">&#9633; Ship to a different address?</div>
+  <div class="pkg"><div><b>Package Protection</b><p>Against loss, theft or damage in transit and instant resolution.</p></div><div class="tog"><div></div>$2.49</div></div>
+  <h2><em>Payment</em> Information</h2>
+  <div class="new"><span class="chip">NEW</span>
+   <div class="trust">
+    <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="#0137b1" stroke-width="2.4"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><strong>Secure checkout.</strong> Your payment is 256-bit encrypted.</span></div>
+    <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="#0137b1" stroke-width="2.6"><path d="M4 12l5 5L20 6"/></svg><span><strong>One-time purchase.</strong> No subscription, nothing to cancel.</span></div>
+    <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="#0137b1" stroke-width="2.4"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span><strong>Your info stays private.</strong> We never share or sell your email or phone.</span></div>
+   </div>
+  </div>
+  <div class="pm"><div>Credit Card</div><div>PayPal</div><div>Google Pay</div></div>
+  <div class="card">&#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226;</div>
+  <div class="row2"><span>MM/YY</span><span>CVC</span></div>
+  <div class="btn">&#128274; PLACE ORDER</div>
+  <div class="terms">By continuing, you agree to our <b>Terms</b> and <b>Privacy Policy</b>.</div>
+ </div>
+ <div class="right">
+  <div class="sum"><h3><em>ORDER</em> SUMMARY</h3>
+   <div class="l" style="margin-top:10px"><span>3 Items</span><b>$110.00</b></div>
+   <div class="l"><span>Subtotal</span><b>$110.00</b></div><div class="l"><span>Shipping</span><b>FREE</b></div><div class="l"><span>Package Protection</span><b>$1.99</b></div><div class="l"><span>Tax</span><b>$0.00</b></div>
+   <div class="l" style="text-decoration:underline">Have a coupon code?</div>
+   <div class="tot"><span>Total</span><span>$111.99</span></div></div>
+  <div class="rev"><div><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br>3,800+ Reviews<br><br>Google Trusted Store</div><div><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><br>5,500+ Reviews<br><br>PARTICLE</div></div>
+ </div>
+</div>
+<div class="grey"><h4>Why over 1 Million Customers Love Particle</h4></div>
+<div class="foot"><div>Free Shipping</div><div>30 Days Money Back</div><div>100% Secure Payment</div></div>
+</div></div>
+
+<!-- MOBILE -->
+<div class="dev"><div class="lbl">Mobile</div><div class="frame mob">
+<div class="topbar">FREE SHIPPING + 30 DAY MONEY BACK GUARANTEE</div>
+<div class="nav">PARTICLE</div>
+<div class="progress"><div class="st"><b>1</b><small>Order Details</small></div><div class="bar"></div><div class="st on"><b>2</b><small>Delivery &amp; Payment</small></div><div class="bar"></div><div class="st"><b>3</b><small>Confirmation</small></div></div>
+<div class="timer"><span>Hurry up! Your cart is reserved for <b>09:50</b> mins</span></div>
+<div class="wrap"><div class="left">
+  <div class="badges"><span>30 Day Money Back Guarantee</span><i></i><span>Free Shipping</span></div>
+  <h2><em>BILLING</em> DETAILS</h2>
+  <div class="in">Email address</div>
+  <div class="row"><div class="in">First name</div><div class="in">Last name</div></div>
+  <div class="in">Street address *</div>
+  <div class="in">Apartment, suite, unit, etc. (optional)</div>
+  <div class="row"><div class="in">Cyprus</div><div class="in">Town / City *</div></div>
+  <div class="row"><div class="in">Postcode / ZIP *</div><div style="flex:1;margin-left:10px"></div></div>
+  <div class="in">Phone *</div>
+  <div class="chk">&#9633; Ship to a different address?</div>
+  <div class="pkg"><div><b>Package Protection</b><p>Against loss, theft or damage in transit and instant resolution.</p></div><div class="tog"><div></div>$2.49</div></div>
+  <div class="sum"><h3><em>ORDER</em> SUMMARY</h3>
+   <div class="l" style="margin-top:10px"><span>3 Items</span><b>$110.00</b></div>
+   <div class="l"><span>Subtotal</span><b>$110.00</b></div><div class="l"><span>Shipping</span><b>FREE</b></div><div class="l"><span>Package Protection</span><b>$1.99</b></div><div class="l"><span>Tax</span><b>$0.00</b></div>
+   <div class="tot"><span>Total</span><span>$111.99</span></div></div>
+  <h2><em>Payment</em> Information</h2>
+  <div class="new"><span class="chip">NEW</span>
+   <div class="trust">
+    <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="#0137b1" stroke-width="2.4"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><strong>Secure checkout.</strong> Your payment is 256-bit encrypted.</span></div>
+    <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="#0137b1" stroke-width="2.6"><path d="M4 12l5 5L20 6"/></svg><span><strong>One-time purchase.</strong> No subscription, nothing to cancel.</span></div>
+    <div class="t"><svg viewBox="0 0 24 24" fill="none" stroke="#0137b1" stroke-width="2.4"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/></svg><span><strong>Your info stays private.</strong> We never share or sell your email or phone.</span></div>
+   </div>
+  </div>
+  <div class="pm"><div>Credit Card</div><div>PayPal</div><div>Google Pay</div></div>
+  <div class="card">&#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226; &#8226;&#8226;&#8226;&#8226;</div>
+  <div class="row2"><span>MM/YY</span><span>CVC</span></div>
+  <div class="btn">&#128274; PLACE ORDER</div>
+  <div class="terms">By continuing, you agree to our <b>Terms</b> and <b>Privacy Policy</b>.</div>
+</div></div>
+<div class="grey"><h4>Why over 1 Million Customers Love Particle</h4></div>
+</div></div>
+
+</div>
+</body>
+</html>
