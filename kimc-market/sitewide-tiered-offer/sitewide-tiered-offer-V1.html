@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kim'C Tiered Offer V1</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f5f5;--ink:#121212;--muted:#555;--green:#2a6853;--green2:#0d6b52;--line:#d9d9d9;--tint:#e6efeb}
+*{box-sizing:border-box}body{margin:0;background:#dcdcdc;font-family:Montserrat,Arial,sans-serif;color:var(--ink);letter-spacing:.04em}
+h1.page{font-size:18px;padding:20px 24px 0;margin:0}.note{padding:4px 24px 0;font-size:13px;color:#333;margin:0}
+.row{display:flex;flex-wrap:wrap;gap:32px;padding:24px;align-items:flex-start}
+.panel{display:flex;flex-direction:column;gap:8px}.label{font-weight:600;font-size:13px;text-transform:uppercase}
+.frame{background:var(--bg);border:1px solid #bbb;overflow:hidden}
+.desk{width:760px}.mob{width:375px}
+.annc{background:#e8f0f0;text-align:center;font-size:14px;padding:10px}
+.pdp{display:flex;gap:28px;padding:24px}.img{width:300px;height:300px;background:#cbbfa8;flex:none;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px}
+.mob .pdp{flex-direction:column;padding:16px}.mob .img{width:100%;height:260px}
+.info{flex:1}.vend{font-size:13px;color:var(--muted)}.title{font-size:24px;line-height:1.25;margin:6px 0 14px;font-weight:400}
+.mob .title{font-size:21px}
+.pill{display:inline-block;border:1px solid #aaa;border-radius:20px;padding:6px 14px;font-size:12px;margin:0 6px 6px 0}.pill.on{background:#000;color:#fff;border-color:#000}
+.small{font-size:12px;color:var(--muted);margin:10px 0 6px}
+.price{font-size:20px;margin:14px 0 4px}.ship{font-size:12px;color:var(--muted)}.ship u{color:var(--green)}
+.qty{display:inline-flex;border:1px solid #555;width:130px;justify-content:space-between;padding:10px 16px;font-size:14px;margin:6px 0 12px}
+.eta{border-left:3px solid #aaa;padding:2px 10px;font-size:12px;margin-bottom:10px;line-height:1.7}
+.atc{background:var(--green2);color:#fff;text-align:center;padding:14px;font-size:15px}
+.shop{background:#5a31f4;color:#fff;text-align:center;padding:12px;font-size:15px;margin-top:8px;font-weight:600}
+/* NEW offer block */
+.offer{border:1px solid var(--green);background:#fff;margin:14px 0 12px}
+.offer .hd{background:var(--green);color:#fff;font-size:13px;padding:8px 12px;font-weight:500}
+.tier{display:flex;gap:10px;padding:9px 12px;border-bottom:1px solid #e3e3e3;font-size:13px;align-items:baseline}
+.tier:last-child{border-bottom:0}.tier b{color:var(--green);min-width:46px;font-weight:600}
+.guar{font-size:12px;padding:8px 12px;background:var(--tint)}
+.new{outline:2px dashed #e0592a;outline-offset:3px;position:relative}
+.tag{position:absolute;top:-11px;right:6px;background:#e0592a;color:#fff;font-size:10px;padding:2px 6px;letter-spacing:.05em}
+/* cart drawer */
+.drawer{padding:22px}.dhead{display:flex;justify-content:space-between;font-size:26px;margin-bottom:16px}
+.cols{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);text-transform:uppercase;border-bottom:1px solid var(--line);padding-bottom:12px}
+.prog{background:#fff;border:1px solid var(--green);padding:12px;margin:14px 0}
+.prog p{margin:0 0 8px;font-size:13px}.bar{height:8px;background:#e1e1e1;border-radius:4px;position:relative}
+.fill{height:8px;background:var(--green);border-radius:4px}
+.marks{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:6px}
+.marks span.done{color:var(--green);font-weight:600}
+.item{display:flex;gap:14px;padding:16px 0}.thumb{width:72px;height:72px;background:#cbbfa8;flex:none}.gthumb{background:#3d4a3f}
+.it{flex:1;font-size:13px;line-height:1.5}.it .v{font-size:11px;color:var(--muted)}.pr{font-size:14px;text-align:right}
+.free{color:var(--green);font-weight:600}
+.sub{display:flex;justify-content:space-between;font-size:17px;border-top:1px solid var(--line);padding-top:14px;margin-top:8px}
+.disc{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:6px}
+.co{background:var(--green);color:#fff;text-align:center;padding:14px;font-size:16px;margin-top:14px}
+</style></head><body>
+<h1 class="page">Kim'C Market: Tiered Offer, V1 (default product template + cart drawer)</h1>
+<p class="note">Orange dashed outline = new element. Everything else matches the current page.</p>
+
+<div class="row">
+<!-- PDP DESKTOP -->
+<div class="panel"><div class="label">Product page: Desktop</div>
+<div class="frame desk"><div class="annc">Free shipping on orders over $79 →</div>
+<div class="pdp"><div class="img">Product image</div><div class="info">
+<div class="vend">Farmers in Ganghwa Island</div><div class="title">Organic Samgwang Rice [100% Korean Rice; Freshly Milled in New York]</div>
+<div class="small">Size</div><span class="pill on">5 LB</span><span class="pill">10 LB</span><span class="pill">15 LB</span>
+<div class="price">$35.95 USD</div><div class="ship"><u>Shipping</u> calculated at checkout.</div>
+<div class="offer new"><span class="tag">NEW</span><div class="hd">The more you add, the more you get</div>
+<div class="tier"><b>$79+</b><span>Free shipping + FREE Lunch Box Gim</span></div>
+<div class="tier"><b>$139+</b><span>FREE 2 lb bag of fresh-milled Golden Queen III rice ($13 value)</span></div>
+<div class="tier"><b>$179+</b><span>$20 off your order</span></div>
+<div class="guar">✓ Freshness guarantee: love it or we replace it</div></div>
+<div class="small" style="text-transform:uppercase">Quantity</div><div class="qty"><span>−</span><span>1</span><span>+</span></div>
+<div class="eta">🚚 Ships from New York within 1 business day<br>Delivery in 0-5 business days</div>
+<div class="atc">Add to cart</div><div class="shop">Buy with shop</div>
+</div></div></div></div>
+
+<!-- PDP MOBILE -->
+<div class="panel"><div class="label">Product page: Mobile</div>
+<div class="frame mob"><div class="annc">Free shipping on orders over $79 →</div>
+<div class="pdp"><div class="img">Product image</div><div class="info">
+<div class="vend">Farmers in Ganghwa Island</div><div class="title">Organic Samgwang Rice [100% Korean Rice; Freshly Milled in New York]</div>
+<div class="small">Size</div><span class="pill on">5 LB</span><span class="pill">10 LB</span><span class="pill">15 LB</span>
+<div class="price">$35.95 USD</div><div class="ship"><u>Shipping</u> calculated at checkout.</div>
+<div class="offer new"><span class="tag">NEW</span><div class="hd">The more you add, the more you get</div>
+<div class="tier"><b>$79+</b><span>Free shipping + FREE Lunch Box Gim</span></div>
+<div class="tier"><b>$139+</b><span>FREE 2 lb bag of fresh-milled Golden Queen III rice ($13 value)</span></div>
+<div class="tier"><b>$179+</b><span>$20 off your order</span></div>
+<div class="guar">✓ Freshness guarantee: love it or we replace it</div></div>
+<div class="small" style="text-transform:uppercase">Quantity</div><div class="qty"><span>−</span><span>1</span><span>+</span></div>
+<div class="atc">Add to cart</div>
+</div></div></div></div>
+</div>
+
+<div class="row">
+<!-- CART DESKTOP -->
+<div class="panel"><div class="label">Cart drawer: Desktop</div>
+<div class="frame" style="width:440px"><div class="drawer">
+<div class="dhead"><span>Your cart</span><span>✕</span></div>
+<div class="cols"><span>Product</span><span>Total</span></div>
+<div class="prog new"><span class="tag">NEW</span><p>You're <b>$31.15</b> away from a <b>FREE 2 lb bag of Golden Queen III</b></p>
+<div class="bar"><div class="fill" style="width:60%"></div></div>
+<div class="marks"><span class="done">✓ $79 Free shipping + Gim</span><span>$139 Free rice</span><span>$179 $20 off</span></div></div>
+<div class="item"><div class="thumb"></div><div class="it"><div class="v">FARMERS IN GANGHWA ISLAND</div>Organic Samgwang Rice<br>5 LB · Qty 3</div><div class="pr">$107.85</div></div>
+<div class="item new"><span class="tag">NEW</span><div class="thumb gthumb"></div><div class="it"><div class="v">FREE GIFT</div>Lunch Box Gim</div><div class="pr"><span class="free">FREE</span></div></div>
+<div class="sub"><span>Subtotal</span><span>$107.85 USD</span></div>
+<div class="disc new"><span class="tag">NEW</span><span>✓ Freshness guarantee: love it or we replace it</span></div>
+<div class="co">Check out</div></div></div></div>
+
+<!-- CART MOBILE -->
+<div class="panel"><div class="label">Cart drawer: Mobile (cart over $179)</div>
+<div class="frame mob"><div class="drawer">
+<div class="dhead"><span>Your cart</span><span>✕</span></div>
+<div class="cols"><span>Product</span><span>Total</span></div>
+<div class="prog new"><span class="tag">NEW</span><p>🎉 You've unlocked <b>every reward</b></p>
+<div class="bar"><div class="fill" style="width:100%"></div></div>
+<div class="marks"><span class="done">✓ $79</span><span class="done">✓ $139</span><span class="done">✓ $179</span></div></div>
+<div class="item"><div class="thumb"></div><div class="it"><div class="v">FARMERS IN GANGHWA ISLAND</div>Organic Samgwang Rice<br>5 LB · Qty 5</div><div class="pr">$179.75</div></div>
+<div class="item new"><span class="tag">NEW</span><div class="thumb gthumb"></div><div class="it"><div class="v">FREE GIFT</div>Lunch Box Gim</div><div class="pr"><span class="free">FREE</span></div></div>
+<div class="item new"><span class="tag">NEW</span><div class="thumb"></div><div class="it"><div class="v">FREE GIFT</div>Golden Queen III, 2 lb</div><div class="pr"><s>$13.00</s> <span class="free">FREE</span></div></div>
+<div class="sub"><span>Subtotal</span><span>$179.75 USD</span></div>
+<div class="disc new"><span class="tag">NEW</span><span>$20 off applied</span><span>−$20.00</span></div>
+<div class="co">Check out · $159.75</div></div></div></div>
+</div>
+</body></html>
