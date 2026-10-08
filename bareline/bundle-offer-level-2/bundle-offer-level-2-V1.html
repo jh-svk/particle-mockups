@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bareline Offer Level 2</title>
+<style>
+  :root{--ink:#000;--muted:#6b6b6b;--line:#d9d9d9;--soft:#f3f3f3;--green:#1fa637;--bg:#e9e9e9}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);padding:24px 16px}
+  h1.label{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#444;margin:0 0 10px}
+  .wrap{display:flex;gap:32px;align-items:flex-start;justify-content:center;flex-wrap:wrap}
+  .frame{background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+  .desk{width:1100px;max-width:100%}
+  .mob{width:390px;max-width:100%}
+  .bar{background:#000;color:#fff;font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;padding:8px 0}
+  .bar span{margin:0 14px}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;border-bottom:1px solid #eee}
+  .logo{font-family:Georgia,"Times New Roman",serif;font-size:26px;font-weight:600;letter-spacing:.01em}
+  .links{display:flex;gap:26px;font-size:12px;font-weight:600}
+  .icons{font-size:12px;color:#444}
+  .pdp{display:flex;gap:28px;padding:22px 28px 30px}
+  .gal{flex:0 0 52%}
+  .img{background:#e8e8e8;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px}
+  .thumbs{display:flex;gap:6px;margin-top:8px}
+  .thumbs div{flex:1;aspect-ratio:1/1;background:#ececec}
+  .thumbs div:first-child{outline:2px solid #000}
+  .box{flex:1;min-width:0}
+  .stars{font-size:12px;color:#333}
+  .stars u{color:#333}
+  .title{font-size:24px;font-weight:700;margin:6px 0 8px}
+  .price{font-size:18px;font-weight:700}
+  .after{font-size:11px;margin:8px 0 12px}
+  .feat{background:var(--soft);padding:12px 14px;font-size:12px;line-height:2}
+  .sizes-h{display:flex;justify-content:space-between;align-items:flex-end;margin:16px 0 8px;font-size:12px}
+  .sizes-h a{color:#000;margin-left:10px}
+  .sizes{display:flex;gap:6px;flex-wrap:wrap}
+  .sizes div{width:44px;height:36px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+  .sizes div.on{border:2px solid #000}
+  .atc{background:#000;color:#fff;text-align:center;font-weight:700;font-size:13px;letter-spacing:.04em;padding:15px;margin-top:14px}
+  .shop{background:#5a31f4;color:#fff;text-align:center;font-size:14px;padding:13px;margin-top:6px}
+  .bs-h{font-size:13px;font-weight:700;margin:18px 0 8px;display:flex;justify-content:space-between;align-items:center}
+  .bs-h small{font-weight:500;font-size:11px;color:var(--muted)}
+  .tier{position:relative;border:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:11px 12px;margin-bottom:5px}
+  .tier.sel{border:2px solid #000}
+  .tl{display:flex;align-items:center;gap:10px}
+  .radio{width:18px;height:18px;border:1.5px solid #999;border-radius:50%;flex:0 0 auto}
+  .sel .radio{border:5px solid #000}
+  .q{font-size:15px;font-weight:700;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .chip{background:#000;color:#fff;font-size:10px;font-weight:700;padding:3px 6px}
+  .sub{font-size:12px;color:var(--muted);margin-top:2px}
+  .tr{text-align:right}
+  .save{font-size:15px;font-weight:800}
+  .was{font-size:12px;color:var(--muted);text-decoration:line-through}
+  .best{position:absolute;right:10px;top:-10px;background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:3px 7px}
+  .ship{font-size:12px;text-align:center;margin:10px 0 6px}
+  .swap{font-size:12px;text-align:center;margin-bottom:10px}
+  .eta{background:var(--soft);font-size:12px;text-align:center;padding:10px}
+  .acc{border-top:1px solid #e5e5e5;padding:13px 10px;font-size:12px;font-weight:700;display:flex;justify-content:space-between}
+  .new{outline:2px dashed #e0442b;outline-offset:3px}
+  .note{font-size:11px;color:#e0442b;font-weight:700;margin:4px 0 0}
+  .mob .pdp{display:block;padding:0}
+  .mob .img{aspect-ratio:1/1}
+  .mob .box{padding:16px}
+  .mob .nav{padding:14px 16px}
+  .mob .title{font-size:22px}
+  .legend{max-width:1520px;margin:18px auto 0;font-size:12px;color:#444}
+  .legend b{color:#e0442b}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div>
+    <h1 class="label">Level 2 V1 Desktop</h1>
+    <div class="frame desk">
+      <div class="bar"><span>Free Shipping on 3+ Items</span><span>Up to 54% Off Sitewide</span><span>Free Shipping on 3+ Items</span><span>Up to 54% Off Sitewide</span><span>Free Shipping on 3+ Items</span><span>Up to 54% Off Sitewide</span></div>
+      <div class="nav"><div class="logo">Bareline</div><div class="links"><span>BEST SELLERS</span><span>DENIM</span><span>BUNDLES</span><span>JORTS</span><span>SWEATPANTS</span><span>HOODIES &amp; T-SHIRTS</span></div><div class="icons">Search · Account · Cart</div></div>
+      <div class="pdp">
+        <div class="gal"><div class="img">Product image (unchanged)</div><div class="thumbs"><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+        <div class="box" id="box-d"></div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h1 class="label">Level 2 V1 Mobile</h1>
+    <div class="frame mob">
+      <div class="bar"><span>Free Shipping on 3+ Items</span><span>Up to 54% Off Sitewide</span></div>
+      <div class="nav"><div class="icons">Menu · Search</div><div class="logo">Bareline</div><div class="icons">Cart</div></div>
+      <div class="pdp">
+        <div class="img">Product image (unchanged)</div>
+        <div class="box" id="box-m"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<p class="legend"><b>Red dashed outline</b> = changed in Level 2 V1. Everything else matches the control. Pop-up is unchanged. Selecting a tier still opens the existing sidebar to pick the other items. Totals shown assume all items are Light Blue Denim V2 ($56.99) and update with the items picked. The saving is a fixed dollar amount (replacing today's 9% / 14%). Free shipping threshold unchanged.</p>
+
+<template id="buybox">
+  <div class="stars">★★★★★ (4.7) <u>361 Reviews</u></div>
+  <div class="title">Light Blue Denim V2</div>
+  <div class="price">$56.99</div>
+  <div class="after">Pay 4 payments of <b>$14.25</b> with Afterpay</div>
+  <div class="feat">✔ Baggy wide leg fit<br>✔ Custom buttons &amp; rivets<br>✔ 14.5OZ denim, 100% cotton</div>
+  <div class="sizes-h"><b>Waist Size: 28</b><span><a href="#">What's my size?</a><a href="#">Size Chart</a></span></div>
+  <div class="sizes"><div class="on">28</div><div>30</div><div>32</div><div>34</div><div>36</div></div>
+  <div class="atc">ADD TO CART · $56.99</div>
+  <div class="shop">Buy with shop</div>
+  <div class="new" style="margin-top:18px">
+    <div class="bs-h" style="margin-top:0">Bundle &amp; Save <small>Mix any styles</small></div>
+    <div class="tier"><div class="tl"><div class="radio"></div><div><div class="q">Buy 1</div><div class="sub">Standard price</div></div></div><div class="tr"><div class="save" style="font-weight:700">$56.99</div></div></div>
+    <div class="tier"><div class="tl"><div class="radio"></div><div><div class="q">Buy 2</div><div class="sub">$103.98 Total</div></div></div><div class="tr"><div class="save">Save $10</div><div class="was">$113.98</div></div></div>
+    <div class="tier"><div class="tl"><div class="radio"></div><div><div class="q">Buy 3 <span class="chip">+ Free Shipping</span></div><div class="sub">$150.97 Total</div></div></div><div class="tr"><div class="save">Save $20</div><div class="was">$170.97</div></div></div>
+    <div class="tier"><span class="best">BEST VALUE</span><div class="tl"><div class="radio"></div><div><div class="q">Buy 4+ <span class="chip">+ Free Shipping</span></div><div class="sub">$192.96 Total</div></div></div><div class="tr"><div class="save">Save $35</div><div class="was">$227.96</div></div></div>
+    <div class="ship">🚚 Free Shipping on Orders Over $115 or 3+ Items</div>
+  </div>
+  <div class="eta">Estimated Delivery Date: <b>October 13</b></div>
+  <div class="acc" style="margin-top:12px">Product Info <span>⌄</span></div>
+  <div class="acc">Size &amp; Fit <span>⌄</span></div>
+  <div class="acc">Returns &amp; Shipping <span>⌄</span></div>
+</template>
+<script>
+  const t=document.getElementById('buybox');
+  ['box-d','box-m'].forEach(id=>document.getElementById(id).appendChild(t.content.cloneNode(true)));
+</script>
+</body>
+</html>
