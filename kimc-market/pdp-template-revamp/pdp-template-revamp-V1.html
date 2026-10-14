@@ -128,9 +128,13 @@ h1{font-weight:400;font-size:30px;line-height:1.25;margin:8px 0 6px}
 .rev .big{font-size:30px;font-weight:500}
 .faq{max-width:760px;margin:0 auto}
 .faq div{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:12px 0;font-size:13.5px;font-weight:500}
+.pt{font:600 12px Montserrat,Arial;padding:6px 10px;border:1px solid #999;background:#fff;border-radius:16px;cursor:pointer;margin:4px 4px 0 0}
+.pt.on{background:#016853;color:#fff;border-color:#016853}
+.so{opacity:.5}.so b{text-decoration:line-through}
 .note{font-size:11px;color:#777;margin-top:6px;text-align:center}
 </style></head><body>
-<div class="legend"><b>Kim'C Market, PDP template revamp, V1.</b> Example product: Saechungmu Rice. Built on the previously tested revamp template. <span class="chip">NEW</span> new or rebuilt vs the tested template. <span class="chip mv">MOVED</span> existing element in a new position. <span class="chip as">AS TESTED</span> section carried over unchanged from the tested template. Tiles, purchase options, and quantity are clickable so price, unit price, free shipping line, and button total update.</div>
+<div class="legend"><b>Kim'C Market, PDP template revamp, V1.</b> Buy box is built from Shopify product data only, no per product content. Built on the previously tested revamp template. <span class="chip">NEW</span> new or rebuilt vs the tested template. <span class="chip mv">MOVED</span> existing element in a new position. <span class="chip as">AS TESTED</span> section carried over unchanged from the tested template. Tiles, purchase options, and quantity are clickable so price, free shipping line, and button total update.</div>
+<div class="legend" style="margin-top:-8px">Preview the template on: <button class="pt on" data-p="rice">Saechungmu Rice (2 options, subscription)</button> <button class="pt" data-p="oil">Organic Sprouted Sesame Oil (1 option, no subscription, 300ml sold out)</button> <span class="chip" style="margin-left:6px">RULE</span> marks where a block is hidden because the product has no data for it.</div>
 <div class="frames">
  <div class="frame desk"><div class="flabel">Desktop</div><div class="screen" id="d"></div></div>
  <div class="frame mob"><div class="flabel">Mobile</div><div class="screen" id="m"></div></div>
@@ -139,18 +143,38 @@ h1{font-weight:400;font-size:30px;line-height:1.25;margin:8px 0 6px}
 const IMG="https://kimcmarket.com/cdn/shop/files/Saechungmucopy.png?v=1752767963&width=900";
 const T1="https://kimcmarket.com/cdn/shop/files/saechungmu-rice-100percent-korean-rice-freshly-milled-in-new-york-kim-c-market-2_4eaf892a-3eeb-4ca2-bef3-1a2fcc29b11d.jpg?v=1752767963&width=500";
 const T2="https://kimcmarket.com/cdn/shop/files/Untitleddesign_3_d04eeab0-4f87-4392-b5a2-cd572889ba90.png?v=1752767963&width=500";
-const SIZES=[{l:"5 lb",lb:5,p:26.95},{l:"10 lb",lb:10,p:52.95},{l:"15 lb",lb:15,p:78.95}];
-const MILLS=[["White Rice","백미","All bran removed, softest and most classic"],["70% Off Bran","칠분도","Mostly white, a little more bite"],["50% Off Bran","오분도","Half the bran, balanced chew and flavor"],["30% Off Bran","삼분도","Most of the bran kept, hearty and nutty"],["Brown Rice","현미","Whole grain, all the bran kept"]];
-const FREE=79, SUBR=24.95/26.95;
-const st={s:0,m:3,sub:false,q:1};
+const P={
+ rice:{name:"Saechungmu Rice",vendor:"Farmers in Gurye",title:"Saechungmu Rice [100% Korean Rice; Freshly Milled in New York]",kr:"새청무",img:IMG,thumbs:true,taste:true,
+  options:[{name:"Size",values:["5 lb","10 lb","15 lb"]},{name:"Style",values:["White Rice (100%Off Bran) 백미","70% Off Bran 칠분도","50% Off Bran 오분도","30% Off Bran 삼분도","Brown Rice (0% Off Bran) 현미"]}],
+  price:(v)=>[26.95,52.95,78.95][v[0]],avail:()=>true,sub:24.95/26.95,sel:[0,3]},
+ oil:{name:"Sesame Oil",vendor:"",title:"Organic Sprouted Sesame Oil (2 Sizes)",kr:"유기농 발아 참기름 (2 sizes)",img:"",thumbs:false,taste:false,
+  options:[{name:"Size",values:["160ml","300ml"]}],
+  price:(v)=>[19.50,30.00][v[0]],avail:(v)=>v[0]==0,sub:null,sel:[0]}
+};
+const FREE=79;
+let cur="rice";
+const st={sel:[0,3],sub:false,q:1};
 const f=n=>"$"+n.toFixed(2);
-function subP(p){return Math.round(p*SUBR*100)/100}
+const r2=n=>Math.round(n*100)/100;
+function tiles(pr,oi){
+ const o=pr.options[oi];
+ const prices=o.values.map((_,vi)=>{const v=st.sel.slice();v[oi]=vi;const base=pr.price(v);return st.sub&&pr.sub?r2(base*pr.sub):base});
+ const showP=new Set(prices).size>1;
+ const grid=o.values.some(x=>x.length>12);
+ return `<div class="olabel">${o.name} <em>: ${o.values[st.sel[oi]]}</em></div><div class="${grid?"mills":"sizes"}">`+
+  o.values.map((x,vi)=>{const v=st.sel.slice();v[oi]=vi;const ok=pr.avail(v);
+   return grid?`<div class="ml ${vi==st.sel[oi]?"sel":""} ${ok?"":"so"}" data-a="o" data-o="${oi}" data-v="${vi}"><b>${x}</b>${showP?`<small>${f(prices[vi])}</small>`:""}${ok?"":`<small>Sold out</small>`}</div>`
+   :`<div class="sz ${vi==st.sel[oi]?"sel":""} ${ok?"":"so"}" data-a="o" data-o="${oi}" data-v="${vi}"><b>${x}</b>${showP?`<s>${f(prices[vi])}</s>`:""}${ok?"":`<small>Sold out</small>`}</div>`}).join("")+`</div>`;
+}
 function render(id,mob){
- const S=SIZES[st.s],one=S.p,sp=subP(S.p),each=st.sub?sp:one,tot=each*st.q,left=Math.max(0,FREE-tot);
+ const pr=P[cur];
+ const one=pr.price(st.sel),sp=pr.sub?r2(one*pr.sub):one,each=st.sub&&pr.sub?sp:one,tot=each*st.q,left=Math.max(0,FREE-tot);
+ const ok=pr.avail(st.sel);
  const shipTxt=left>0?`You're <b>${f(left)}</b> away from free shipping`:`<b>Your order ships free</b>`;
  const pct=Math.min(100,tot/FREE*100);
- const gal=`<div class="gal"><img src="${IMG}" alt="Saechungmu rice bag">${mob?"":`<div class="thumbs"><img src="${T1}" alt=""><img src="${T2}" alt=""></div>`}</div>`;
- const taste=`<div class="flag mvd taste card"><span class="chip mv">MOVED</span><h3>Texture &amp; Taste Profile</h3>
+ const IMGTAG=pr.img?`<img src="${pr.img}" alt="${pr.name}">`:`<div class="ph" style="aspect-ratio:1/1;border-radius:0">Product image</div>`;
+ const gal=`<div class="gal">${IMGTAG}${mob||!pr.thumbs?"":`<div class="thumbs"><img src="${T1}" alt=""><img src="${T2}" alt=""></div>`}</div>`;
+ const taste=!pr.taste?`<div class="flag" style="padding:10px;font-size:12px;color:#666;background:#fff"><span class="chip">RULE</span>No taste profile data on this product, so this card is not rendered.</div>`:`<div class="flag mvd taste card"><span class="chip mv">MOVED</span><h3>Texture &amp; Taste Profile</h3>
   ${[["Firm",3,"Soft"],["Distinctive",4,"Subtle"],["Sticky",3,"Fluffy"],["Thick",1,"Thin"],["Nutty",2,"Mild"]].map(r=>`<div class="tr"><span>${r[0]}<span class="dots">${"●".repeat(r[1])}${"○".repeat(5-r[1])}</span></span><span>${r[2]}</span></div>`).join("")}
   <div class="best">Best for<br><span>Kimbap</span><span>Rice Bowls</span><span>Mixed Rice Dishes</span></div>
   <div class="quote">A chewy, satisfying grain that holds its texture beautifully when paired with other ingredients.</div></div>`;
@@ -158,31 +182,24 @@ function render(id,mob){
  <div class="bar">Free shipping on orders over $79</div>
  <div class="hdr"><div class="logo">Kim'C</div></div>
  <div class="wrap">${gal}<div class="box">
-  <div class="vendor">Farmers in Gurye</div>
-  <h1>Saechungmu Rice [100% Korean Rice; Freshly Milled in New York]</h1>
-  <div class="kr">새청무</div>
+  ${pr.vendor?`<div class="vendor">${pr.vendor}</div>`:""}
+  <h1>${pr.title}</h1>
+  <div class="kr">${pr.kr}</div>
   <div class="stars"><span>★★★★★</span> 3 Reviews</div>
   <div class="checks"><div><i>✓</i>100% Korean ingredients</div><div><i>✓</i>100% natural, no preservatives added</div><div><i>✓</i>Certified, chef and media approved</div><div><i>✓</i>Versatile staple for everyday cooking</div></div>
   <div class="flag mvd"><span class="chip mv">MOVED</span>
-   <div class="price"><span class="now">${f(each)} USD</span><span class="unit">${f(each/S.lb)} / lb</span></div>
+   <div class="price"><span class="now">${f(each)} USD</span></div>
    <div class="ship"><span class="chip" style="margin-right:6px">NEW</span>${shipTxt}</div>
    <div class="meter"><i style="width:${pct}%"></i></div>
   </div>
-  <div class="flag"><span class="chip">NEW</span>
-   <div class="olabel">Size</div>
-   <div class="sizes">${SIZES.map((z,i)=>`<div class="sz ${i==st.s?"sel":""}" data-a="s" data-v="${i}"><b>${z.l}</b><s>${f(st.sub?subP(z.p):z.p)}</s><small>${f((st.sub?subP(z.p):z.p)/z.lb)} / lb</small></div>`).join("")}</div>
-  </div>
-  <div class="flag"><span class="chip">NEW</span>
-   <div class="olabel">Milling <em>: ${MILLS[st.m][0]}</em></div>
-   <div class="mills">${MILLS.map((x,i)=>`<div class="ml ${i==st.m?"sel":""}" data-a="m" data-v="${i}"><b>${x[0]}<span>${x[1]}</span></b><small>${x[2]}</small></div>`).join("")}</div>
-  </div>
-  <div class="flag"><span class="chip">NEW</span>
+  ${pr.options.map((_,oi)=>`<div class="flag"><span class="chip">NEW</span>${tiles(pr,oi)}</div>`).join("")}
+  ${pr.sub?`<div class="flag"><span class="chip">NEW</span>
    <div class="olabel">How do you want it?</div>
-   <div class="po ${st.sub?"sel":""}" data-a="sub" data-v="1"><div class="rad"></div><div class="t"><b>Subscribe and save</b><span class="save">Save ${f(one-sp)}</span><small>Fresh rice on your schedule. Skip, edit, or cancel anytime.</small></div><div class="p">${f(sp)}<s>${f(one)}</s></div></div>
+   <div class="po ${st.sub?"sel":""}" data-a="sub" data-v="1"><div class="rad"></div><div class="t"><b>Subscribe and save</b><span class="save">Save ${f(one-sp)}</span><small>Delivered on your schedule. Skip, edit, or cancel anytime.</small></div><div class="p">${f(sp)}<s>${f(one)}</s></div></div>
    <div class="po ${st.sub?"":"sel"}" data-a="sub" data-v="0"><div class="rad"></div><div class="t"><b>One time purchase</b></div><div class="p">${f(one)}</div></div>
-  </div>
+  </div>`:`<div class="flag" style="padding:10px;font-size:12px;color:#666;background:#fff"><span class="chip">RULE</span>No selling plan on this product, so the purchase options block is not rendered.</div>`}
   <div class="flag"><span class="chip">NEW</span>
-   <div class="row"><div class="qty"><button data-a="q" data-v="-1">−</button><span>${st.q}</span><button data-a="q" data-v="1">+</button></div><button class="atc">Add to cart, ${f(tot)}</button></div>
+   <div class="row"><div class="qty"><button data-a="q" data-v="-1">−</button><span>${st.q}</span><button data-a="q" data-v="1">+</button></div><button class="atc" ${ok?"":"disabled style='background:#9a9a9a'"}>${ok?`Add to cart, ${f(tot)}`:"Sold out"}</button></div>
   </div>
   <button class="shopb">Buy with shop</button>
   <div class="more">More payment options</div>
@@ -191,7 +208,7 @@ function render(id,mob){
   ${taste}
   <div class="upsell"><b>Complete Your Korean Rice Meal</b>Add authentic Korean sides in one click (unchanged)</div>
   <div class="sec" style="margin-top:30px"><span class="chip as">KEEP AS IS</span><div style="display:flex;font-size:12px;font-weight:600"><span style="border:1px solid #ccc;border-bottom:0;padding:7px 10px;background:#fff">HIGHLIGHTS</span><span style="padding:7px 10px;background:#8fc4bb">DESCRIPTION</span><span style="padding:7px 10px;background:#8fc4bb;margin-left:2px">ABOUT</span></div><div style="border:1px solid #ccc;background:#fff;padding:12px;font-size:12.5px;line-height:1.55"><b>The Michelin-Approved Standard for Korean Rice.</b> Highlights, Description, and About tabs stay exactly as they are today: same content, same tab styling, same position directly below "Complete Your Korean Rice Meal".</div></div>
-  ${mob?`<div class="flag sticky"><span class="chip">NEW</span><div class="s1"><b>${S.l}, ${MILLS[st.m][0]}</b>${st.sub?"Subscribe and save":"One time purchase"}</div><button>Add to cart, ${f(tot)}</button></div><div class="note">Mobile only: sticky bar shows once the main Add to cart button scrolls out of view.</div>`:""}
+  ${mob?`<div class="flag sticky"><span class="chip">NEW</span><div class="s1"><b>${pr.options.map((o,oi)=>o.values[st.sel[oi]].replace(/ \(.*?\)| [가-힣]+$/g,"")).join(", ")}</b>${pr.sub?(st.sub?"Subscribe and save":"One time purchase"):""}</div><button>${ok?`Add to cart, ${f(tot)}`:"Sold out"}</button></div><div class="note">Mobile only: sticky bar shows once the main Add to cart button scrolls out of view.</div>`:""}
  </div></div>
  <div class="below">
   <div class="sec"><span class="chip as">AS TESTED</span><h2>Goes Great With:</h2><div class="ggw">${["Premium Doenjang (500g)|$38.50","Premium Gochujang (500g)|$43.00","Kisoondo Soy Sauce (250ml)|$23.00"].map(x=>`<div><div class="ph">Product image</div>${x.split("|")[0]}<br><b>${x.split("|")[1]} USD</b><button>ADD TO CART</button></div>`).join("")}</div></div>
@@ -206,8 +223,9 @@ function render(id,mob){
   <div class="sec faq"><span class="chip as">AS TESTED</span><h2 style="text-align:left">Frequently Asked Questions</h2><div>How soon will I receive my package?<span>+</span></div><div>How do you source?<span>+</span></div><div>Sell by date<span>+</span></div></div>
  </div>`;
 }
-function all(){render("d",false);render("m",true)}
-document.addEventListener("click",e=>{const t=e.target.closest("[data-a]");if(!t)return;const a=t.dataset.a,v=+t.dataset.v;
- if(a=="s")st.s=v;if(a=="m")st.m=v;if(a=="sub")st.sub=!!v;if(a=="q")st.q=Math.max(1,st.q+v);all()});
+function all(){document.querySelectorAll(".pt").forEach(b=>b.classList.toggle("on",b.dataset.p==cur));render("d",false);render("m",true)}
+document.addEventListener("click",e=>{const pb=e.target.closest(".pt");if(pb){cur=pb.dataset.p;st.sel=P[cur].sel.slice();st.sub=false;st.q=1;all();return}
+ const t=e.target.closest("[data-a]");if(!t)return;const a=t.dataset.a,v=+t.dataset.v;
+ if(a=="o")st.sel[+t.dataset.o]=v;if(a=="sub")st.sub=!!v;if(a=="q")st.q=Math.max(1,st.q+v);all()});
 all();
 </script></body></html>
