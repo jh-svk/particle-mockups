@@ -1,0 +1,126 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nome Offer Page V1</title><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>
+:root{--ink:#1a1a1a;--soft:#5c5c5c;--purple:#7e1f86;--lav:#f3e6f4;--mauve:#9c7a9d;--btn:#1a1610;--line:#e7e7e7;--bg:#f2f2f2;--tag:#e8590c}
+*{box-sizing:border-box}
+body{margin:0;background:#dfe3e6;font-family:Figtree,system-ui,sans-serif;color:var(--ink)}
+.wrap{max-width:1560px;margin:0 auto;padding:28px 16px 60px}
+.top h1{font-size:22px;margin:0 0 4px}.top p{margin:0 0 6px;color:#444;font-size:14px;max-width:1100px;line-height:1.45}
+.legend{background:#fff;border-radius:10px;padding:14px 18px;margin:14px 0 24px;font-size:13.5px;line-height:1.5;max-width:1100px}
+.legend ol{margin:6px 0 0;padding-left:0;list-style:none}.legend li{margin:3px 0;display:flex;gap:8px}
+.row{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start;justify-content:center}
+.col{display:flex;flex-direction:column;gap:8px;align-items:center}
+.lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#333;font-weight:700}
+.frame{background:#fff;border:1px solid #c9ced2;box-shadow:0 8px 28px rgba(0,0,0,.1);overflow:hidden}
+.d{width:1060px;max-width:100%}.m{width:375px}
+.n{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:10px;background:var(--tag);color:#fff;font-size:11px;font-weight:800;padding:0 5px;flex:none;font-family:system-ui}
+.hl{outline:2px dashed var(--tag);outline-offset:3px;position:relative}
+.hl>.n{position:absolute;top:-12px;right:-10px;z-index:3}.nav.hl>.n,.ftr.hl>.n{top:6px;right:6px}
+.ann{background:#000;color:#fff;text-align:center;font-size:12px;padding:7px 8px;font-weight:600}
+.hdr{display:flex;align-items:center;justify-content:center;padding:12px 18px;border-bottom:1px solid var(--line);position:relative}
+.hdr img.logo{height:26px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--line)}
+.nav .l,.nav .r{display:flex;gap:16px;align-items:center;min-width:120px}.nav .r{justify-content:flex-end}
+.nav img.logo{height:26px}
+.ico{width:20px;height:20px;stroke:#1a1a1a;fill:none;stroke-width:1.8}
+.cur{font-size:12px;font-weight:600;display:flex;gap:5px;align-items:center}.flag{width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#012169 55%,#e4002b 55%)}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:30px;padding:28px 34px}
+.gal .main{background:#efefef;border-radius:16px;aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden}
+.gal .main img{width:88%}
+.thumbs{display:flex;gap:8px;margin-top:10px}.thumbs img{width:62px;height:62px;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#efefef}
+.thumbs img:first-child{border:2px solid var(--purple)}
+.rv{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:10px;background:#fff}
+.rv .s{color:#e8b400;font-size:13px;letter-spacing:1px}
+.rv .t{font-size:13.5px;font-style:italic;line-height:1.4;margin:4px 0}
+.rv .w{font-size:12px;color:var(--soft);display:flex;justify-content:space-between}
+.rv .w b{color:var(--ink)}.vb{color:#2e7d32;font-weight:700}
+.rvs{margin-top:12px}.rvs .h{font-size:13px;font-weight:700}
+.box{border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.stars{text-align:center;font-size:13px}.stars span{color:#e8b400;letter-spacing:1px}
+.box h2{font-size:28px;line-height:1.15;text-align:center;margin:6px 0 8px}
+.sub{text-align:center;font-size:14px;line-height:1.45;color:#333;margin:0 0 10px}
+.pr{font-size:13.5px;text-align:center;font-weight:700;text-decoration:underline;margin:8px 0}
+.chk{list-style:none;padding:0;margin:0 0 12px;font-size:13.5px}.chk li{display:flex;gap:8px;align-items:center;margin:5px 0}
+.chk li:before{content:"✓";width:16px;height:16px;border-radius:50%;background:var(--purple);color:#fff;font-size:10px;display:grid;place-items:center;flex:none}
+.sw{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.sw div{border:1px solid var(--line);border-radius:8px;overflow:hidden;text-align:center;background:#f4f4f4}.sw div:first-child{border:2px solid #1a1a1a}
+.sw img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}.sw span{display:block;background:#1a1a1a;color:#fff;font-size:12px;padding:4px}
+.timer{background:var(--mauve);color:#fff;text-align:center;font-weight:800;font-size:14px;border-radius:6px;padding:9px}
+.tier{border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;margin-top:10px;display:flex;gap:12px;align-items:center;background:#f3f3f3}
+.tier.on{border:2px solid #1a1a1a;background:#fff}
+.rad{width:20px;height:20px;border-radius:50%;border:2px solid #999;flex:none}.on .rad{border-color:var(--purple);box-shadow:inset 0 0 0 4px #fff;background:var(--purple)}
+.tier .tx{flex:1;font-size:13px;color:var(--soft)}.tier .tx b{color:var(--ink);font-size:15px;margin-right:6px}
+.pill{background:var(--lav);color:#5a1a60;font-size:11px;padding:2px 7px;border-radius:5px;font-weight:600}
+.tier .p{text-align:right;font-size:12.5px;color:#999}.tier .p b{display:block;color:var(--purple);font-size:16px}.tier .p s{color:#999}
+.note2{font-size:12.5px;color:#333;margin:6px 2px 0}
+.cta{display:block;background:var(--btn);color:#fff;text-align:center;font-weight:700;border-radius:50px;padding:14px;margin-top:14px;font-size:15px}
+.pay{display:flex;justify-content:center;gap:4px;flex-wrap:wrap;margin-top:10px}.pay span{border:1px solid var(--line);border-radius:4px;font-size:9px;font-weight:800;padding:3px 5px;color:#333}
+.sec{font-size:12px;text-align:center;color:#333;margin-top:6px}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;font-size:11.5px;margin-top:12px;border:1px solid var(--line);border-radius:12px;padding:10px 6px}
+.trust i{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--lav);margin:0 auto 4px;color:var(--purple);font-style:normal}
+.below{background:var(--bg);padding:18px 34px 26px;border-top:1px solid var(--line)}
+.below .cap{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#777;text-align:center;margin:6px 0 14px}
+.blk{background:#fff;border-radius:14px;padding:16px 18px;margin:0 auto 16px;max-width:760px}
+.blk h3{text-align:center;margin:0 0 12px;font-size:22px}
+.quote{border-left:4px solid #1a1a1a;background:#eee;padding:10px 14px;font-size:14px}
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
+.tl div{border:1px solid var(--line);border-radius:12px;padding:10px}.tl b{display:block;font-size:15px}.tl span{font-size:12px;color:#444}
+.faq div{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:6px 0;font-size:13.5px;font-weight:600;display:flex;justify-content:space-between}
+.faq div:after{content:"+";color:var(--purple)}
+.lowcta{text-align:center;font-weight:600;font-size:14px}
+.gone{font-size:12.5px;color:#666;text-align:center;padding:8px;border:1px dashed #bbb;border-radius:10px;background:#fafafa}
+.ftr{background:#fff;border-top:1px solid var(--line);padding:24px 34px;display:grid;grid-template-columns:1.3fr 1fr;gap:24px;font-size:13px}
+.ftr h4{margin:0 0 8px;font-size:16px}.ftr p{color:#555;margin:0 0 10px}
+.ftr .em{border:1px solid var(--line);border-radius:8px;padding:10px;color:#999}
+.ftr ul{list-style:none;padding:0;margin:0;color:#444;line-height:1.9}
+.ftr .bt{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:12px;color:#555}
+/* mobile */
+.m .hero{grid-template-columns:1fr;padding:14px 14px;gap:12px}
+.m .box{border:none;padding:0}
+.m .box h2{font-size:23px}
+.m .below{padding:14px 12px 20px}
+.m .tl{grid-template-columns:1fr 1fr}
+.m .ftr{grid-template-columns:1fr;padding:20px 16px}
+.m .nav{padding:10px 14px}.m .nav .l,.m .nav .r{min-width:60px;gap:12px}
+</style></head><body><div class="wrap">
+<div class="top"><h1>Nome · Offer Page Trust Fix · V1</h1><p>V1: the offer page with trust fixes and the same cart path as the PDP. No store navigation. Orange tags mark what changed. Product images load from the live store.</p></div>
+<div class="legend"><b>Changes</b><ol><li><span class="n">1</span><span>Rating line above the headline now reads "Rated 5.0 by verified buyers" (was "1,000+ 5-Star Reviews").</span></li><li><span class="n">2</span><span>3 real review cards with name, "Verified buyer" and date replace the single "Janice" card. Desktop: under the gallery. Mobile: under the trust icons.</span></li><li><span class="n">3</span><span>Every buy button reads "Add To Cart", adds the selected bundle and color to cart and sends the shopper to /cart instead of straight to checkout.</span></li><li><span class="n">4</span><span>Grey quote box under the benefit cards is replaced with the 30-day refund line.</span></li><li><span class="n">5</span><span>"As Seen In" logo row removed. "Physical Therapy" and "Rehabilitation" slides removed from the "One Device" carousel.</span></li><li><span class="n">6</span><span>Copy fixes: desktop results timeline reads 2, 4, 8 weeks. Lower CTA says "Free AU & UK Shipping". The duplicate FAQ is replaced with "What if I have bad knees or joint problems?".</span></li><li><span class="n">7</span><span>Countdown bar reads "35% OFF, SALE ENDS SUNDAY" instead of a timer that resets.</span></li></ol></div>
+<div class="row"><div class="col"><div class="lbl">Desktop</div><div class="frame d"><div class="ann">30-Day Money-Back Guarantee • Free Shipping &amp; Returns in Australia and the UK</div><div class="hdr"><img class="logo" src="https://assets.replocdn.com/projects/6804fd96-b9b5-4d45-9cd0-3153763f6ef9/bf467a74-4d74-4904-aba9-86fcbe8f0c47" alt="nome"></div><div class="hero"><div class="gal"><div class="main"><img src="https://www.nomecollection.com/cdn/shop/files/1_7db477bc-3b32-44f0-823d-0d8b33b3c47b.png?width=900" alt="PowerStep Pro"></div><div class="thumbs"><img src="https://www.nomecollection.com/cdn/shop/files/1_7db477bc-3b32-44f0-823d-0d8b33b3c47b.png?width=200" alt=""><img src="https://www.nomecollection.com/cdn/shop/files/recreacion_11.png?width=200" alt=""><img src="https://www.nomecollection.com/cdn/shop/files/recreacion_6.png?width=200" alt=""><img src="https://www.nomecollection.com/cdn/shop/files/recreacion_12.png?width=200" alt=""></div><div class="rvs hl"><span class="n">2</span><div class="h">What buyers say</div><div class="rv"><div class="s">★★★★★</div><div class="t">"I love this. Easy to use and I use it nearly everyday. Very stable and well made."</div><div class="w"><span><b>Janice</b> · <span class="vb">Verified buyer</span></span><span>09/02/2026</span></div></div><div class="rv"><div class="s">★★★★★</div><div class="t">"Easy to use, gentle on the joints, and it doesn't take up much space."</div><div class="w"><span><b>Tracy O.</b> · <span class="vb">Verified buyer</span></span><span>07/31/2026</span></div></div><div class="rv"><div class="s">★★★★★</div><div class="t">"It looks sturdy and doesn't take up too much space. The bands are a nice bonus too."</div><div class="w"><span><b>Melody S.</b> · <span class="vb">Verified buyer</span></span><span>09/18/2026</span></div></div></div></div><div class="box">
+<div class="stars hl"><span class="n">1</span><span>★★★★★</span> Rated 5.0 by verified buyers</div>
+<h2>The Home Cardio Workout That Actually Works</h2>
+<p class="sub">Skip the gym membership altogether. Just 15 minutes a day and one side-to-side motion tones your legs, glutes and core, right from your living room.</p><div class="pr">Our Promise To You</div>
+<ul class="chk"><li>Tested For Vigorous Sessions, Zero Wobbling</li><li>One Motion, Legs, Glutes And Core Together</li><li>Smooth, Zero-Jarring Movement, Kind To Knees</li><li>Unbox And Start The Same Day, No Tools</li><li>30 Days To Change Your Mind, Full Refund</li></ul>
+<div class="sw"><div><img src="https://www.nomecollection.com/cdn/shop/files/1_copy_f7e97a55-ec61-437b-b6d8-49298b6cc0da.png?width=200" alt=""><span>Black</span></div><div><img src="https://www.nomecollection.com/cdn/shop/files/2_393fa656-1a66-43f0-832a-b4864e761ead.png?width=200" alt=""><span>Purple</span></div><div><img src="https://www.nomecollection.com/cdn/shop/files/3.png?width=200" alt=""><span>Gray</span></div><div><img src="https://www.nomecollection.com/cdn/shop/files/4_3a171638-1f70-4441-9fe6-4591422e750e.png?width=200" alt=""><span>Pink</span></div></div>
+<div class="timer hl"><span class="n">7</span>35% OFF, SALE ENDS SUNDAY</div>
+<div class="tier on"><div class="rad"></div><div class="tx"><b>Buy 1</b><span class="pill">35% OFF</span><br>Perfect for solo workouts</div><div class="p"><b>$209.00</b><s>$322.00</s></div></div>
+<div class="tier"><div class="rad"></div><div class="tx"><b>Buy 2</b><span class="pill">42% OFF</span><br>Perfect for training together!</div><div class="p"><b>$376.20</b><s>$644.00</s></div></div>
+<div class="hl" style="margin-top:14px"><span class="n">3</span><span class="cta" style="margin-top:0">Add To Cart</span></div>
+<div class="pay"><span>AMEX</span><span>Pay</span><span>DINERS</span><span>DISCOVER</span><span>G Pay</span><span>MC</span><span>PayPal</span><span>Shop Pay</span><span>VISA</span></div>
+<div class="sec">🔒 All transactions are secure and encrypted</div>
+<div class="trust"><div><i>↻</i>Zero Assembly</div><div><i>⛟</i>Free AU &amp; UK Shipping</div><div><i>⛨</i>350lb Capacity</div><div><i>⟲</i>30 Day Guarantee</div></div><div class="gone hl" style="margin-top:14px"><span class="n">5</span>"As Seen In" logo row removed</div></div></div><div class="below"><div class="cap">Further down the page (only changed sections shown)</div>
+<div class="blk hl"><span class="n">4</span><div class="quote">Try it for 30 days. If you don't love it, send it back for a full refund.</div></div>
+<div class="blk hl"><span class="n">6</span><h3>When Will You See Results?</h3><div class="tl"><div><b>2 Weeks</b><span>Build Your Routine</span></div><div><b>4 Weeks</b><span>Feel Your Progress</span></div><div><b>8 Weeks</b><span>Everyone Will Ask What You've Been Doing Differently.</span></div></div>
+<p class="note2" style="text-align:center">Desktop fix: labels were 2, 2, 2 weeks.</p></div>
+<div class="blk hl"><span class="n">5</span><h3>One Device, Countless Benefits</h3><div class="gone">"Physical Therapy" and "Rehabilitation" slides removed. Home Gym, Living Room and Fitness Center slides stay.</div></div>
+<div class="blk hl"><span class="n">6</span><p class="lowcta">Get Your PowerStep Pro With Free AU &amp; UK Shipping, Backed By Our 30-Day Guarantee</p><span class="cta">Add To Cart</span></div>
+<div class="blk hl"><span class="n">6</span><h3>Frequently Asked Questions</h3><div class="faq"><div>How quickly will I see results?</div><div>Will this work on carpet/hardwood floors?</div><div>What if I have bad knees or joint problems?</div><div>Does it require assembly or batteries?</div><div>Can I return it if it's not for me?</div></div></div>
+</div></div></div><div class="col"><div class="lbl">Mobile</div><div class="frame m"><div class="ann">30-Day Money-Back Guarantee • Free Shipping &amp; Returns in Australia and the UK</div><div class="hdr"><img class="logo" src="https://assets.replocdn.com/projects/6804fd96-b9b5-4d45-9cd0-3153763f6ef9/bf467a74-4d74-4904-aba9-86fcbe8f0c47" alt="nome"></div><div class="hero"><div class="box">
+<div class="stars hl"><span class="n">1</span><span>★★★★★</span> Rated 5.0 by verified buyers</div>
+<h2>The Home Cardio Workout That Actually Works</h2>
+<p class="sub">Skip the gym membership altogether. Just 15 minutes a day and one side-to-side motion tones your legs, glutes and core, right from your living room.</p><div class="gal" style="margin-bottom:10px"><div class="main"><img src="https://www.nomecollection.com/cdn/shop/files/1_7db477bc-3b32-44f0-823d-0d8b33b3c47b.png?width=900" alt=""></div><div class="thumbs"><img src="https://www.nomecollection.com/cdn/shop/files/1_7db477bc-3b32-44f0-823d-0d8b33b3c47b.png?width=200" alt=""><img src="https://www.nomecollection.com/cdn/shop/files/recreacion_11.png?width=200" alt=""><img src="https://www.nomecollection.com/cdn/shop/files/recreacion_6.png?width=200" alt=""><img src="https://www.nomecollection.com/cdn/shop/files/recreacion_12.png?width=200" alt=""></div></div><div class="pr">Our Promise To You</div>
+<ul class="chk"><li>Tested For Vigorous Sessions, Zero Wobbling</li><li>One Motion, Legs, Glutes And Core Together</li><li>Smooth, Zero-Jarring Movement, Kind To Knees</li><li>Unbox And Start The Same Day, No Tools</li><li>30 Days To Change Your Mind, Full Refund</li></ul>
+<div class="sw"><div><img src="https://www.nomecollection.com/cdn/shop/files/1_copy_f7e97a55-ec61-437b-b6d8-49298b6cc0da.png?width=200" alt=""><span>Black</span></div><div><img src="https://www.nomecollection.com/cdn/shop/files/2_393fa656-1a66-43f0-832a-b4864e761ead.png?width=200" alt=""><span>Purple</span></div><div><img src="https://www.nomecollection.com/cdn/shop/files/3.png?width=200" alt=""><span>Gray</span></div><div><img src="https://www.nomecollection.com/cdn/shop/files/4_3a171638-1f70-4441-9fe6-4591422e750e.png?width=200" alt=""><span>Pink</span></div></div>
+<div class="timer hl"><span class="n">7</span>35% OFF, SALE ENDS SUNDAY</div>
+<div class="tier on"><div class="rad"></div><div class="tx"><b>Buy 1</b><span class="pill">35% OFF</span><br>Perfect for solo workouts</div><div class="p"><b>$209.00</b><s>$322.00</s></div></div>
+<div class="tier"><div class="rad"></div><div class="tx"><b>Buy 2</b><span class="pill">42% OFF</span><br>Perfect for training together!</div><div class="p"><b>$376.20</b><s>$644.00</s></div></div>
+<div class="hl" style="margin-top:14px"><span class="n">3</span><span class="cta" style="margin-top:0">Add To Cart</span></div>
+<div class="pay"><span>AMEX</span><span>Pay</span><span>DINERS</span><span>DISCOVER</span><span>G Pay</span><span>MC</span><span>PayPal</span><span>Shop Pay</span><span>VISA</span></div>
+<div class="sec">🔒 All transactions are secure and encrypted</div>
+<div class="trust"><div><i>↻</i>Zero Assembly</div><div><i>⛟</i>Free AU &amp; UK Shipping</div><div><i>⛨</i>350lb Capacity</div><div><i>⟲</i>30 Day Guarantee</div></div><div class="rvs hl"><span class="n">2</span><div class="h">What buyers say</div><div class="rv"><div class="s">★★★★★</div><div class="t">"I love this. Easy to use and I use it nearly everyday. Very stable and well made."</div><div class="w"><span><b>Janice</b> · <span class="vb">Verified buyer</span></span><span>09/02/2026</span></div></div><div class="rv"><div class="s">★★★★★</div><div class="t">"Easy to use, gentle on the joints, and it doesn't take up much space."</div><div class="w"><span><b>Tracy O.</b> · <span class="vb">Verified buyer</span></span><span>07/31/2026</span></div></div><div class="rv"><div class="s">★★★★★</div><div class="t">"It looks sturdy and doesn't take up too much space. The bands are a nice bonus too."</div><div class="w"><span><b>Melody S.</b> · <span class="vb">Verified buyer</span></span><span>09/18/2026</span></div></div></div><div class="gone hl" style="margin-top:14px"><span class="n">5</span>"As Seen In" logo row removed</div></div></div><div class="below"><div class="cap">Further down the page (only changed sections shown)</div>
+<div class="blk hl"><span class="n">4</span><div class="quote">Try it for 30 days. If you don't love it, send it back for a full refund.</div></div>
+<div class="blk hl"><span class="n">6</span><h3>When Will You See Results?</h3><div class="tl"><div><b>2 Weeks</b><span>Build Your Routine</span></div><div><b>4 Weeks</b><span>Feel Your Progress</span></div><div><b>8 Weeks</b><span>Everyone Will Ask What You've Been Doing Differently.</span></div></div>
+<p class="note2" style="text-align:center">Mobile already shows 2, 4 and 8 weeks. No change on mobile.</p></div>
+<div class="blk hl"><span class="n">5</span><h3>One Device, Countless Benefits</h3><div class="gone">"Physical Therapy" and "Rehabilitation" slides removed. Home Gym, Living Room and Fitness Center slides stay.</div></div>
+<div class="blk hl"><span class="n">6</span><p class="lowcta">Get Your PowerStep Pro With Free AU &amp; UK Shipping, Backed By Our 30-Day Guarantee</p><span class="cta">Add To Cart</span></div>
+<div class="blk hl"><span class="n">6</span><h3>Frequently Asked Questions</h3><div class="faq"><div>How quickly will I see results?</div><div>Will this work on carpet/hardwood floors?</div><div>What if I have bad knees or joint problems?</div><div>Does it require assembly or batteries?</div><div>Can I return it if it's not for me?</div></div></div>
+</div></div></div></div>
+</div></body></html>
